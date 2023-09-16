@@ -9855,3 +9855,21 @@ textarea.form-control {
         border-left: 5px solid #dddddd;
     }
 }
+
+.button-container {
+  display: flex;
+  color: #005cbf;
+  justify-content: center;
+}
+
+/* Style for the buttons */
+.popupButton {
+  margin: 70px 70px; /* Adjust the horizontal margin as needed */
+  padding: 90px 90px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none; /* Remove underline for links */
+}
