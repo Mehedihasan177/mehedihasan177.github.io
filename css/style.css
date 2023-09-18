@@ -9933,40 +9933,31 @@ textarea.form-control {
   
   
   /* overlay */
-  /* Styles for the overlay */
-.overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 1;
+   .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
-/* Styles for the popup container */
-.popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 2;
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 100%;
 }
 
-/* Close button style */
 .close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-}
-
-/* Style for the image */
-.popup img {
-  max-width: 100%;
-  height: auto;
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
 }
