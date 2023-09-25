@@ -1,26 +1,18 @@
-var modal = document.getElementById("myModal");
-        var modalImage = document.getElementById("modalImage");
-
-        // Get the text link that opens the modal
-        var openModalLink = document.getElementById("openModal");
-
-        // Get the close button in the modal
-        var closeModalButton = document.getElementById("closeModal");
-
-        // When the user clicks the text link, open the modal and set the image source
-        openModalLink.addEventListener("click", function() {
-            modal.style.display = "block";
-            modalImage.src = "images/doctor_mediaid.png";
-        });
-
-        // When the user clicks the close button, close the modal
-        closeModalButton.addEventListener("click", function() {
-            modal.style.display = "none";
-        });
-
-        // When the user clicks outside the modal, close it
-        window.addEventListener("click", function(event) {
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
-        });
+    // Function to display the full-size image
+    function showImage(imageSrc) {
+        var overlay = document.getElementById('imageOverlay');
+        var fullImage = document.getElementById('fullImage');
+        
+        fullImage.src = imageSrc;
+        overlay.style.display = 'flex'; // Show the overlay
+    }
+    
+    // Function to close the full-size image overlay
+    function closeImage() {
+        var overlay = document.getElementById('imageOverlay');
+        overlay.style.display = 'none'; // Hide the overlay
+    }
+    
+    // Close the overlay when clicking anywhere outside the image
+    var overlay = document.getElementById('imageOverlay');
+    overlay.addEventListener('click', closeImage);
