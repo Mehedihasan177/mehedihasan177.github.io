@@ -26,7 +26,7 @@
 // };
   var fullHeight = function() {
     $('.js-fullheight').css({
-        'height': '600px', // Example height
+        'height': '690px', // Example height
         'width': '500px'   // Example width
     });
 };
