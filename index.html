@@ -1,1176 +1,598 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Mehedi Portfolio</title>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900"
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css" />
-    <link rel="stylesheet" href="css/animate.css" />
-
-    <link rel="stylesheet" href="css/owl.carousel.min.css" />
-    <link rel="stylesheet" href="css/owl.theme.default.min.css" />
-    <link rel="stylesheet" href="css/magnific-popup.css" />
-
-    <link rel="stylesheet" href="css/aos.css" />
-
-    <link rel="stylesheet" href="css/ionicons.min.css" />
-
-    <link rel="stylesheet" href="css/flaticon.css" />
-    <link rel="stylesheet" href="css/icomoon.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
-    ></script>
-    <script type="text/javascript">
-      (function () {
-        // https://dashboard.emailjs.com/admin/account
-        // emailjs.init('service_p90g8lb');
-        emailjs.init("rdQQ7oyOfPzaegC6X");
-      })();
-    </script>
-    <script type="text/javascript">
-      window.onload = function () {
-        document
-          .getElementById("contact-form")
-          .addEventListener("submit", function (event) {
-            event.preventDefault();
-            // generate a five digit number for the contact_number variable
-            // this.contact_number.value = Math.random() * 100000 | 0;
-            // these IDs from the previous steps
-            emailjs
-              .sendForm("service_q91yd1w", "template_wwxsrrp", "#contact-form")
-              .then(
-                function () {
-                  var mehedi = document.getElementById("snackbar");
-                  console.log(mehedi);
-                  mehedi.className = "show";
-                  setTimeout(function () {
-                    mehedi.className = mehedi.className.replace("show", "");
-                  }, 3000);
-                },
-                function (error) {
-                  console.log("FAILED...", error);
-                }
-              );
-          });
-      };
-    </script>
   </head>
-
-  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-    <nav
-      class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target"
-      id="ftco-navbar"
-    >
-      <div class="container">
-        <a class="navbar-brand" href="index.html">Mehedi</a>
-        <button
-          class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"
-          type="button"
-          data-toggle="collapse"
-          data-target="#ftco-nav"
-          aria-controls="ftco-nav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="oi oi-menu"></span> Menu
-        </button>
-
-        <div class="collapse navbar-collapse" id="ftco-nav">
-          <ul class="navbar-nav nav ml-auto">
-            <li class="nav-item">
-              <a href="#home-section" class="nav-link"><span>Home</span></a>
-            </li>
-            <li class="nav-item">
-              <a href="#about-section" class="nav-link"><span>About</span></a>
-            </li>
-            <li class="nav-item">
-              <a href="#resume-section" class="nav-link"><span>Resume</span></a>
-            </li>
-            <li class="nav-item">
-              <a href="#services-section" class="nav-link"
-                ><span>Services</span></a
-              >
-            </li>
-            <li class="nav-item">
-              <a href="#skills-section" class="nav-link"><span>Skills</span></a>
-            </li>
-            <li class="nav-item">
-              <a href="#projects-section" class="nav-link"
-                ><span>Projects</span></a
-              >
-            </li>
-            <!-- <li class="nav-item"><a href="#blog-section" class="nav-link"><span>My Blog</span></a></li> -->
-            <li class="nav-item">
-              <a href="#contact-section" class="nav-link"
-                ><span>Contact</span></a
-              >
-            </li>
-          </ul>
+  <body class="main-content">
+    <header class="container header active" id="home">
+      <div class="header-content">
+        <div class="left-header">
+          <div class="h-shape"></div>
+          <div class="image">
+            <img src="img/hero.png" alt="" />
+          </div>
         </div>
-      </div>
-    </nav>
-    <section id="home-section" class="hero">
-      <div class="home-slider owl-carousel">
-        <div class="slider-item">
-          <div class="overlay"></div>
-          <div class="container">
-            <div
-              class="row d-md-flex no-gutters slider-text align-items-end justify-content-end"
-              data-scrollax-parent="true"
+        <div class="right-header">
+          <h1 class="name">
+            Hi, I'm <span>Md. Mehedi Hasan.</span>
+            A Flutter Application Developer.
+          </h1>
+          <p>
+            I'm a Flutter Developer with a passion for crafting visually
+            stunning and seamlessly functional mobile applications. As a
+            dedicated Flutter Developer, I thrive on the art of crafting
+            captivating and highly functional mobile applications. With a keen
+            eye for design and a commitment to seamless user experiences. Let's
+            collaborate to build a digital masterpiece that stands out in both
+            form and function. Excellence is not just a goal; it's the standard
+            I uphold in every line of code.
+          </p>
+          <div class="btn-con">
+            <a
+              href="cv/Md._Mehedi Hasan_Resume.pdf"
+              target="_blank"
+              class="main-btn"
             >
-              <div
-                class="one-third js-fullheight order-md-last img"
-                style="background-image: url(images/final_myself_image.png)"
-              >
-                <div class="overlay"></div>
-              </div>
-              <div
-                class="one-forth d-flex align-items-center ftco-animate"
-                data-scrollax=" properties: { translateY: '70%' }"
-              >
-                <div class="text">
-                  <span class="subheading">Hello!</span>
-                  <h1 class="mb-4 mt-3">I'm <span>Md. Mehedi Hasan</span></h1>
-                  <h2 class="mb-4">A Flutter Mobile Application Developer</h2>
-                  <p>
-                    <a
-                      href="https://leetcode.com/mehedihasan177/"
-                      target="_blank"
-                      class="btn"
-                      ><img
-                        src="images/leetcode.png"
-                        alt="My Works"
-                        style="height: 30px; width: 30px"
-                    /></a>
-                    <a
-                      href="https://leetcode.com/mehedihasan177/"
-                      target="_blank"
-                      class="btn"
-                      style="color: #ffbd39"
-                      >Leet Code</a
-                    >
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="slider-item">
-          <div class="overlay"></div>
-          <div class="container">
-            <div
-              class="row d-flex no-gutters slider-text align-items-end justify-content-end"
-              data-scrollax-parent="true"
-            >
-              <div
-                class="one-third js-fullheight order-md-last img"
-                style="background-image: url(images/final_myself_image.png)"
-              >
-                <div class="overlay"></div>
-              </div>
-              <div
-                class="one-forth d-flex align-items-center ftco-animate"
-                data-scrollax=" properties: { translateY: '70%' }"
-              >
-                <div class="text">
-                  <span class="subheading">Hello!</span>
-                  <h1 class="mb-4 mt-3">
-                    I'm a <span>Flutter Mobile Application Developer</span>
-                  </h1>
-                  <p>
-                    <a
-                      href="https://leetcode.com/mehedihasan177/"
-                      target="_blank"
-                      class="btn"
-                      ><img
-                        src="images/leetcode.png"
-                        alt="My Works"
-                        style="height: 30px; width: 30px"
-                    /></a>
-                    <a
-                      href="https://leetcode.com/mehedihasan177/"
-                      target="_blank"
-                      class="btn"
-                      style="color: #ffbd39"
-                      >Leet Code</a
-                    >
-                  </p>
-                </div>
-              </div>
-            </div>
+              <span class="btn-text">Download CV</span>
+              <span class="btn-icon"><i class="fas fa-download"></i></span>
+            </a>
           </div>
         </div>
       </div>
-    </section>
-
-    <section class="ftco-about img ftco-section ftco-no-pb" id="about-section">
-      <div class="container">
-        <div class="row d-flex">
-          <div class="col-md-6 col-lg-5 d-flex">
-            <div class="img-about img d-flex align-items-stretch">
-              <div class="overlay"></div>
-              <div
-                class="img d-flex align-self-stretch align-items-center"
-                style="background-image: url(images/final_myself_image.png)"
-              ></div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-7 pl-lg-5 pb-5">
-            <div class="row justify-content-start pb-3">
-              <div class="col-md-12 heading-section ftco-animate">
-                <h1 class="big">About</h1>
-                <h2 class="mb-4">About Me</h2>
-                <p>
-                  I am willing to work in such an environment that provides
-                  challenges & opportunities to expose my knowledge & potential
-                  through my technical skills & hard work. I do my work honestly
-                  & achieve a higher level of success with hard work.
-                </p>
-                <ul class="about-info mt-4 px-md-0 px-2">
-                  <li class="d-flex">
-                    <span>Name:</span> <span>Md. Mehedi Hasan</span>
-                  </li>
-                  <li class="d-flex">
-                    <span>Date of birth:</span> <span>August 03, 1997</span>
-                  </li>
-                  <li class="d-flex">
-                    <span>Address:</span>
-                    <span
-                      >Paschim Matikata, 18/6A House, United Tower, Dhaka
-                      Cantonment</span
-                    >
-                  </li>
-                  <!-- <li class="d-flex"><span>Zip code:</span> <span>1000</span></li> -->
-                  <li class="d-flex">
-                    <span>Email:</span> <span>mdmehedihasan4051@gmail.com</span>
-                  </li>
-                  <li class="d-flex">
-                    <span>Phone: </span> <span>+8801877286284</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="counter-wrap ftco-animate d-flex mt-md-3">
-              <div class="text">
-                <p class="mb-4">
-                  <span class="number" data-number="12">0</span>
-                  <span>Project complete</span>
-                </p>
-                <p>
-                  <a
-                    href="cv/Mehedi_Hasan_Resume.pdf"
-                    target="_blank"
-                    class="btn btn-primary py-3 px-3"
-                    >Download CV</a
-                  >
-                </p>
-                <!-- <a href="https://drive.google.com/uc?export=download&id=your-file-id" target="_blank">Download PDF</a> -->
-              </div>
-            </div>
-          </div>
+    </header>
+    <main>
+      <section class="container about" id="about">
+        <div class="main-title">
+          <h2>About <span>me</span><span class="bg-text">my stats</span></h2>
         </div>
-      </div>
-    </section>
-
-    <section class="ftco-section ftco-no-pb" id="resume-section">
-      <div class="container">
-        <div class="row justify-content-center pb-5">
-          <div class="col-md-10 heading-section text-center ftco-animate">
-            <h1 class="big big-2">Resume</h1>
-            <h2 class="mb-4">Resume</h2>
+        <div class="about-container">
+          <div class="left-about">
+            <h4>Information About me</h4>
             <p>
-              A small river named Duden flows by their place and supplies it
-              with the necessary regelialia. It is a paradisematic country, in
-              which roasted parts of sentences fly into your mouth.
+              I bring two years of Flutter development expertise, excelling as a
+              Junior Mobile Application Developer at BDJOBS.COM. I've
+              collaborated with Root Devs and Skoder Technologies. <br />
+              <br />
+              My passion for learning, adaptability, and strong work ethic
+              defines me as a quick learner ready for new challenges. I'm
+              confident that my commitment to professionalism and dedication
+              would be a valuable asset to your team.
             </p>
-          </div>
-        </div>
-        <div>
-          <header
-            class="section-header text-center wow zoomIn"
-            data-wow-delay="0.1s"
-          >
-            <h4>Working Experience</h4>
-          </header>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="resume-wrap ftco-animate">
-              <span class="date">Oct 2022 - Running</span>
-              <h2>JR. MOBILE APPLICATION DEVELOPER</h2>
-              <span class="position">BDJOBS.COM</span>
-              <p class="mt-4">
-                I am working on the Bdjobs Employer application. This
-                application is based on the job recruitment process. This
-                application can sort qualified job seekers. I have experience
-                working with Bloc state management, GetX state management,
-                Dependencies Injection, Dio, Video player, Freezed (Code
-                generator), Firebase messaging, Push notification, Local
-                notification and so on.
-              </p>
-            </div>
-            <div class="resume-wrap ftco-animate">
-              <span class="date">June 2021 - Feb 2022</span>
-              <h2>Flutter Application Developer</h2>
-              <span class="position">Skoder Technologies</span>
-              <p class="mt-4">
-                Here I have completed my internship. The internship period was 4
-                months. Here did application design, and some API fetching work.
-                After finishing my internship I worked on two applications. One
-                is medical-related for both the patient and the doctor. In that
-                application, I have worked on some parts of the application such
-                as API fetching, video calling, push notification, In-app view,
-                and some others. The second one is Haverty. And Video template
-                editing basic work.
-              </p>
-            </div>
-          </div>
-
-          <div class="col-md-6">
-            <div class="resume-wrap ftco-animate">
-              <span class="date">Mar 2022 - Sep 2022</span>
-              <h2>Jr. Flutter Application Developer</h2>
-              <span class="position">Root Devs</span>
-              <p class="mt-4">
-                This company mainly work on sports-type application like
-                football, cricket, basketball etc. Live streaming was available
-                in the application. Can do live chat for premium users. As a
-                state management, they used GetX state management. Worked on
-                Google sign-in, One signal package for IOS push notification, In
-                app purchase, Firebase auth, Unique Identifier, Device Info, and
-                so on.
-              </p>
-            </div>
-            <div class="resume-wrap ftco-animate">
-              <br />
-              <h2>Figma Mobile Application Design</h2>
-              <br />
-              <!-- <br> -->
-              <p class="mt-4">
-                Besides developing mobile applications I have learned Figma
-                design and I have designed some mobile applications. Medical
-                application, Restaurant management, Haverty applications Figma
-                design I had done. Medical applications have both patient and
-                <a
-                  id="popupButton"
-                  href="https://play.google.com/store/apps/details?id=doctormediaid.skoder.co&pcampaignid=web_share"
-                  target="_blank"
-                  >doctor</a
-                >
-                applications. Both application is already in the Google Play
-                Store.
-                <a href="cv/resertit.jpg" target="_blank"
-                  >Restaurant Management</a
-                >
-                and Haverty applications just have design. I have worked on
-                these three applications to develop.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="row justify-content-center mt-5">
-          <div class="col-md-6 text-center ftco-animate">
-            <p>
+            <div class="btn-con">
               <a
-                href="cv/Mehedi_Hasan_Resume.pdf"
+                href="cv/Md._Mehedi Hasan_Resume.pdf"
                 target="_blank"
-                class="btn btn-primary py-3 px-3"
-                >Download CV</a
+                class="main-btn"
               >
-            </p>
+                <span class="btn-text">Download CV</span>
+                <span class="btn-icon"><i class="fas fa-download"></i></span>
+              </a>
+            </div>
+          </div>
+          <div class="right-about">
+            <div class="about-item">
+              <div class="abt-text">
+                <p class="large-text">650+</p>
+                <p class="small-text">
+                  Projects <br />
+                  Completed
+                </p>
+              </div>
+            </div>
+            <div class="about-item">
+              <div class="abt-text">
+                <p class="large-text">10+</p>
+                <p class="small-text">
+                  Years of <br />
+                  experience
+                </p>
+              </div>
+            </div>
+            <div class="about-item">
+              <div class="abt-text">
+                <p class="large-text">300+</p>
+                <p class="small-text">
+                  Happy <br />
+                  Clients
+                </p>
+              </div>
+            </div>
+            <div class="about-item">
+              <div class="abt-text">
+                <p class="large-text">400+</p>
+                <p class="small-text">
+                  Customer <br />
+                  reviews
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-    <!-- Education background Start -->
-    <div class="experience" id="experience">
-      <div class="container">
-        <header
-          class="section-header text-center wow zoomIn"
-          data-wow-delay="0.1s"
-        >
-          <h2>Education Background</h2>
-        </header>
+        <div class="about-stats">
+          <h4 class="stat-title">My Skills</h4>
+          <div class="progress-bars">
+            <div class="progress-bar">
+              <p class="prog-title">Dart</p>
+              <div class="progress-con">
+                <p class="prog-text">90%</p>
+                <div class="progress">
+                  <span class="html"></span>
+                </div>
+              </div>
+            </div>
+            <div class="progress-bar">
+              <p class="prog-title">Flutter</p>
+              <div class="progress-con">
+                <p class="prog-text">90%</p>
+                <div class="progress">
+                  <span class="css"></span>
+                </div>
+              </div>
+            </div>
+            <div class="progress-bar">
+              <p class="prog-title">Problem Solving</p>
+              <div class="progress-con">
+                <p class="prog-text">65%</p>
+                <div class="progress">
+                  <span class="js"></span>
+                </div>
+              </div>
+            </div>
+            <div class="progress-bar">
+              <p class="prog-title">Figma Design</p>
+              <div class="progress-con">
+                <p class="prog-text">65%</p>
+                <div class="progress">
+                  <span class="react"></span>
+                </div>
+              </div>
+            </div>
+            <div class="progress-bar">
+              <p class="prog-title">Python</p>
+              <div class="progress-con">
+                <p class="prog-text">50%</p>
+                <div class="progress">
+                  <span class="node"></span>
+                </div>
+              </div>
+            </div>
+            <div class="progress-bar">
+              <p class="prog-title">Team Work</p>
+              <div class="progress-con">
+                <p class="prog-text">80%</p>
+                <div class="progress">
+                  <span class="python"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h4 class="stat-title">My Timeline</h4>
         <div class="timeline">
-          <div class="timeline-item left wow slideInLeft" data-wow-delay="0.1s">
-            <div class="timeline-text">
-              <div class="timeline-date">2016 - 2020</div>
-              <h2>BSc in Engineering</h2>
-              <h4>Bangladesh Army University of Engineering & Technologies</h4>
-              <p>CGPA: 3.20 out of 4.00</p>
+          <div class="timeline-item">
+            <div class="tl-icon">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <p class="tl-duration">Oct, 2022 - present</p>
+            <h5>Jr. Mobile Application Developer<span> - BDJOBS.COM</span></h5>
+            <p>
+              I am working on the Bdjobs Employer application. This application
+              is based on the job recruitment process. This application can sort
+              qualified job seekers. I have experience working with Bloc state
+              management, GetX and River pod state management, Dependencies
+              Injection, Dio, Video player, Freezed (Code generator), Firebase
+              messaging, Push notification, Local notification and so on.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-icon">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <p class="tl-duration">March, 2022 - Sept, 2022</p>
+            <h5>Jr. Flutter Application Developer<span> - Root Devs</span></h5>
+            <p>
+              This company mainly work on sports-type application like football,
+              cricket, basketball etc. Live streaming was available in the
+              application. Can do live chat for premium users. As a state
+              management, they used GetX state management. Worked on Google
+              sign-in, One signal package for IOS push notification, In app
+              purchase, Firebase auth, Unique Identifier, Device Info, and so
+              on.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-icon">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <p class="tl-duration">Nov, 2021 - Feb, 2022</p>
+            <h5>
+              Flutter Application Developer<span> - Skoder Technologies</span>
+            </h5>
+            <p>
+              Here did application design, and some API fetching work. After
+              finishing my internship I worked on two applications. One is
+              medical-related for both the patient and the doctor. In that
+              application, I have worked on some parts of the application such
+              as API fetching, video calling, push notification, In-app view,
+              and some others. The second one is Haverty. And Video template
+              editing basic work.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-icon">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <p class="tl-duration">Jun, 2021 - Oct, 2021</p>
+            <h5>
+              Flutter Application Developer(Intern)<span>
+                - Skoder Technologies</span
+              >
+            </h5>
+            <p>
+              Medical application, Restaurant management, Haverty applications
+              Figma design I had done and did UI design by Flutter and API call.
+              Medical applications have both patient and doctor applications.
+              Both application is already in the Google Play Store. Restaurant
+              Management and Haverty applications just have design. I have
+              worked on these three applications to develop.
+            </p>
+          </div>
+        </div>
+        <h4 class="stat-title">My Education History</h4>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="tl-icon">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <p class="tl-duration">March, 2016 - March, 2020</p>
+            <h5>
+              BSc in Engineering<span>
+                -
+                <i
+                  >Bangladesh Army University of Engineering & Technologies</i
+                ></span
+              >
+            </h5>
+            <p>CGPA: 3.20 out of 4.00</p>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-icon">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <p class="tl-duration">2012 - 2014</p>
+            <h5>
+              Higher Secondary Certificate<span>
+                - <i>Bogura Cantonment Public School & College</i></span
+              >
+            </h5>
+            <p>GPA: 5.00 out of 5.00</p>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-icon">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <p class="tl-duration">2010 - 2012</p>
+            <h5>
+              Secondary School Certificate<span>
+                - <i>Bogura Cantonment Public School & College</i></span
+              >
+            </h5>
+            <p>GPA: 5.00 out of 5.00</p>
+          </div>
+        </div>
+      </section>
+      <section class="container" id="portfolio">
+        <div class="main-title">
+          <h2>My <span>Portfolio</span><span class="bg-text">My Work</span></h2>
+        </div>
+        <p class="port-text">
+          As an accomplished professional, I've had the privilege of contributing to a diverse range of projects, each characterized by my commitment to delivering solutions that exceed client expectations.
+        </p>
+        <div class="portfolios">
+          <div class="portfolio-item">
+            <div class="image">
+              <img src="img/employeer_app.png" alt="" />
+            </div>
+            <div class="hover-items">
+              <h3>Bdjobs Employeer</h3>
+              <div class="icons">
+                <a href="https://play.google.com/store/apps/details?id=com.bdjobs.recruiter&hl=en&gl=US" target='_blank' class="icon">
+                  <i class="fab fa-google-play"></i>
+                </a>
+                <a href="#" class="icon" onclick="openPopup('img/employeer_app.png')">
+                  <i class="fa fa-eye"></i>
+                </a>
+              </div>
             </div>
           </div>
-          <div
-            class="timeline-item right wow slideInRight"
-            data-wow-delay="0.1s"
-          >
-            <div class="timeline-text">
-              <div class="timeline-date">2014</div>
-              <h2>Higher Secondary School Certificate(HSC)</h2>
-              <h4>Bogra Cantonment Public School & College</h4>
-              <p>GPA: 5.00</p>
+          <div class="portfolio-item">
+            <div class="image">
+              <img src="img/reserveit.jpg" alt="" />
+            </div>
+            <div class="hover-items">
+              <h3>Reserve IT</h3>
+              <div class="icons">
+                <a href="https://github.com/Mehedihasan177/restaurant_app.git" target='_blank' class="icon">
+                  <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="icon" onclick="openPopup('img/reserveit.jpg')">
+                  <i class="fa fa-eye"></i>
+                </a>
+              </div>
             </div>
           </div>
-          <div class="timeline-item left wow slideInLeft" data-wow-delay="0.1s">
-            <div class="timeline-text">
-              <div class="timeline-date">2012</div>
-              <h2>Secondary School Certificate (SSC)</h2>
-              <h4>Bogra Cantonment Public School & College</h4>
-              <p>GPA: 5.00</p>
+          <div class="portfolio-item">
+            <div class="image">
+              <img src="img/mediair_pro.png" alt="" />
+            </div>
+            <div class="hover-items">
+              <h3>Mediaid Pro</h3>
+              <div class="icons">
+                <a href="https://github.com/Mehedihasan177/mediaid_pro.git" target='_blank' class="icon">
+                  <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="icon" onclick="openPopup('img/mediair_pro.png')">
+                  <i class="fa fa-eye"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-item">
+            <div class="image">
+              <img src="img/sports.png" alt="" />
+            </div>
+            <div class="hover-items">
+              <h3>Football Fans TV</h3>
+              <div class="icons">
+                <a href="https://github.com/Mehedihasan177/football_fans_tv.git" target = '_blank' class="icon">
+                  <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="icon" onclick="openPopup('img/sports.png')">
+                  <i class="fa fa-eye"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-item">
+            <div class="image">
+              <img src="img/doctor_mediaid.png" alt="" />
+            </div>
+            <div class="hover-items">
+              <h3>Doctor Mediaid</h3>
+              <div class="icons">
+                <a href="https://github.com/Mehedihasan177/doctor_Mediaid.git" target = '_blank' class="icon">
+                  <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="icon" onclick="openPopup('img/doctor_mediaid.png')">
+                  <i class="fa fa-eye"></i>
+                </a>
+              </div>
             </div>
           </div>
         </div>
+        <div id="popup" class="popup-container">
+          <span class="close-btn" onclick="closePopup()">&times;</span>
+          <img id="popupImage" src="" alt="Popup Image" style="max-width: 150%; max-height: 200%;">
+        </div>
+        
+        <script src="popup.js"></script>
+          
+        </script>
+      </section>
+      <!-- <section class="container" id="blogs">
+        <div class="blogs-content">
+          <div class="main-title">
+            <h2>My <span>Blogs</span><span class="bg-text">My Blogs</span></h2>
+          </div>
+          <div class="blogs">
+            <div class="blog">
+              <img src="img/port6.jpg" alt="" />
+              <div class="blog-text">
+                <h4>How to Create Your Own Website</h4>
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Doloribus natus voluptas, eos obcaecati recusandae amet?
+                </p>
+              </div>
+            </div>
+            <div class="blog">
+              <img src="img/blog1.jpg" alt="" />
+              <div class="blog-text">
+                <h4>How to Become an Expert in Web Design</h4>
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Doloribus natus voluptas, eos obcaecati recusandae amet?
+                </p>
+              </div>
+            </div>
+            <div class="blog">
+              <img src="img/blog2.jpg" alt="" />
+              <div class="blog-text">
+                <h4>Become a Web Designer in 10 Days</h4>
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Doloribus natus voluptas, eos obcaecati recusandae amet?
+                </p>
+              </div>
+            </div>
+            <div class="blog">
+              <img src="img/blog3.jpg" alt="" />
+              <div class="blog-text">
+                <h4>Debbuging made easy with Web Inspector</h4>
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Doloribus natus voluptas, eos obcaecati recusandae amet?
+                </p>
+              </div>
+            </div>
+            <div class="blog">
+              <img src="img/port1.jpg" alt="" />
+              <div class="blog-text">
+                <h4>Get started with Web Design and UI Design</h4>
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Doloribus natus voluptas, eos obcaecati recusandae amet?
+                </p>
+              </div>
+            </div>
+            <div class="blog">
+              <img src="img/port3.jpg" alt="" />
+              <div class="blog-text">
+                <h4>This is what you need to know about Web Design</h4>
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Doloribus natus voluptas, eos obcaecati recusandae amet?
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>-->
+      <section class="container contact" id="contact">
+        <div class="contact-container">
+          <div class="main-title">
+            <h2>Contact <span>Me</span><span class="bg-text">Contact</span></h2>
+          </div>
+          <div class="contact-content-con">
+            <div class="left-contact">
+              <h4>Contact me here</h4>
+              <p>
+                Passionate developer with a knack for turning code into creative and efficient solutions, dedicated to crafting exceptional digital experiences.
+              </p>
+              <div class="contact-info">
+                <div class="contact-item">
+                  <div class="icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Location</span>
+                  </div>
+                  <p>: Paschim Matikata, 18/6A House, United Tower, Dhaka Cantonment</p>
+                </div>
+                <div class="contact-item">
+                  <div class="icon">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email</span>
+                  </div>
+                  <p>
+                    <span>: mdmehedihasan4051@gmail.com</span>
+                  </p>
+                </div>
+                <div class="contact-item">
+                  <div class="icon">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>Education</span>
+                  </div>
+                  <p>
+                    <span>: Bangladesh Army University of Engineering & Technology</span>
+                  </p>
+                </div>
+                <div class="contact-item">
+                  <div class="icon">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>Mobile Number</span>
+                  </div>
+                  <p>
+                    <span>: 01877286284</span>
+                  </p>
+                </div>
+                <div class="contact-item">
+                  <div class="icon">
+                    <i class="fas fa-globe-africa"></i>
+                    <span>Languages</span>
+                  </div>
+                  <p>
+                    <span>: Bengali, English</span>
+                  </p>
+                </div>
+              </div>
+              <div class="contact-icons">
+                <div class="contact-icon">
+                  <a href="https://www.facebook.com/md.mehedihasannn" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a href="mdmehedihasan4051@outlook.com" target="_blank">
+                    <i class="fab fa-skype"></i>
+                  </a>
+                  <a href="https://github.com/Mehedihasan177" target="_blank">
+                    <i class="fab fa-github"></i>
+                  </a>
+                  <a href="https://www.linkedin.com/in/mehedihasanmehedi" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <!--
+              <div class="right-contact">
+              <form action="" class="contact-form">
+                <div class="input-control i-c-2">
+                  <input type="text" required placeholder="YOUR NAME" />
+                  <input type="email" required placeholder="YOUR EMAIL" />
+                </div>
+                <div class="input-control">
+                  <input type="text" required placeholder="ENTER SUBJECT" />
+                </div>
+                <div class="input-control">
+                  <textarea
+                    name=""
+                    id=""
+                    cols="15"
+                    rows="8"
+                    placeholder="Message Here..."
+                  ></textarea>
+                </div>
+                <div class="submit-btn">
+                 <a
+              href="cv/Md._Mehedi Hasan_Resume.pdf"
+              target="_blank"
+              class="main-btn"
+            >
+              <span class="btn-text">Download CV</span>
+              <span class="btn-icon"><i class="fas fa-download"></i></span>
+            </a>
+                </div>
+              </form>
+            </div>
+            -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="controls">
+      <div class="control active-btn" data-id="home">
+        <i class="fas fa-home"></i>
+      </div>
+      <div class="control" data-id="about">
+        <i class="fas fa-user"></i>
+      </div>
+      <div class="control" data-id="portfolio">
+        <i class="fas fa-briefcase"></i>
+      </div>
+      
+      <div class="control" data-id="contact">
+        <i class="fas fa-envelope-open"></i>
       </div>
     </div>
-    <!-- Education background End -->
-    <section class="ftco-section" id="services-section">
-      <div class="container">
-        <div class="row justify-content-center py-5 mt-5">
-          <div class="col-md-12 heading-section text-center ftco-animate">
-            <h1 class="big big-2">Services</h1>
-            <h2 class="mb-4">Services</h2>
-            <p>
-              Far far away, behind the word mountains, far from the countries
-              Vokalia and Consonantia
-            </p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4 text-center d-flex ftco-animate">
-            <a class="services-1">
-              <span class="icon">
-                <!-- <i class="flaticon-analysis"></i> -->
-                <img src="images/flutter.png" alt="" />
-              </span>
-              <div class="desc">
-                <h3 class="mb-5">Android Application</h3>
-              </div>
-            </a>
-          </div>
-          <div class="col-md-4 text-center d-flex ftco-animate">
-            <a class="services-1">
-              <span class="icon">
-                <img src="images/ios.png" alt="" />
-                <!-- <i class="flaticon-flasks"></i> -->
-              </span>
-              <div class="desc">
-                <h3 class="mb-5">IOS Application(Flutter)</h3>
-              </div>
-            </a>
-          </div>
-          <div class="col-md-4 text-center d-flex ftco-animate">
-            <a class="services-1">
-              <span class="icon">
-                <!-- <i class="flaticon-ideas"></i> -->
-                <img src="images/figma.png" alt="" />
-              </span>
-              <div class="desc">
-                <h3 class="mb-5">Figma Design</h3>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="ftco-section" id="skills-section">
-      <div class="container">
-        <div class="row justify-content-center pb-5">
-          <div class="col-md-12 heading-section text-center ftco-animate">
-            <h1 class="big big-2">Skills</h1>
-            <h2 class="mb-4">My Skills</h2>
-            <p>
-              Far far away, behind the word mountains, far from the countries
-              Vokalia and Consonantia
-            </p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6 animate-box">
-            <div class="progress-wrap ftco-animate">
-              <h3>Dart</h3>
-              <div class="progress">
-                <div
-                  class="progress-bar color-1"
-                  role="progressbar"
-                  aria-valuenow="90"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                  style="width: 90%"
-                >
-                  <span>90%</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 animate-box">
-            <div class="progress-wrap ftco-animate">
-              <h3>Flutter</h3>
-              <div class="progress">
-                <div
-                  class="progress-bar color-2"
-                  role="progressbar"
-                  aria-valuenow="90"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                  style="width: 90%"
-                >
-                  <span>90%</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 animate-box">
-            <div class="progress-wrap ftco-animate">
-              <h3>Problem Solving</h3>
-              <div class="progress">
-                <div
-                  class="progress-bar color-3"
-                  role="progressbar"
-                  aria-valuenow="95"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                  style="width: 75%"
-                >
-                  <span>75%</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 animate-box">
-            <div class="progress-wrap ftco-animate">
-              <h3>Figma Design</h3>
-              <div class="progress">
-                <div
-                  class="progress-bar color-4"
-                  role="progressbar"
-                  aria-valuenow="90"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                  style="width: 90%"
-                >
-                  <span>50%</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 animate-box">
-            <div class="progress-wrap ftco-animate">
-              <h3>Team Eork</h3>
-              <div class="progress">
-                <div
-                  class="progress-bar color-5"
-                  role="progressbar"
-                  aria-valuenow="70"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                  style="width: 90%"
-                >
-                  <span>90%</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 animate-box">
-            <div class="progress-wrap ftco-animate">
-              <h3>Leadership</h3>
-              <div class="progress">
-                <div
-                  class="progress-bar color-6"
-                  role="progressbar"
-                  aria-valuenow="80"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                  style="width: 80%"
-                >
-                  <span>80%</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Project section start -->
-
-    <section class="ftco-section ftco-project" id="projects-section">
-      <div class="container">
-        <div class="row justify-content-center pb-5">
-          <div class="col-md-12 heading-section text-center ftco-animate">
-            <h1 class="big big-2">Projects</h1>
-            <h2 class="mb-4">Projects</h2>
-            <p>
-              As an accomplished professional, I've had the privilege of
-              contributing to a diverse range of projects, each characterized by
-              my commitment to delivering solutions that exceed client
-              expectations.
-            </p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
-            <div
-              class="project img ftco-animate d-flex justify-content-center align-items-center"
-              onclick="showImage('images/employeer_app.png')"
-              style="background-image: url(images/employer_app.jpeg)"
-            >
-              <div class="overlay"></div>
-              <div class="text text-center p-4">
-                <h3><a style="color: #ffbd39">Bdjobs Emoloyer App</a></h3>
-                <!-- <span>Web Design</span> -->
-              </div>
-            </div>
-          </div>
-          <div class="col-md-8">
-            <div
-              class="project img ftco-animate d-flex justify-content-center align-items-center"
-              onclick="showImage('images/reserveit.jpg')"
-              style="background-image: url(images/reserveit.jpg)"
-            >
-              <div class="overlay"></div>
-              <div class="text text-center p-4">
-                <h3><a style="color: #ffbd39">ReserveIT</a></h3>
-                <!-- <span>Web Design</span> -->
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-8">
-            <div
-              class="project img ftco-animate d-flex justify-content-center align-items-center"
-              onclick="showImage('images/mediair_pro.png')"
-              style="background-image: url(images/mediair_pro.png)"
-            >
-              <div class="overlay"></div>
-              <div class="text text-center p-4">
-                <h3><a style="color: #ffbd39">Medical Application</a></h3>
-                <span style="color: #ffbd39">Mediaid Pro</span>
-              </div>
-            </div>
-
-            <div
-              class="project img ftco-animate d-flex justify-content-center align-items-center"
-              onclick="showImage('images/dd_travels.png')"
-              style="background-image: url(images/dd_travels.png)"
-            >
-              <div class="overlay"></div>
-              <div class="text text-center p-4">
-                <h3><a style="color: #ffbd39">DD Travels</a></h3>
-                <!-- <span>Web Design</span> -->
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="row">
-              <div class="col-md-12">
-                <div
-                  id="openModal5"
-                  class="project img ftco-animate d-flex justify-content-center align-items-center"
-                  onclick="showImage('images/sports.png')"
-                  style="background-image: url(images/sports.png)"
-                >
-                  <div class="overlay"></div>
-                  <div class="text text-center p-4">
-                    <h3><a style="color: #ffbd39">FootballFans TV</a></h3>
-                    <!-- <span>Web Design</span> -->
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div
-                  class="project img ftco-animate d-flex justify-content-center align-items-center"
-                  onclick="showImage('images/doctor_mediaid.png')"
-                  style="background-image: url(images/doctor_mediaid.png)"
-                >
-                  <div class="overlay"></div>
-                  <div class="text text-center p-4">
-                    <h3 style="color: #ffbd39">>Medical Application</h3>
-                    <span style="color: #ffbd39">Doctor Mediaid</span>
-                  </div>
-                </div>
-              </div>
-              <!-- Full-size image overlay -->
-              <div class="overlay" id="imageOverlay">
-                <img id="fullImage" src="" alt="Full Image" />
-              </div>
-              <script src="js/popup.js"></script>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Project section end -->
-
-    <!-- <section class="ftco-section" id="blog-section">
-      <div class="container">
-        <div class="row justify-content-center mb-5 pb-5">
-          <div class="col-md-7 heading-section text-center ftco-animate">
-            <h1 class="big big-2">Blog</h1>
-            <h2 class="mb-4">Our Blog</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
-          </div>
-        </div>
-        <div class="row d-flex">
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry justify-content-end">
-              <a href="single.html" class="block-20" style="background-image: url('images/image_1.jpg');">
-              </a>
-              <div class="text mt-3 float-right d-block">
-              	<div class="d-flex align-items-center mb-3 meta">
-	                <p class="mb-0">
-	                	<span class="mr-2">June 21, 2019</span>
-	                	<a href="#" class="mr-2">Admin</a>
-	                	<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
-	                </p>
-                </div>
-                <h3 class="heading"><a href="single.html">Why Lead Generation is Key for Business Growth</a></h3>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry justify-content-end">
-              <a href="single.html" class="block-20" style="background-image: url('images/image_2.jpg');">
-              </a>
-              <div class="text mt-3 float-right d-block">
-              	<div class="d-flex align-items-center mb-3 meta">
-	                <p class="mb-0">
-	                	<span class="mr-2">June 21, 2019</span>
-	                	<a href="#" class="mr-2">Admin</a>
-	                	<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
-	                </p>
-                </div>
-                <h3 class="heading"><a href="single.html">Why Lead Generation is Key for Business Growth</a></h3>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry">
-              <a href="single.html" class="block-20" style="background-image: url('images/image_3.jpg');">
-              </a>
-              <div class="text mt-3 float-right d-block">
-              	<div class="d-flex align-items-center mb-3 meta">
-	                <p class="mb-0">
-	                	<span class="mr-2">June 21, 2019</span>
-	                	<a href="#" class="mr-2">Admin</a>
-	                	<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
-	                </p>
-                </div>
-                <h3 class="heading"><a href="single.html">Why Lead Generation is Key for Business Growth</a></h3>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
-
-    <section
-      class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img"
-      id="section-counter"
-    >
-      <div class="container">
-        <div class="row d-md-flex align-items-center">
-          <div
-            class="col-md d-flex justify-content-center counter-wrap ftco-animate"
-          >
-            <div class="block-18">
-              <div class="text">
-                <strong class="number" data-number="3">0</strong>
-                <span>Certificates</span>
-              </div>
-            </div>
-          </div>
-          <div
-            class="col-md d-flex justify-content-center counter-wrap ftco-animate"
-          >
-            <div class="block-18">
-              <div class="text">
-                <strong class="number" data-number="12">0</strong>
-                <span>Complete Projects</span>
-              </div>
-            </div>
-          </div>
-          <div
-            class="col-md d-flex justify-content-center counter-wrap ftco-animate"
-          >
-            <div class="block-18">
-              <div class="text">
-                <strong class="number" data-number="3">0</strong>
-                <span>Worked Company</span>
-              </div>
-            </div>
-          </div>
-          <!-- <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-            <div class="block-18">
-              <div class="text">
-                <strong class="number" data-number="500">0</strong>
-                <span>Cups of coffee</span>
-              </div>
-            </div>
-          </div> -->
-        </div>
-      </div>
-    </section>
-
-    <section
-      class="ftco-section ftco-hireme img margin-top"
-      style="background-image: url(images/background_image.jpg)"
-    >
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-md-7 ftco-animate text-center">
-            <h2>I'm <span>Available</span> for freelancing</h2>
-            <p style="color: #ffffff">
-              Coupled with my extensive portfolio, I am eager to leverage my
-              expertise as a freelancer, offering tailored solutions to clients
-              worldwide while maintaining a dedication to quality and
-              innovation.
-            </p>
-            <p class="mb-0">
-              <a href="#" class="btn btn-primary py-3 px-5">Hire me</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section
-      class="ftco-section contact-section ftco-no-pb"
-      id="contact-section"
-    >
-      <div class="container">
-        <div class="row justify-content-center mb-5 pb-3">
-          <div class="col-md-7 heading-section text-center ftco-animate">
-            <h1 class="big big-2">Contact</h1>
-            <h2 class="mb-4">Contact Me</h2>
-            <p>
-              Far far away, behind the word mountains, far from the countries
-              Vokalia and Consonantia
-            </p>
-          </div>
-        </div>
-
-        <div class="row d-flex contact-info mb-5">
-          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-            <div class="align-self-stretch box p-4 text-center">
-              <div
-                class="icon d-flex align-items-center justify-content-center"
-              >
-                <span class="icon-map-signs"></span>
-              </div>
-              <h3 class="mb-4">Address</h3>
-              <p>
-                Paschim Matikata, 18/6A House, United Tower, Dhaka Cantonment
-              </p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-            <div class="align-self-stretch box p-4 text-center">
-              <div
-                class="icon d-flex align-items-center justify-content-center"
-              >
-                <span class="icon-phone2"></span>
-              </div>
-              <h3 class="mb-4">Contact Number</h3>
-              <p><a href="tel://1234567920">+8801877286284</a></p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-            <div class="align-self-stretch box p-4 text-center">
-              <div
-                class="icon d-flex align-items-center justify-content-center"
-              >
-                <span class="icon-paper-plane"></span>
-              </div>
-              <h3 class="mb-4">Email Address</h3>
-              <p>
-                <a href="mailto:mdmehedihasan4051@gmail.com"
-                  >mdmehedihasan4051<br />@gmail.com</a
-                >
-              </p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-            <div class="align-self-stretch box p-4 text-center">
-              <div
-                class="icon d-flex align-items-center justify-content-center"
-              >
-                <span class="icon-globe"></span>
-              </div>
-              <h3 class="mb-4">Skype</h3>
-              <p>
-                <a href="skype:mdmehedihasan4051@outlook.com"
-                  >mdmehedihasan4051<br />@outlook.com</a
-                >
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="row no-gutters block-9">
-          <div class="col-md-6 order-md-last d-flex">
-            <div id="snackbar">Email has been send successfully..</div>
-            <form id="contact-form" class="bg-light p-4 p-md-5 contact-form">
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Your Name"
-                  name="user_name"
-                />
-              </div>
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Your Email"
-                  name="user_email"
-                />
-              </div>
-              <div class="form-group">
-                <textarea
-                  id=""
-                  cols="30"
-                  rows="7"
-                  class="form-control"
-                  placeholder="Message"
-                  name="message"
-                ></textarea>
-              </div>
-              <div class="form-group">
-                <input
-                  type="submit"
-                  value="Send Message"
-                  class="btn btn-primary py-3 px-5"
-                  onclick="myFunction()"
-                />
-              </div>
-            </form>
-          </div>
-
-          <div class="col-md-6 d-flex">
-            <div
-              class="img"
-              style="background-image: url(images/final_myself_image.png)"
-            ></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer class="ftco-footer ftco-section">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">About</h2>
-              <p>
-                Passionate developer with a knack for turning code into creative
-                and efficient solutions, dedicated to crafting exceptional
-                digital experiences.
-              </p>
-              <ul
-                class="ftco-footer-social list-unstyled float-md-left float-lft mt-5"
-              >
-                <li class="ftco-animate">
-                  <a href="skype:mdmehedihasan4051@outlook.com"
-                    ><span class="icon-skype"></span
-                  ></a>
-                </li>
-                <li class="ftco-animate">
-                  <a
-                    href="https://www.linkedin.com/in/mehedihasanmehedi/"
-                    target="_blank"
-                    ><span class="icon-linkedin"></span
-                  ></a>
-                </li>
-                <li class="ftco-animate">
-                  <a
-                    href="https://www.facebook.com/md.mehedihasannn?mibextid=ZbWKwL"
-                    target="_blank"
-                    ><span class="icon-facebook"></span
-                  ></a>
-                </li>
-                <li class="ftco-animate">
-                  <a
-                    href="https://github.com/Mehedihasan177?tab=repositories"
-                    target="_blank"
-                    ><span class="icon-github"></span
-                  ></a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-4 ml-md-4">
-              <h2 class="ftco-heading-2">Links</h2>
-              <ul class="list-unstyled">
-                <li>
-                  <a href="#home-section"
-                    ><span class="icon-long-arrow-right mr-2"></span>Home</a
-                  >
-                </li>
-                <li>
-                  <a href="#about-section"
-                    ><span class="icon-long-arrow-right mr-2"></span>About</a
-                  >
-                </li>
-                <li>
-                  <a href="#services-section"
-                    ><span class="icon-long-arrow-right mr-2"></span>Services</a
-                  >
-                </li>
-                <li>
-                  <a href="#projects-section"
-                    ><span class="icon-long-arrow-right mr-2"></span>Projects</a
-                  >
-                </li>
-                <li>
-                  <a href="#contact-section"
-                    ><span class="icon-long-arrow-right mr-2"></span>Contact</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-4 ml-md-4">
-              <h2 class="ftco-heading-2">Freelancing Profile</h2>
-              <ul class="list-unstyled">
-                <li>
-                  <a
-                    href="https://www.fiverr.com/u_ed5dc11a6a9c?up_rollout=true"
-                    target="_blank"
-                    ><span class="icon-long-arrow-right mr-2"></span>Fiverr</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="https://www.upwork.com/freelancers/~01a871256d577768e5"
-                    target="_blank"
-                    ><span class="icon-long-arrow-right mr-2"></span>Upwork</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Services</h2>
-              <ul class="list-unstyled">
-                <li>
-                  <span class="icon-long-arrow-right mr-2"></span>Android
-                  Application(Flutter)
-                </li>
-                <li>
-                  <span class="icon-long-arrow-right mr-2"></span>IOS
-                  Application(Flutter)
-                </li>
-                <li>
-                  <span class="icon-long-arrow-right mr-2"></span>Figma Design
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Have a Questions?</h2>
-              <div class="block-23 mb-3">
-                <ul>
-                  <li>
-                    <span class="icon icon-map-marker"></span
-                    ><span class="text"
-                      >Paschim Matikata, 18/6A House, United Tower, Dhaka
-                      Cantonment</span
-                    >
-                  </li>
-                  <li>
-                    <span class="icon icon-phone"></span
-                    ><span class="text">+8801877286284</span>
-                  </li>
-                  <li>
-                    <a href="mailto:mdmehedihasan4051@gmail.com"
-                      ><span class="icon icon-envelope"></span
-                      ><span class="text">
-                        mdmehedihasan4051<br />@gmail.com</span
-                      ></a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <p>
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              Copyright &copy;
-              <script>
-                document.write(new Date().getFullYear());
-              </script>
-              All rights reserved
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </p>
-            <!-- | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> -->
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <!-- loader -->
-    <div id="ftco-loader" class="show fullscreen">
-      <svg class="circular" width="48px" height="48px">
-        <circle
-          class="path-bg"
-          cx="24"
-          cy="24"
-          r="22"
-          fill="none"
-          stroke-width="4"
-          stroke="#eeeeee"
-        />
-        <circle
-          class="path"
-          cx="24"
-          cy="24"
-          r="22"
-          fill="none"
-          stroke-width="4"
-          stroke-miterlimit="10"
-          stroke="#F96D00"
-        />
-      </svg>
+    <div class="theme-btn">
+      <i class="fas fa-adjust"></i>
     </div>
-
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/aos.js"></script>
-    <script src="js/jquery.animateNumber.min.js"></script>
-    <script src="js/scrollax.min.js"></script>
-
-    <script src="js/main.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>
