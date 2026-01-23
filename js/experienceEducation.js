@@ -90,7 +90,7 @@ const experienceData = {
             period: 'March, 2016 – March, 2020',
             location: 'Bangladesh',
             description: 'CGPA: 3.20 out of 4.00',
-            icon: 'https://templisys.com/public/portfolio_image/bauet.png'
+            icon: 'assets/portfolio_image/bauet.png'
         },
         {
             degree: 'Higher Secondary Certificate',
@@ -98,7 +98,7 @@ const experienceData = {
             period: '2012 – 2014',
             location: 'Bogura, Bangladesh',
             description: 'GPA: 5.00 out of 5.00',
-            icon: 'https://templisys.com/public/portfolio_image/bogura.png'
+            icon: 'assets/portfolio_image/bogura.png'
         },
         {
             degree: 'Secondary School Certificate',
@@ -106,7 +106,7 @@ const experienceData = {
             period: '2010 – 2012',
             location: 'Bogura, Bangladesh',
             description: 'GPA: 5.00 out of 5.00',
-            icon: 'https://templisys.com/public/portfolio_image/bogura.png'
+            icon: 'assets/portfolio_image/bogura.png'
         }
     ],
     
@@ -115,19 +115,19 @@ const experienceData = {
             name: 'Udemy Flutter Certification',
             issuer: 'Udemy',
             year: '01 July, 2021',
-            icon: 'https://templisys.com/public/portfolio_image/udemy.png'
+            icon: 'assets/portfolio_image/udemy.png'
         },
         {
             name: 'Amar Bangladesh Foundation Certification',
             issuer: 'Amar Bangladesh Foundation Certification',
             year: '30 January, 2021',
-            icon: 'https://templisys.com/public/portfolio_image/amar_bangladesh_foundation.png'
+            icon: 'assets/portfolio_image/amar_bangladesh_foundation.png'
         },
         {
             name: 'Skill Development for Mobile Game & Application Project Certification',
             issuer: 'ICT Division, Bangladesh',
             year: 'November, 2018',
-            icon: 'https://templisys.com/public/portfolio_image/ict_division.png'
+            icon: 'assets/portfolio_image/ict_division.png'
         }
     ]
 };

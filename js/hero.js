@@ -22,7 +22,7 @@ function initHeroSection() {
                     <div class="hero-buttons">
                         <button class="btn-primary" id="contactMeBtn">Contact Me</button>
                         <button class="btn-outline" id="downloadCvBtn">
-                            <img src="https://templisys.com/public/portfolio_image/leetcode_logo.png" alt="LeetCode" class="leetcode-logo">
+                            <img src="assets/portfolio_image/leetcode_logo.png" alt="LeetCode" class="leetcode-logo">
                             Leetcode
                         </button>
                     </div>
@@ -33,7 +33,7 @@ function initHeroSection() {
                 <div class="hero-image-container">
                     <div class="hero-image-wrapper">
                         <img 
-                            src="https://templisys.com/public/portfolio_image/profile_image.png"
+                            src="assets/portfolio_image/profile_image.png"
                             alt="Md. Mehedi Hasan - Flutter Developer"
                             class="hero-profile-image"
                         />
