@@ -17,7 +17,7 @@ function initAboutSection() {
             <div class="about-content">
                 <div class="about-text-content">
                     <h3 class="about-heading">
-                        Crafting Digital Experiences Since 2020
+                        Professional Experiences Since 2021
                     </h3>
                     
                     <div class="about-description">

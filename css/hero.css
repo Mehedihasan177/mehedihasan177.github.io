@@ -249,7 +249,21 @@
     right: -0.75rem;
     background: #10b981;
 }
+.leetcode-logo {
+    height: 20px;
+    width: auto;
+    margin-right: 8px;
+    vertical-align: middle;
+    /* Remove this filter to show original orange logo */
+}
 
+.btn-outline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    /* Add your outline button styles here */
+}
 /* Mobile Responsive */
 @media (max-width: 1023px) {
     .hero-section {

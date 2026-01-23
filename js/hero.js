@@ -21,9 +21,12 @@ function initHeroSection() {
                     
                     <div class="hero-buttons">
                         <button class="btn-primary" id="contactMeBtn">Contact Me</button>
+                        <button class="btn-outline" id="downloadCvBtn">
+                            <img src="https://templisys.com/public/portfolio_image/leetcode_logo.png" alt="LeetCode" class="leetcode-logo">
+                            Leetcode
+                        </button>
                     </div>
-                    
-                    
+                
                 </div>
                 
                 <!-- Right Column - Image -->
@@ -44,25 +47,19 @@ function initHeroSection() {
     `;
 
     // Add button event listeners
-    document.getElementById('contactMeBtn').addEventListener('click', function() {
+    document.getElementById('contactMeBtn').addEventListener('click', function () {
         // Open Google Form in new tab
         window.open('https://docs.google.com/forms/d/e/1FAIpQLScu-m3kncsVSjpJJdhH5bWUoOx8f2V38Df6sEqMhu-MpiCuCQ/viewform?usp=publish-editor', '_blank');
     });
-    
-    document.getElementById('downloadCvBtn').addEventListener('click', function() {
-        // You can replace this with your actual CV download link
-        const cvUrl = 'path/to/your/cv.pdf'; // Update this with your CV URL
-        const link = document.createElement('a');
-        link.href = cvUrl;
-        link.download = 'Md_Mehedi_Hasan_CV.pdf';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+
+    document.getElementById('downloadCvBtn').addEventListener('click', function () {
+        // Open Google Form in new tab
+        window.open('https://leetcode.com/u/mehedihasan177/', '_blank');
     });
 }
 
 // Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     console.log('DOM loaded, initializing hero section...');
     initHeroSection();
 });
