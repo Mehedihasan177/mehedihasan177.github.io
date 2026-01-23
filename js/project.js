@@ -1,4 +1,4 @@
-// Projects Data
+// Projects Data sa
 const projectsData = {
     categories: ['All', 'Bdjobs', 'Social', 'VTS', 'Restaurant Reservation', 'CCTV Surveillance', 'Attendance System', 'Online Exam'],
     
@@ -202,9 +202,9 @@ function initProjectsSection() {
                 View All Projects on GitHub
             </button>
 
-            <!-- Project Modal -->
+            <!-- Project Modal - Always include the modal container -->
             <div class="projects-modal" id="project-modal">
-                ${selectedProject ? renderProjectModal() : ''}
+                <!-- Modal content will be injected here dynamically -->
             </div>
         </div>
     `;
@@ -417,13 +417,26 @@ function setupProjectCardListeners() {
                 imageLoaded[i] = false;
             }
             
-            // Open modal
-            const modal = document.getElementById('project-modal');
+            // Get or create modal
+            let modal = document.getElementById('project-modal');
+            if (!modal) {
+                // Create modal if it doesn't exist
+                const container = document.querySelector('.projects-container');
+                modal = document.createElement('div');
+                modal.className = 'projects-modal';
+                modal.id = 'project-modal';
+                container.appendChild(modal);
+            }
+            
+            // Populate and show modal
             modal.innerHTML = renderProjectModal();
             modal.classList.add('active');
             
             // Setup modal close button
-            document.getElementById('modal-close-btn').addEventListener('click', closeProjectModal);
+            const closeBtn = document.getElementById('modal-close-btn');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeProjectModal);
+            }
             
             // Close modal when clicking outside
             modal.addEventListener('click', (e) => {
@@ -434,6 +447,9 @@ function setupProjectCardListeners() {
             
             // Close modal with Escape key
             document.addEventListener('keydown', handleEscapeKey);
+            
+            // Force reflow to ensure animation works
+            modal.offsetHeight;
         });
     });
 }
