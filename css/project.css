@@ -8,6 +8,7 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1.5rem;
+    z-index: 1;
 }
 
 .projects-header {
@@ -33,6 +34,8 @@
     background: linear-gradient(90deg, #2563eb, #7c3aed);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
     margin-bottom: 1.5rem;
 }
 
@@ -219,7 +222,6 @@
     margin-bottom: 1.25rem;
     line-height: 1.5;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -319,19 +321,43 @@
 
 /* Modal Styles */
 .projects-modal {
-    position: fixed;
-    inset: 0;
+position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(4px);
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
     padding: 1rem;
     z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
 }
 
 .projects-modal.active {
-    display: flex;
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 1.5rem;
+    max-width: 72rem;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+    opacity: 0;
+}
+
+.projects-modal.active .modal-content {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .modal-content {
