@@ -196,12 +196,6 @@ function initProjectsSection() {
                 ${renderProjects()}
             </div>
 
-            <!-- View All Button -->
-            <button class="view-all-btn" id="view-all-btn">
-                <i class="ri-github-line"></i>
-                View All Projects on GitHub
-            </button>
-
             <!-- Project Modal - Always include the modal container -->
             <div class="projects-modal" id="project-modal">
                 <!-- Modal content will be injected here dynamically -->
@@ -395,11 +389,6 @@ function setupEventListeners() {
             // Reattach event listeners to new project cards
             setupProjectCardListeners();
         });
-    });
-
-    // View All button
-    document.getElementById('view-all-btn').addEventListener('click', () => {
-        window.open('https://github.com', '_blank');
     });
 
     // Setup project card listeners
