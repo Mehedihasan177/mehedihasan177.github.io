@@ -1,0 +1,261 @@
+/* Contact Section Styles */
+.contact-section {
+    padding: 5rem 0;
+    background-color: white;
+}
+
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.contact-header {
+    max-width: 768px;
+    margin: 0 auto 4rem auto;
+    text-align: center;
+}
+
+.contact-title {
+    font-size: 2.0rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 1.5rem;
+}
+
+.contact-subtitle {
+    font-size: 1.25rem;
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+/* Contact Content */
+.contact-content {
+    max-width: 72rem;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.contact-subheading {
+    font-size: 1.50rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 2rem;
+}
+
+/* Contact Info Grid */
+.contact-info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+    .contact-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Contact Info Cards */
+.contact-info-card {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f9fafb;
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.contact-info-card:hover {
+    background-color: #eff6ff;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.contact-info-card.non-clickable {
+    cursor: default;
+}
+
+.contact-info-card.non-clickable:hover {
+    background-color: #f9fafb;
+    box-shadow: none;
+    transform: none;
+}
+
+.contact-icon-container {
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #dbeafe;
+    border-radius: 9999px;
+    margin-right: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.contact-info-card:hover .contact-icon-container {
+    background-color: #bfdbfe;
+}
+
+.contact-icon {
+    font-size: 1.25rem;
+    color: #2563eb;
+    transition: color 0.3s ease;
+}
+
+.contact-info-card:hover .contact-icon {
+    color: #1d4ed8;
+}
+
+.contact-info-content {
+    flex: 1;
+}
+
+.contact-info-label {
+    font-weight: 500;
+    color: #111827;
+    font-size: 0.875rem;
+    margin-bottom: 0.125rem;
+    transition: color 0.3s ease;
+}
+
+.contact-info-card:hover .contact-info-label {
+    color: #1d4ed8;
+}
+
+.contact-info-value {
+    color: #6b7280;
+    font-size: 0.875rem;
+    transition: color 0.3s ease;
+}
+
+.contact-info-card:hover .contact-info-value {
+    color: #2563eb;
+}
+
+@media (min-width: 640px) {
+    .contact-info-value {
+        font-size: 1rem;
+    }
+}
+
+.contact-arrow {
+    margin-left: 0.5rem;
+    color: #2563eb;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.contact-info-card:hover .contact-arrow {
+    opacity: 1;
+}
+
+/* Why Work With Me Section */
+.why-work-section {
+    background: linear-gradient(135deg, #eff6ff 0%, #e0e7ff 100%);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin-top: 2rem;
+}
+
+.why-work-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 1rem;
+}
+
+.why-work-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .why-work-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.why-work-item {
+    display: flex;
+    align-items: center;
+}
+
+.why-work-icon {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #dbeafe;
+    border-radius: 9999px;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+}
+
+.why-work-icon i {
+    color: #2563eb;
+}
+
+.why-work-text {
+    color: #374151;
+    font-size: 0.875rem;
+}
+
+@media (min-width: 640px) {
+    .why-work-text {
+        font-size: 1rem;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 3rem 0;
+    }
+    
+    .contact-title {
+        font-size: 2rem;
+    }
+    
+    .contact-subtitle {
+        font-size: 1.125rem;
+    }
+    
+    .contact-container {
+        padding: 0 1rem;
+    }
+    
+    .contact-subheading {
+        font-size: 1.5rem;
+    }
+    
+    .why-work-section {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-info-grid {
+        gap: 1rem;
+    }
+    
+    .contact-info-card {
+        padding: 0.875rem;
+    }
+    
+    .contact-icon-container {
+        width: 2.5rem;
+        height: 2.5rem;
+        margin-right: 0.75rem;
+    }
+    
+    .why-work-grid {
+        gap: 0.75rem;
+    }
+}
