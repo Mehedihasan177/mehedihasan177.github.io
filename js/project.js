@@ -196,11 +196,7 @@ function initProjectsSection() {
                 ${renderProjects()}
             </div>
 
-            <!-- View All Button -->
-            <button class="view-all-btn" id="view-all-btn">
-                <i class="ri-github-line"></i>
-                View All Projects on GitHub
-            </button>
+            
 
             <!-- Project Modal -->
             <div class="projects-modal" id="project-modal">
