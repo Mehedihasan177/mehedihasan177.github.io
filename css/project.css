@@ -223,7 +223,10 @@
     line-height: 1.5;
     display: -webkit-box;
     -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4; /* Vendor-prefixed for older browsers */
+    line-clamp: 4; /* Standard property */
     overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .tech-tags {
