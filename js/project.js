@@ -1,22 +1,32 @@
 // Projects Data
+    //https://readdy.ai/api/search-image?query=e-commerce%20mobile%20app%20demonstration%20video%20showing%20user%20browsing%20products%2C%20adding%20items%20to%20cart%2C%20and%20checkout%20process%2C%20professional%20app%20demo%20on%20smartphone%20screen&width=600&height=400&seq=ecommerce-video&orientation=landscape
+    //    // <div class="project-demo-link">
+                //     <div class="demo-link-content">
+                //         <div class="demo-icon">
+                //             <i class="ri-play-circle-line"></i>
+                //         </div>
+                //         <span class="demo-text">View Demo</span>
+                //     </div>
+                // </div>
+
 const projectsData = {
     categories: ['All', 'Bdjobs', 'Social', 'VTS', 'Restaurant Reservation', 'CCTV Surveillance', 'Attendance System', 'Online Exam'],
-    
+
     projects: [
         {
             id: 1,
             title: 'BDJobs Employer app',
             category: 'Bdjobs',
             description: 'BDJobs Employer app is based on the job recruitment process. By this application can sort qualified job seekers.',
-            image: 'https://templisys.com/public/portfolio_image/employeer_app.png',
-            video: 'https://readdy.ai/api/search-image?query=e-commerce%20mobile%20app%20demonstration%20video%20showing%20user%20browsing%20products%2C%20adding%20items%20to%20cart%2C%20and%20checkout%20process%2C%20professional%20app%20demo%20on%20smartphone%20screen&width=600&height=400&seq=ecommerce-video&orientation=landscape',
+            image: 'assets/portfolio_image/employeer_app.png',
+            video: '#',
             gallery: [
-                'https://templisys.com/public/portfolio_image/bdjobs/bdjobs1.jpg',
-                'https://templisys.com/public/portfolio_image/bdjobs/bdjobs2.jpg',
-                'https://templisys.com/public/portfolio_image/bdjobs/bdjobs3.jpg',
-                'https://templisys.com/public/portfolio_image/bdjobs/bdjobs4.jpg',
-                'https://templisys.com/public/portfolio_image/bdjobs/bdjobs5.jpg',
-                'https://templisys.com/public/portfolio_image/bdjobs/bdjobs6.jpg',
+                'assets/portfolio_image/bdjobs/bdjobs1.jpg',
+                'assets/portfolio_image/bdjobs/bdjobs2.jpg',
+                'assets/portfolio_image/bdjobs/bdjobs3.jpg',
+                'assets/portfolio_image/bdjobs/bdjobs4.jpg',
+                'assets/portfolio_image/bdjobs/bdjobs5.jpg',
+                'assets/portfolio_image/bdjobs/bdjobs6.jpg',
             ],
             tech: ['Firebase', 'Getx State Management'],
             features: ['Real-time inventory', 'Push notifications', 'Payment integration', 'User reviews'],
@@ -28,12 +38,12 @@ const projectsData = {
             title: 'BuzzNex - Desktop Social App',
             category: 'Social',
             description: 'A modern desktop social networking platform designed for seamless communication. Supports real-time messaging, instant file sharing, and high-quality voice/video calling. Built to deliver a fast, secure, and engaging user experience for teams and communities.',
-            image: 'https://templisys.com/public/portfolio_image/whatsapp.png',
+            image: 'assets/portfolio_image/whatsapp.png',
             video: 'https://readdy.ai/api/search-image?query=social%20media%20app%20demo%20showing%20real-time%20messaging%2C%20story%20posting%2C%20and%20user%20interactions%2C%20dynamic%20social%20platform%20demonstration&width=600&height=400&seq=social-video&orientation=landscape',
             gallery: [
-                'https://templisys.com/public/portfolio_image/social/social1.jpg',
-                'https://templisys.com/public/portfolio_image/social/social2.jpg',
-                'https://templisys.com/public/portfolio_image/social/social3.jpg',
+                'assets/portfolio_image/social/social1.jpg',
+                'assets/portfolio_image/social/social2.jpg',
+                'assets/portfolio_image/social/social3.jpg',
             ],
             tech: ['WebSocket', 'REST API', 'Flutter Bloc', 'AESEncryption and Decryption'],
             features: ['Real-time chat', 'File Sharing', 'Calling Feature', 'User Profiles'],
@@ -45,15 +55,15 @@ const projectsData = {
             title: 'Robi Vehicle Tracking System - VTS App',
             category: 'VTS',
             description: 'Robi VTS solution built with Google Maps, enabling real-time tracking, route visualization, and location history for vehicles.',
-            image: 'https://templisys.com/public/portfolio_image/robi.jpg',
+            image: 'assets/portfolio_image/robi.jpg',
             video: 'https://readdy.ai/api/search-image?query=productivity%20app%20demonstration%20showing%20task%20creation%2C%20project%20management%2C%20and%20team%20collaboration%20features%2C%20professional%20workflow%20app%20demo&width=600&height=400&seq=productivity-video&orientation=landscape',
             gallery: [
-                'https://templisys.com/public/portfolio_image/robi/robi1.jpg',
-                'https://templisys.com/public/portfolio_image/robi/robi2.jpg',
-                'https://templisys.com/public/portfolio_image/robi/robi3.jpg',
-                'https://templisys.com/public/portfolio_image/robi/robi4.jpg',
-                'https://templisys.com/public/portfolio_image/robi/robi5.jpg',
-                'https://templisys.com/public/portfolio_image/robi/robi6.jpg'
+                'assets/portfolio_image/robi/robi1.jpg',
+                'assets/portfolio_image/robi/robi2.jpg',
+                'assets/portfolio_image/robi/robi3.jpg',
+                'assets/portfolio_image/robi/robi4.jpg',
+                'assets/portfolio_image/robi/robi5.jpg',
+                'assets/portfolio_image/robi/robi6.jpg'
             ],
             tech: ['SQFLite', 'Provider', 'Local Storage', 'Google Map', 'Firebase', 'Riverpod State Management', 'AESEncryption and Decryption'],
             features: ['Vehicle List', 'Vehicle Live Tracking', 'Tracking History', 'Bkash and SSL Commerce Payment system', 'Push Notification'],
@@ -65,15 +75,15 @@ const projectsData = {
             title: 'Surveillance Application - mobile and desktop',
             category: 'CCTV Surveillance',
             description: 'Surveillance Pro is a comprehensive, cross-platform security monitoring application built with Flutter, offering real-time camera streaming and intelligent surveillance management on both mobile and desktop devices. The app provides seamless access to live camera feeds with full streaming functionality already implemented, while advanced features like multi-device management, event configuration, and video playback are actively in development. Designed for both individual and enterprise use, Surveillance Pro delivers a scalable, high-performance NVR (Network Video Recorder) experience that combines intuitive operation with professional-grade security capabilities.',
-            image: 'https://templisys.com/public/portfolio_image/surveillance.png',
+            image: 'assets/portfolio_image/surveillance.png',
             video: 'https://readdy.ai/api/search-image?query=health%20tracking%20app%20demo%20showing%20fitness%20monitoring%2C%20workout%20sessions%2C%20and%20health%20data%20visualization%2C%20wellness%20app%20demonstration&width=600&height=400&seq=health-video&orientation=landscape',
             gallery: [
-                'https://templisys.com/public/portfolio_image/survaillance/survaillance1.jpeg',
-                'https://templisys.com/public/portfolio_image/survaillance/survaillance3.jpeg',
-                'https://templisys.com/public/portfolio_image/survaillance/survaillance4.jpeg',
-                'https://templisys.com/public/portfolio_image/survaillance/survaillance5.jpeg',
-                'https://templisys.com/public/portfolio_image/survaillance/survaillance6.jpeg',
-                'https://templisys.com/public/portfolio_image/survaillance/survaillance7.jpeg'
+                'assets/portfolio_image/survaillance/survaillance1.jpeg',
+                'assets/portfolio_image/survaillance/survaillance3.jpeg',
+                'assets/portfolio_image/survaillance/survaillance4.jpeg',
+                'assets/portfolio_image/survaillance/survaillance5.jpeg',
+                'assets/portfolio_image/survaillance/survaillance6.jpeg',
+                'assets/portfolio_image/survaillance/survaillance7.jpeg'
             ],
             tech: ['Window Manager', 'Webview', 'Web Socket Channel', 'Webrtc', 'Flutter Bloc State Management'],
             features: ['Multi-camera grid view (1x1, 2x2, 3x3 layouts)', 'For Multi platform- Desktop(Windows, Linux, Macos), Mobile(IOS, Android)', 'Multi-camera system support', 'Single Camera system support', 'Can drag and drop specific camera in specific mojik'],
@@ -85,18 +95,18 @@ const projectsData = {
             title: 'DayExam - Online Exam Application',
             category: 'Online Exam',
             description: 'This is a comprehensive mobile examination and learning platform built with Flutter, designed specifically for students preparing for BCS, HSC, SSC, and University Admission exams. The app is available for both Android and iOS, offering a smooth, responsive, and user-friendly experience. Students can take subject-wise exams, track their progress, and continuously improve through detailed performance analytics. With a clean UI and powerful backend features, the platform helps learners practice effectively and stay exam-ready.',
-            image: 'https://templisys.com/public/portfolio_image/exam.png',
+            image: 'assets/portfolio_image/exam.png',
             video: 'https://readdy.ai/api/search-image?query=meditation%20app%20demonstration%20showing%20guided%20sessions%2C%20breathing%20exercises%2C%20and%20mindfulness%20features%2C%20peaceful%20wellness%20app%20demo&width=600&height=400&seq=meditation-video&orientation=landscape',
             gallery: [
-                'https://templisys.com/public/portfolio_image/exam/exam1.jpg',
-                'https://templisys.com/public/portfolio_image/exam/exam2.jpg',
-                'https://templisys.com/public/portfolio_image/exam/exam3.jpg',
-                'https://templisys.com/public/portfolio_image/exam/exam4.jpg',
-                'https://templisys.com/public/portfolio_image/exam/exam5.jpg',
-                'https://templisys.com/public/portfolio_image/exam/exam6.jpg',
-                'https://templisys.com/public/portfolio_image/exam/exam7.jpg',
-                'https://templisys.com/public/portfolio_image/exam/exam8.jpg',
-                'https://templisys.com/public/portfolio_image/exam/exam9.jpg',
+                'assets/portfolio_image/exam/exam1.jpg',
+                'assets/portfolio_image/exam/exam2.jpg',
+                'assets/portfolio_image/exam/exam3.jpg',
+                'assets/portfolio_image/exam/exam4.jpg',
+                'assets/portfolio_image/exam/exam5.jpg',
+                'assets/portfolio_image/exam/exam6.jpg',
+                'assets/portfolio_image/exam/exam7.jpg',
+                'assets/portfolio_image/exam/exam8.jpg',
+                'assets/portfolio_image/exam/exam9.jpg',
             ],
             tech: ['SSLcommerz', 'Bkash', 'Youtube Player', 'Flutter Math Fork', 'Getx State Management'],
             features: ['Take exams for BCS, HSC, SSC, and Admission tests.', 'Topic-wise and chapter-wise quizzes.', 'Free and paid exam options.', 'Weekly and daily progress tracking.', 'Total tests taken, average score, total attempted questions, and earned points.', 'Ranking based on total score and performance', 'Multiple packages like Gold, Diamond, and Elite.', 'Secure payment options like Bkash and SSL Commerce.'],
@@ -108,15 +118,15 @@ const projectsData = {
             title: 'M2M Vehicle Tracking System - VTS App',
             category: 'VTS',
             description: 'A real-time Vehicle Tracking System integrated with Google Maps, providing live location updates, route playback, and accurate movement visualization for efficient fleet monitoring.',
-            image: 'https://templisys.com/public/portfolio_image/m2m.jpg',
+            image: 'assets/portfolio_image/m2m.jpg',
             video: 'https://readdy.ai/api/search-image?query=productivity%20app%20demonstration%20showing%20task%20creation%2C%20project%20management%2C%20and%20team%20collaboration%20features%2C%20professional%20workflow%20app%20demo&width=600&height=400&seq=productivity-video&orientation=landscape',
             gallery: [
-                'https://templisys.com/public/portfolio_image/m2m/m2m7.jpg',
-                'https://templisys.com/public/portfolio_image/m2m/m2m2.jpg',
-                'https://templisys.com/public/portfolio_image/m2m/m2m3.jpg',
-                'https://templisys.com/public/portfolio_image/m2m/m2m4.jpg',
-                'https://templisys.com/public/portfolio_image/m2m/m2m5.jpg',
-                'https://templisys.com/public/portfolio_image/m2m/m2m6.jpg'
+                'assets/portfolio_image/m2m/m2m7.jpg',
+                'assets/portfolio_image/m2m/m2m2.jpg',
+                'assets/portfolio_image/m2m/m2m3.jpg',
+                'assets/portfolio_image/m2m/m2m4.jpg',
+                'assets/portfolio_image/m2m/m2m5.jpg',
+                'assets/portfolio_image/m2m/m2m6.jpg'
             ],
             tech: ['SQFLite', 'Provider', 'Local Storage', 'Google Map', 'Firebase', 'Riverpod State Management', 'AESEncryption and Decryption'],
             features: ['Vehicle List', 'Vehicle Live Tracking', 'Tracking History Playback', 'Bkash and SSL Commerce Payment system', 'Push Notification'],
@@ -128,10 +138,10 @@ const projectsData = {
             title: 'Reserve-IT',
             category: 'Restaurant Reservation',
             description: 'ReserveIt is an intuitive restaurant discovery and reservation platform built with Flutter, designed to simplify the dining experience. The app helps users effortlessly find restaurants using a unique visual system—where a pepper mill icon scales to represent the value ratio between price and food quality. With seamless authentication, easy table booking, and a built-in review system, ReserveIt ensures users can discover, book, and enjoy their ideal dining experience in just a few taps.',
-            image: 'https://templisys.com/public/portfolio_image/reserveit.jpg',
+            image: 'assets/portfolio_image/reserveit.jpg',
             video: 'https://readdy.ai/api/search-image?query=productivity%20app%20demonstration%20showing%20task%20creation%2C%20project%20management%2C%20and%20team%20collaboration%20features%2C%20professional%20workflow%20app%20demo&width=600&height=400&seq=productivity-video&orientation=landscape',
             gallery: [
-                'https://templisys.com/public/portfolio_image/reserveit.jpg',
+                'assets/portfolio_image/reserveit.jpg',
             ],
             tech: ['Provider', 'Firebase', 'HTTPS', 'Google Map'],
             features: ['Smart Restaurant Discovery', 'Easy Reservation System', 'Google Map', 'Bkash and SSL Commerce Payment system', 'Push Notification'],
@@ -143,14 +153,14 @@ const projectsData = {
             title: 'Face Attendance System',
             category: 'Attendance System',
             description: 'This project is a secure facial recognition–based attendance system designed for quick and effortless check-ins. Employees mark attendance with one tap, which works only when connected to authorized company WiFi. The system captures a face image and verifies it in real time against company ERP records. No biometric or personal data is stored in the app, ensuring strong privacy and security. Instant success or failure feedback is shown, with a retake option for failed attempts.',
-            image: 'https://templisys.com/public/portfolio_image/faceAttendance.jpg',
+            image: 'assets/portfolio_image/faceAttendance.jpg',
             video: 'https://readdy.ai/api/search-image?query=productivity%20app%20demonstration%20showing%20task%20creation%2C%20project%20management%2C%20and%20team%20collaboration%20features%2C%20professional%20workflow%20app%20demo&width=600&height=400&seq=productivity-video&orientation=landscape',
             gallery: [
-                'https://templisys.com/public/portfolio_image/faceAttendance/face1.png',
-                'https://templisys.com/public/portfolio_image/faceAttendance/face2.png',
-                'https://templisys.com/public/portfolio_image/faceAttendance/face3.png',
-                'https://templisys.com/public/portfolio_image/faceAttendance/face4.png',
-                'https://templisys.com/public/portfolio_image/faceAttendance/face5.png'
+                'assets/portfolio_image/faceAttendance/face1.png',
+                'assets/portfolio_image/faceAttendance/face2.png',
+                'assets/portfolio_image/faceAttendance/face3.png',
+                'assets/portfolio_image/faceAttendance/face4.png',
+                'assets/portfolio_image/faceAttendance/face5.png'
             ],
             tech: ['Flutter face api', 'Google mlkit face detection', 'Table calendar', 'Camera', 'Getx State Management'],
             features: ['Facial recognition attendance', 'Works only on authorized company WiFi', 'Real-time verification with ERP system', 'Simple one-tap process', 'Instant success/failure feedback', 'Retake option for failed attempts'],
@@ -223,14 +233,7 @@ function renderProjects() {
                 >
                 <div class="project-image-overlay"></div>
                 <div class="project-category-badge">${project.category}</div>
-                <div class="project-demo-link">
-                    <div class="demo-link-content">
-                        <div class="demo-icon">
-                            <i class="ri-play-circle-line"></i>
-                        </div>
-                        <span class="demo-text">View Demo</span>
-                    </div>
-                </div>
+            
             </div>
             
             <div class="project-content">
