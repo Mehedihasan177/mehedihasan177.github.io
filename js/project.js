@@ -111,7 +111,7 @@ const projectsData = {
             tech: ['SSLcommerz', 'Bkash', 'Youtube Player', 'Flutter Math Fork', 'Getx State Management'],
             features: ['Take exams for BCS, HSC, SSC, and Admission tests.', 'Topic-wise and chapter-wise quizzes.', 'Free and paid exam options.', 'Weekly and daily progress tracking.', 'Total tests taken, average score, total attempted questions, and earned points.', 'Ranking based on total score and performance', 'Multiple packages like Gold, Diamond, and Elite.', 'Secure payment options like Bkash and SSL Commerce.'],
             github: '#',
-            demo: '#'
+            demo: 'https://play.google.com/store/apps/details?id=com.datahost.day_exam&pcampaignid=web_share'
         },
         {
             id: 6,
