@@ -684,6 +684,127 @@ position: fixed;
     box-shadow: 0 4px 14px rgba(37, 99, 235, 0.2);
 }
 
+/* Roles Section */
+.roles-section {
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid #f3f4f6;
+}
+
+.roles-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.roles-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: #7c3aed;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.roles-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+    .roles-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.role-card {
+    background: linear-gradient(135deg, #f9fafb 0%, #f0f9ff 100%);
+    border: 1px solid #e5e7eb;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.role-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-color: #dbeafe;
+}
+
+.role-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.role-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    background: linear-gradient(90deg, #2563eb, #7c3aed);
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.role-name {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.role-description {
+    color: #6b7280;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.role-features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.role-feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.role-feature-check {
+    width: 1.125rem;
+    height: 1.125rem;
+    background-color: #10b981;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+}
+
+.role-feature-check i {
+    color: white;
+    font-size: 0.75rem;
+}
+
+.role-feature-text {
+    color: #374151;
+    font-size: 0.875rem;
+    line-height: 1.4;
+}
+
 /* Responsive Design */
 @media (min-width: 640px) {
     .screenshots-grid {

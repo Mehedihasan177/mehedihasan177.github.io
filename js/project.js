@@ -10,9 +10,45 @@
                 // </div>
 
 const projectsData = {
-    categories: ['All', 'Bdjobs', 'Social', 'VTS', 'Restaurant Reservation', 'CCTV Surveillance', 'Attendance System', 'Online Exam'],
+    categories: ['All', 'BTV ERP', 'Bdjobs', 'Social', 'VTS', 'Restaurant Reservation', 'CCTV Surveillance', 'Attendance System', 'Online Exam'],
 
     projects: [
+        {
+            id: 9,
+            title: 'BTV - ERP',
+            category: 'BTV ERP',
+            description: 'A comprehensive Enterprise Resource Planning (ERP) mobile application for Bangladesh Television (BTV), designed for three types of users — Admin, Artist, and Visitor. The app streamlines artist management, budgeting, bill processing, gate pass management, FTP file transfer, and reporting with full bilingual (Bengali/English) support.',
+            image: 'assets/portfolio_image/btv/banner.png',
+            video: '#',
+            gallery: [
+                'assets/portfolio_image/btv/4.png',
+                'assets/portfolio_image/btv/artist_wise_report.png',
+                'assets/portfolio_image/btv/ftp_folders.png',
+                'assets/portfolio_image/btv/file_list.png',
+                'assets/portfolio_image/btv/program_schedule.png'
+            ],
+            tech: ['Flutter', 'GetX State Management', 'Dio & REST API', 'Firebase (FCM, Auth, Crashlytics)', 'FTP File Transfer (TUS Client)', 'QR Code Scanner (Mobile Scanner)', 'PDF/DOCX Viewer (Syncfusion)', 'Bilingual Support (EN/BN)', 'Local Storage (Get Storage)', 'Fl Charts'],
+            features: ['Role-based access for Admin, Artist, and Visitor', 'Artist roster & grade management', 'Pre/Post budget approval', 'Bill creation and payment processing', 'Gate pass management with QR scanning', 'FTP file upload/download', 'Comprehensive reporting'],
+            roles: [
+                {
+                    name: 'Internal User (Admin)',
+                    description: 'Full administrative control of the ERP system — managing artists, budgets, bills, and gate passes. Admins get a dashboard overview of artists, programs, payments, and real-time visitor check-ins.',
+                    features: ['Artist roster & grade management', 'Pre-budget & post-budget approval', 'Bill creation, AGB bill & payment approval', 'Gate pass approval, QR scanning & check-in verification', 'FTP file/folder management with version history & comments', 'Reports: Program Bill Details, Bill Report, Artist Wise, AGB, Artist Payment']
+                },
+                {
+                    name: 'Artist',
+                    description: 'Artists can manage their roster enrollment, view program schedules, track payments, apply for gate passes, request grade enhancements, and access their rate card and tax information.',
+                    features: ['Artist registration & roster enlistment', 'Roster status & grade enhancement requests', 'Program schedules & payment history', 'Gate pass application with vehicle, hardware & guardian info', 'My rate card & complete tax list', 'Notifications & bilingual (Bengali/English) support']
+                },
+                {
+                    name: 'Visitor',
+                    description: 'Visitors can register, apply for gate passes, and track their visit status with QR code verification. Dashboard shows on-site visitors, pending approvals, approved, and rejected passes.',
+                    features: ['Visitor registration & login', 'Gate pass application & tracking', 'My gate pass list with search & pagination', 'Gate pass editing when Waiting/Return status', 'Dashboard: On-site, Pending, Approved, Rejected stats', 'QR code pass & attachment viewing']
+                }
+            ],
+            github: '#',
+            demo: '#'
+        },
         {
             id: 1,
             title: 'BDJobs Employer app',
@@ -166,7 +202,7 @@ const projectsData = {
             features: ['Facial recognition attendance', 'Works only on authorized company WiFi', 'Real-time verification with ERP system', 'Simple one-tap process', 'Instant success/failure feedback', 'Retake option for failed attempts'],
             github: '#',
             demo: 'https://play.google.com/store/apps/details?id=com.neways.attendance&pcampaignid=web_share'
-        }
+        },
     ]
 };
 
@@ -369,6 +405,40 @@ function renderProjectModal() {
                         </div>
                     </div>
                 </div>
+                
+                ${selectedProject.roles ? `
+                    <div class="roles-section">
+                        <h4 class="roles-title">
+                            <div class="roles-icon">
+                                <i class="ri-user-settings-line"></i>
+                            </div>
+                            User Roles & Features
+                        </h4>
+                        <div class="roles-grid">
+                            ${selectedProject.roles.map(role => `
+                                <div class="role-card">
+                                    <div class="role-header">
+                                        <div class="role-icon">
+                                            <i class="${getRoleIcon(role.name)}"></i>
+                                        </div>
+                                        <h5 class="role-name">${role.name}</h5>
+                                    </div>
+                                    <p class="role-description">${role.description}</p>
+                                    <div class="role-features">
+                                        ${role.features.map(feature => `
+                                            <div class="role-feature-item">
+                                                <div class="role-feature-check">
+                                                    <i class="ri-check-line"></i>
+                                                </div>
+                                                <span class="role-feature-text">${feature}</span>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                ` : ''}
             </div>
         </div>
     `;
@@ -454,6 +524,18 @@ window.handleImageLoad = function(index) {
         loaders[index].style.display = 'none';
     }
 };
+
+// Helper function to get icon for role
+function getRoleIcon(roleName) {
+    if (roleName.includes('Admin') || roleName.includes('Internal')) {
+        return 'ri-shield-user-line';
+    } else if (roleName.includes('Artist')) {
+        return 'ri-mic-line';
+    } else if (roleName.includes('Visitor')) {
+        return 'ri-user-star-line';
+    }
+    return 'ri-user-line';
+}
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
