@@ -21,6 +21,7 @@ const projectsData = {
             image: 'assets/portfolio_image/btv/banner.png',
             video: '#',
             gallery: [
+                'assets/portfolio_image/btv/login.jpeg',
                 'assets/portfolio_image/btv/4.png',
                 'assets/portfolio_image/btv/artist_wise_report.png',
                 'assets/portfolio_image/btv/ftp_folders.png',
