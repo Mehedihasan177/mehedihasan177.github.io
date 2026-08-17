@@ -161,6 +161,43 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Project Title Row - title and play icon in same row */
+.project-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.project-title-row .project-title {
+    margin-bottom: 0;
+    flex: 1;
+    min-width: 0;
+}
+
+/* Google Play Store Link Icon */
+.project-play-link {
+    width: 2rem;
+    height: 2rem;
+    background: linear-gradient(90deg, #2563eb, #7c3aed);
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1rem;
+    text-decoration: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.project-play-link:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
 .project-demo-link {
     position: absolute;
     bottom: 1rem;
@@ -409,6 +446,23 @@ position: fixed;
 
 .modal-close-btn:hover {
     background-color: #e5e7eb;
+}
+
+/* Project Video Section */
+.project-video-section {
+    margin-bottom: 2rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    background-color: #111827;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.project-video {
+    width: 100%;
+    max-height: 480px;
+    display: block;
+    object-fit: contain;
+    background-color: #111827;
 }
 
 /* Screenshots Gallery */

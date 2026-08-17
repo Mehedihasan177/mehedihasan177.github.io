@@ -19,7 +19,7 @@ const projectsData = {
             category: 'BTV ERP',
             description: 'A comprehensive Enterprise Resource Planning (ERP) mobile application for Bangladesh Television (BTV), designed for three types of users — Admin, Artist, and Visitor. The app streamlines artist management, budgeting, bill processing, gate pass management, FTP file transfer, and reporting with full bilingual (Bengali/English) support.',
             image: 'assets/portfolio_image/btv/banner.png',
-            video: '#',
+            video: 'assets/portfolio_image/btv/BTV_Operations_Film.mp4',
             gallery: [
                 'assets/portfolio_image/btv/login.jpeg',
                 'assets/portfolio_image/btv/4.png',
@@ -76,7 +76,7 @@ const projectsData = {
             category: 'Social',
             description: 'A modern desktop social networking platform designed for seamless communication. Supports real-time messaging, instant file sharing, and high-quality voice/video calling. Built to deliver a fast, secure, and engaging user experience for teams and communities.',
             image: 'assets/portfolio_image/whatsapp.png',
-            video: 'https://readdy.ai/api/search-image?query=social%20media%20app%20demo%20showing%20real-time%20messaging%2C%20story%20posting%2C%20and%20user%20interactions%2C%20dynamic%20social%20platform%20demonstration&width=600&height=400&seq=social-video&orientation=landscape',
+            video: '#',
             gallery: [
                 'assets/portfolio_image/social/social1.jpg',
                 'assets/portfolio_image/social/social2.jpg',
@@ -93,7 +93,7 @@ const projectsData = {
             category: 'VTS',
             description: 'Robi VTS solution built with Google Maps, enabling real-time tracking, route visualization, and location history for vehicles.',
             image: 'assets/portfolio_image/robi.jpg',
-            video: 'https://readdy.ai/api/search-image?query=productivity%20app%20demonstration%20showing%20task%20creation%2C%20project%20management%2C%20and%20team%20collaboration%20features%2C%20professional%20workflow%20app%20demo&width=600&height=400&seq=productivity-video&orientation=landscape',
+            video: '#',
             gallery: [
                 'assets/portfolio_image/robi/robi1.jpg',
                 'assets/portfolio_image/robi/robi2.jpg',
@@ -113,7 +113,7 @@ const projectsData = {
             category: 'CCTV Surveillance',
             description: 'Surveillance Pro is a comprehensive, cross-platform security monitoring application built with Flutter, offering real-time camera streaming and intelligent surveillance management on both mobile and desktop devices. The app provides seamless access to live camera feeds with full streaming functionality already implemented, while advanced features like multi-device management, event configuration, and video playback are actively in development. Designed for both individual and enterprise use, Surveillance Pro delivers a scalable, high-performance NVR (Network Video Recorder) experience that combines intuitive operation with professional-grade security capabilities.',
             image: 'assets/portfolio_image/surveillance.png',
-            video: 'https://readdy.ai/api/search-image?query=health%20tracking%20app%20demo%20showing%20fitness%20monitoring%2C%20workout%20sessions%2C%20and%20health%20data%20visualization%2C%20wellness%20app%20demonstration&width=600&height=400&seq=health-video&orientation=landscape',
+            video: '#',
             gallery: [
                 'assets/portfolio_image/survaillance/survaillance1.jpeg',
                 'assets/portfolio_image/survaillance/survaillance3.jpeg',
@@ -133,17 +133,17 @@ const projectsData = {
             category: 'Online Exam',
             description: 'This is a comprehensive mobile examination and learning platform built with Flutter, designed specifically for students preparing for BCS, HSC, SSC, and University Admission exams. The app is available for both Android and iOS, offering a smooth, responsive, and user-friendly experience. Students can take subject-wise exams, track their progress, and continuously improve through detailed performance analytics. With a clean UI and powerful backend features, the platform helps learners practice effectively and stay exam-ready.',
             image: 'assets/portfolio_image/exam.png',
-            video: 'https://readdy.ai/api/search-image?query=meditation%20app%20demonstration%20showing%20guided%20sessions%2C%20breathing%20exercises%2C%20and%20mindfulness%20features%2C%20peaceful%20wellness%20app%20demo&width=600&height=400&seq=meditation-video&orientation=landscape',
+            video: 'assets/portfolio_image/exam/Dayexam_Promo_Film.mp4',
             gallery: [
                 'assets/portfolio_image/exam/exam1.jpg',
                 'assets/portfolio_image/exam/exam2.jpg',
                 'assets/portfolio_image/exam/exam3.jpg',
                 'assets/portfolio_image/exam/exam4.jpg',
-                'assets/portfolio_image/exam/exam5.jpg',
-                'assets/portfolio_image/exam/exam6.jpg',
-                'assets/portfolio_image/exam/exam7.jpg',
-                'assets/portfolio_image/exam/exam8.jpg',
-                'assets/portfolio_image/exam/exam9.jpg',
+//                'assets/portfolio_image/exam/exam5.jpg',
+//                'assets/portfolio_image/exam/exam6.jpg',
+//                'assets/portfolio_image/exam/exam7.jpg',
+//                'assets/portfolio_image/exam/exam8.jpg',
+//                'assets/portfolio_image/exam/exam9.jpg',
             ],
             tech: ['SSLcommerz', 'Bkash', 'Youtube Player', 'Flutter Math Fork', 'Getx State Management'],
             features: ['Take exams for BCS, HSC, SSC, and Admission tests.', 'Topic-wise and chapter-wise quizzes.', 'Free and paid exam options.', 'Weekly and daily progress tracking.', 'Total tests taken, average score, total attempted questions, and earned points.', 'Ranking based on total score and performance', 'Multiple packages like Gold, Diamond, and Elite.', 'Secure payment options like Bkash and SSL Commerce.'],
@@ -156,7 +156,7 @@ const projectsData = {
             category: 'VTS',
             description: 'A real-time Vehicle Tracking System integrated with Google Maps, providing live location updates, route playback, and accurate movement visualization for efficient fleet monitoring.',
             image: 'assets/portfolio_image/m2m.jpg',
-            video: 'https://readdy.ai/api/search-image?query=productivity%20app%20demonstration%20showing%20task%20creation%2C%20project%20management%2C%20and%20team%20collaboration%20features%2C%20professional%20workflow%20app%20demo&width=600&height=400&seq=productivity-video&orientation=landscape',
+            video: '#',
             gallery: [
                 'assets/portfolio_image/m2m/m2m7.jpg',
                 'assets/portfolio_image/m2m/m2m2.jpg',
@@ -176,7 +176,7 @@ const projectsData = {
             category: 'Restaurant Reservation',
             description: 'ReserveIt is an intuitive restaurant discovery and reservation platform built with Flutter, designed to simplify the dining experience. The app helps users effortlessly find restaurants using a unique visual system—where a pepper mill icon scales to represent the value ratio between price and food quality. With seamless authentication, easy table booking, and a built-in review system, ReserveIt ensures users can discover, book, and enjoy their ideal dining experience in just a few taps.',
             image: 'assets/portfolio_image/reserveit.jpg',
-            video: 'https://readdy.ai/api/search-image?query=productivity%20app%20demonstration%20showing%20task%20creation%2C%20project%20management%2C%20and%20team%20collaboration%20features%2C%20professional%20workflow%20app%20demo&width=600&height=400&seq=productivity-video&orientation=landscape',
+            video: '#',
             gallery: [
                 'assets/portfolio_image/reserveit.jpg',
             ],
@@ -191,7 +191,7 @@ const projectsData = {
             category: 'Attendance System',
             description: 'This project is a secure facial recognition–based attendance system designed for quick and effortless check-ins. Employees mark attendance with one tap, which works only when connected to authorized company WiFi. The system captures a face image and verifies it in real time against company ERP records. No biometric or personal data is stored in the app, ensuring strong privacy and security. Instant success or failure feedback is shown, with a retake option for failed attempts.',
             image: 'assets/portfolio_image/faceAttendance.jpg',
-            video: 'https://readdy.ai/api/search-image?query=productivity%20app%20demonstration%20showing%20task%20creation%2C%20project%20management%2C%20and%20team%20collaboration%20features%2C%20professional%20workflow%20app%20demo&width=600&height=400&seq=productivity-video&orientation=landscape',
+            video: '#',
             gallery: [
                 'assets/portfolio_image/faceAttendance/face1.png',
                 'assets/portfolio_image/faceAttendance/face2.png',
@@ -274,7 +274,21 @@ function renderProjects() {
             </div>
             
             <div class="project-content">
-                <h3 class="project-title">${project.title}</h3>
+                <div class="project-title-row">
+                    <h3 class="project-title">${project.title}</h3>
+                    ${project.demo && project.demo !== '#' ? `
+                        <a 
+                            href="${project.demo}" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            class="project-play-link"
+                            onclick="event.preventDefault(); event.stopPropagation(); window.open('${project.demo}', '_blank', 'noopener,noreferrer');"
+                            title="View on Google Play Store"
+                        >
+                            <i class="ri-google-play-fill"></i>
+                        </a>
+                    ` : ''}
+                </div>
                 <p class="project-description">${project.description}</p>
                 
                 <div class="tech-tags">
@@ -340,6 +354,21 @@ function renderProjectModal() {
                     App Screenshots
                     
                 </h4>
+                
+                <!-- Project Video - shown only if video exists and is not '#' -->
+                ${selectedProject.video && selectedProject.video !== '#' ? `
+                    <div class="project-video-section">
+                        <video 
+                            class="project-video" 
+                            controls 
+                            preload="metadata"
+                            poster="${selectedProject.image}"
+                        >
+                            <source src="${selectedProject.video}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                ` : ''}
                 
                 <!-- Add special grid class if needed -->
                 <div class="screenshots-grid ${specialGridClass}">
@@ -471,7 +500,12 @@ function setupEventListeners() {
 
 function setupProjectCardListeners() {
     document.querySelectorAll('.project-card').forEach(card => {
-        card.addEventListener('click', () => {
+        card.addEventListener('click', (e) => {
+            // Skip if clicking the Google Play link
+            if (e.target.closest('.project-play-link')) {
+                return;
+            }
+            
             const projectId = parseInt(card.dataset.projectId);
             selectedProject = projectsData.projects.find(p => p.id === projectId);
             
