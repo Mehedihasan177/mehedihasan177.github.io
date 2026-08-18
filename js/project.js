@@ -156,7 +156,7 @@ const projectsData = {
             category: 'VTS',
             description: 'A real-time Vehicle Tracking System integrated with Google Maps, providing live location updates, route playback, and accurate movement visualization for efficient fleet monitoring.',
             image: 'assets/portfolio_image/m2m.jpg',
-            video: '#',
+            video: 'assets/portfolio_image/m2m/M2M_App_Film.mp4',
             gallery: [
                 'assets/portfolio_image/m2m/m2m7.jpg',
                 'assets/portfolio_image/m2m/m2m2.jpg',
