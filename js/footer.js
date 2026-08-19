@@ -106,19 +106,3 @@ function addSmoothScroll() {
         });
     });
 }
-
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded, initializing footer...');
-    initFooter();
-});
-
-// Also try to initialize on window load as backup
-window.addEventListener('load', function() {
-    console.log('Window loaded, checking footer...');
-    const footer = document.getElementById('footer');
-    if (footer && footer.innerHTML.trim() === '') {
-        console.log('Footer is empty, re-initializing...');
-        initFooter();
-    }
-});

@@ -214,7 +214,7 @@ const imageLoaded = {};
 
 function initProjectsSection() {
     const projects = document.getElementById('projects');
-    projects.className = 'projects-section';
+    projects.classList.add('projects-section');
     projects.innerHTML = `
         <div class="projects-container">
             <!-- Header -->
@@ -571,8 +571,3 @@ function getRoleIcon(roleName) {
     }
     return 'ri-user-line';
 }
-
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    initProjectsSection();
-});
