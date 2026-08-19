@@ -135,7 +135,7 @@ const experienceData = {
 // Experience Section
 function initExperienceSection() {
     const experience = document.getElementById('experience');
-    experience.className = 'experience-section';
+    experience.classList.add('experience-section');
     experience.innerHTML = `
         <div class="experience-container">
             <!-- Header -->
@@ -261,8 +261,3 @@ function handleEducationIconError(index, initials) {
         iconContainer.innerHTML = `<span class="education-fallback">${initials}</span>`;
     }
 }
-
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    initExperienceSection();
-});

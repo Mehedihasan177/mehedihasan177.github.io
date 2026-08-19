@@ -1,7 +1,7 @@
 // Skills Section
 function initSkillsSection() {
     const skills = document.getElementById('skills');
-    skills.className = 'skills-section';
+    skills.classList.add('skills-section');
     skills.innerHTML = `
         <div class="skills-container">
             <!-- Header -->
@@ -190,22 +190,15 @@ function initSkillsSection() {
             </div>
         </div>
     `;
-}
 
-// Initialize skills section when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    initSkillsSection();
-    
-    // Add animation for skill bars
-    const skillBars = document.querySelectorAll('.skill-bar');
+    // Animate skill bars in from zero width
+    const skillBars = skills.querySelectorAll('.skill-bar');
     skillBars.forEach(bar => {
-        // Reset width for animation
         const width = bar.style.width;
         bar.style.width = '0%';
-        
-        // Animate after a short delay
+
         setTimeout(() => {
             bar.style.width = width;
         }, 100);
     });
-});
+}
