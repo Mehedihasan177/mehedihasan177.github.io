@@ -9,9 +9,9 @@
 }
 
 .contact-header {
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto 3rem;
+    text-align: left;
+    max-width: 640px;
+    margin: 0 0 3rem;
 }
 
 .contact-title {
@@ -21,6 +21,28 @@
     letter-spacing: -0.02em;
     color: var(--text-primary);
     margin-bottom: 1rem;
+}
+
+.contact-title::before {
+    content: '';
+    display: block;
+    width: 3rem;
+    height: 3px;
+    background: var(--gradient-secondary);
+    border-radius: var(--r-full);
+    margin-bottom: 1.5rem;
+}
+
+@media (max-width: 640px) {
+    .contact-header {
+        text-align: center;
+        margin: 0 auto 2.5rem;
+    }
+
+    .contact-title::before {
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 .contact-subtitle {
