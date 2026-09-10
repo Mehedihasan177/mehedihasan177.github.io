@@ -1,7 +1,7 @@
 // About Section
 function initAboutSection() {
     const about = document.getElementById('about');
-    about.className = 'about-section';
+    about.classList.add('about-section');
     about.innerHTML = `
         <div class="about-container">
             <!-- Header -->
@@ -82,19 +82,3 @@ function initAboutSection() {
         </div>
     `;
 }
-
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded, initializing about section...');
-    initAboutSection();
-});
-
-// Also try to initialize on window load as backup
-window.addEventListener('load', function() {
-    console.log('Window loaded, checking about section...');
-    const about = document.getElementById('about');
-    if (about && about.innerHTML.trim() === '') {
-        console.log('About section is empty, re-initializing...');
-        initAboutSection();
-    }
-});

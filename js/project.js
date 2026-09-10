@@ -48,7 +48,8 @@ const projectsData = {
                 }
             ],
             github: '#',
-            demo: '#'
+            demo: '#',
+            iosdemo: '#'
         },
         {
             id: 1,
@@ -68,7 +69,8 @@ const projectsData = {
             tech: ['Firebase', 'Getx State Management'],
             features: ['Real-time inventory', 'Push notifications', 'Payment integration', 'User reviews'],
             github: '#',
-            demo: 'https://play.google.com/store/apps/details?id=com.bdjobs.recruiter&pcampaignid=web_share'
+            demo: 'https://play.google.com/store/apps/details?id=com.bdjobs.recruiter&pcampaignid=web_share',
+            iosdemo: '#'
         },
         {
             id: 2,
@@ -85,7 +87,8 @@ const projectsData = {
             tech: ['WebSocket', 'REST API', 'Flutter Bloc', 'AESEncryption and Decryption'],
             features: ['Real-time chat', 'File Sharing', 'Calling Feature', 'User Profiles'],
             github: '#',
-            demo: '#'
+            demo: '#',
+            iosdemo: '#'
         },
         {
             id: 3,
@@ -105,7 +108,8 @@ const projectsData = {
             tech: ['SQFLite', 'Provider', 'Local Storage', 'Google Map', 'Firebase', 'Riverpod State Management', 'AESEncryption and Decryption'],
             features: ['Vehicle List', 'Vehicle Live Tracking', 'Tracking History', 'Bkash and SSL Commerce Payment system', 'Push Notification'],
             github: '#',
-            demo: 'https://play.google.com/store/apps/details?id=bd.com.robi.vts&pcampaignid=web_share'
+            demo: 'https://play.google.com/store/apps/details?id=bd.com.robi.vts&pcampaignid=web_share',
+            iosdemo: 'https://apps.apple.com/gb/app/robi-vehicle-tracking-service/id1231820564'
         },
         {
             id: 4,
@@ -125,7 +129,8 @@ const projectsData = {
             tech: ['Window Manager', 'Webview', 'Web Socket Channel', 'Webrtc', 'Flutter Bloc State Management'],
             features: ['Multi-camera grid view (1x1, 2x2, 3x3 layouts)', 'For Multi platform- Desktop(Windows, Linux, Macos), Mobile(IOS, Android)', 'Multi-camera system support', 'Single Camera system support', 'Can drag and drop specific camera in specific mojik'],
             github: '#',
-            demo: '#'
+            demo: '#',
+            iosdemo: '#'
         },
         {
             id: 5,
@@ -148,7 +153,8 @@ const projectsData = {
             tech: ['SSLcommerz', 'Bkash', 'Youtube Player', 'Flutter Math Fork', 'Getx State Management'],
             features: ['Take exams for BCS, HSC, SSC, and Admission tests.', 'Topic-wise and chapter-wise quizzes.', 'Free and paid exam options.', 'Weekly and daily progress tracking.', 'Total tests taken, average score, total attempted questions, and earned points.', 'Ranking based on total score and performance', 'Multiple packages like Gold, Diamond, and Elite.', 'Secure payment options like Bkash and SSL Commerce.'],
             github: '#',
-            demo: 'https://play.google.com/store/apps/details?id=com.datahost.day_exam&pcampaignid=web_share'
+            demo: 'https://play.google.com/store/apps/details?id=com.datahost.day_exam&pcampaignid=web_share',
+            iosdemo: '#'
         },
         {
             id: 6,
@@ -168,7 +174,8 @@ const projectsData = {
             tech: ['SQFLite', 'Provider', 'Local Storage', 'Google Map', 'Firebase', 'Riverpod State Management', 'AESEncryption and Decryption'],
             features: ['Vehicle List', 'Vehicle Live Tracking', 'Tracking History Playback', 'Bkash and SSL Commerce Payment system', 'Push Notification'],
             github: '#',
-            demo: 'https://play.google.com/store/apps/details?id=com.m2mbd.vts&pcampaignid=web_share'
+            demo: 'https://play.google.com/store/apps/details?id=com.m2mbd.vts&pcampaignid=web_share',
+            iosdemo: 'https://apps.apple.com/gb/app/m2m-vehicle-tracking-system/id1472843586'
         },
         {
             id: 7,
@@ -183,7 +190,8 @@ const projectsData = {
             tech: ['Provider', 'Firebase', 'HTTPS', 'Google Map'],
             features: ['Smart Restaurant Discovery', 'Easy Reservation System', 'Google Map', 'Bkash and SSL Commerce Payment system', 'Push Notification'],
             github: '#',
-            demo: '#'
+            demo: '#',
+            iosdemo: '#'
         },
         {
             id: 8,
@@ -202,7 +210,8 @@ const projectsData = {
             tech: ['Flutter face api', 'Google mlkit face detection', 'Table calendar', 'Camera', 'Getx State Management'],
             features: ['Facial recognition attendance', 'Works only on authorized company WiFi', 'Real-time verification with ERP system', 'Simple one-tap process', 'Instant success/failure feedback', 'Retake option for failed attempts'],
             github: '#',
-            demo: 'https://play.google.com/store/apps/details?id=com.neways.attendance&pcampaignid=web_share'
+            demo: 'https://play.google.com/store/apps/details?id=com.neways.attendance&pcampaignid=web_share',
+            iosdemo: '#'
         },
     ]
 };
@@ -214,7 +223,7 @@ const imageLoaded = {};
 
 function initProjectsSection() {
     const projects = document.getElementById('projects');
-    projects.className = 'projects-section';
+    projects.classList.add('projects-section');
     projects.innerHTML = `
         <div class="projects-container">
             <!-- Header -->
@@ -276,18 +285,32 @@ function renderProjects() {
             <div class="project-content">
                 <div class="project-title-row">
                     <h3 class="project-title">${project.title}</h3>
-                    ${project.demo && project.demo !== '#' ? `
-                        <a 
-                            href="${project.demo}" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            class="project-play-link"
-                            onclick="event.preventDefault(); event.stopPropagation(); window.open('${project.demo}', '_blank', 'noopener,noreferrer');"
-                            title="View on Google Play Store"
-                        >
-                            <i class="ri-google-play-fill"></i>
-                        </a>
-                    ` : ''}
+                    <div class="project-store-links">
+                        ${project.demo && project.demo !== '#' ? `
+                            <a 
+                                href="${project.demo}" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                class="project-play-link"
+                                onclick="event.preventDefault(); event.stopPropagation(); window.open('${project.demo}', '_blank', 'noopener,noreferrer');"
+                                title="View on Google Play Store"
+                            >
+                                <i class="ri-google-play-fill"></i>
+                            </a>
+                        ` : ''}
+                        ${project.iosdemo && project.iosdemo !== '#' ? `
+                            <a 
+                                href="${project.iosdemo}" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                class="project-play-link project-apple-link"
+                                onclick="event.preventDefault(); event.stopPropagation(); window.open('${project.iosdemo}', '_blank', 'noopener,noreferrer');"
+                                title="View on Apple App Store"
+                            >
+                                <i class="ri-apple-fill"></i>
+                            </a>
+                        ` : ''}
+                    </div>
                 </div>
                 <p class="project-description">${project.description}</p>
                 
@@ -428,8 +451,15 @@ function renderProjectModal() {
                             
                             ${selectedProject.demo && selectedProject.demo !== '#' ? `
                                 <a href="${selectedProject.demo}" target="_blank" class="action-btn demo-btn">
-                                    <i class="ri-external-link-line"></i>
+                                    <i class="ri-google-play-fill"></i>
                                     Google Play Store
+                                </a>
+                            ` : ''}
+                            
+                            ${selectedProject.iosdemo && selectedProject.iosdemo !== '#' ? `
+                                <a href="${selectedProject.iosdemo}" target="_blank" class="action-btn demo-btn apple-demo-btn">
+                                    <i class="ri-apple-fill"></i>
+                                    App Store
                                 </a>
                             ` : ''}
                         </div>
@@ -501,7 +531,7 @@ function setupEventListeners() {
 function setupProjectCardListeners() {
     document.querySelectorAll('.project-card').forEach(card => {
         card.addEventListener('click', (e) => {
-            // Skip if clicking the Google Play link
+            // Skip if clicking the Google Play or Apple App Store link
             if (e.target.closest('.project-play-link')) {
                 return;
             }
@@ -571,8 +601,3 @@ function getRoleIcon(roleName) {
     }
     return 'ri-user-line';
 }
-
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    initProjectsSection();
-});

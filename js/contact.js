@@ -54,7 +54,7 @@ function initContactSection() {
         return;
     }
     
-    contact.className = 'contact-section';
+    contact.classList.add('contact-section');
     contact.innerHTML = `
         <div class="contact-container">
             <!-- Header -->
@@ -127,19 +127,3 @@ function initContactSection() {
         </div>
     `;
 }
-
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded, initializing contact section...');
-    initContactSection();
-});
-
-// Also try to initialize on window load as backup
-window.addEventListener('load', function() {
-    console.log('Window loaded, checking contact section...');
-    const contact = document.getElementById('contact');
-    if (contact && contact.innerHTML.trim() === '') {
-        console.log('Contact section is empty, re-initializing...');
-        initContactSection();
-    }
-});

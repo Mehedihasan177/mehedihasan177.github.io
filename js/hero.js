@@ -1,7 +1,7 @@
 // Hero Section
 function initHeroSection() {
     const hero = document.getElementById('hero');
-    hero.className = 'hero-section';
+    hero.classList.add('hero-section');
     hero.innerHTML = `
         <div class="hero-container">
             <div class="hero-grid">
@@ -39,8 +39,8 @@ function initHeroSection() {
                         />
                     </div>
                     
-                    <div class="experience-badge experience-years">4+ Years Experience</div>
-                    <div class="experience-badge projects-count">50+ Apps Built</div>
+                    <div class="experience-badge experience-years">4.5+ Years Experience</div>
+                    <div class="experience-badge projects-count">20+ Apps Built</div>
                 </div>
             </div>
         </div>
@@ -57,9 +57,3 @@ function initHeroSection() {
         window.open('https://leetcode.com/u/mehedihasan177/', '_blank');
     });
 }
-
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', function () {
-    console.log('DOM loaded, initializing hero section...');
-    initHeroSection();
-});
