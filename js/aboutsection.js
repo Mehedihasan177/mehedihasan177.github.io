@@ -52,7 +52,7 @@ function initAboutSection() {
                 <!-- Image -->
                 <div class="about-image-container">
                     <img 
-                        src="https://readdy.ai/api/search-image?query=modern%20office%20workspace%20with%20flutter%20development%20setup%2C%20multiple%20monitors%20showing%20mobile%20app%20code%20and%20interfaces%2C%20clean%20organized%20desk%20with%20plants%2C%20natural%20lighting%2C%20professional%20coding%20environment%2C%20warm%20atmosphere&width=600&height=400&seq=workspace&orientation=landscape"
+                        src="assets/computer_image.jpg"
                         alt="Development Workspace"
                         class="about-image"
                     />
