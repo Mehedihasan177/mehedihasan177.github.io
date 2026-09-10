@@ -140,7 +140,7 @@
 .project-image-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(8, 6, 15, 0) 45%, rgba(8, 6, 15, 0.9) 100%);
+    background: linear-gradient(180deg, var(--photo-scrim-from) 45%, var(--photo-scrim-to) 100%);
 }
 
 .project-category-badge {
@@ -149,13 +149,13 @@
     left: 1rem;
     padding: 0.35rem 0.9rem;
     border-radius: var(--r-full);
-    background: rgba(18, 14, 30, 0.7);
+    background: var(--photo-badge-bg);
     backdrop-filter: blur(10px);
     border: 1px solid var(--glass-border-strong);
     font-family: var(--font-mono);
     font-size: 0.7rem;
     font-weight: 500;
-    color: var(--text-primary);
+    color: var(--text-on-photo);
 }
 
 .project-content {
@@ -180,6 +180,13 @@
     line-height: 1.35;
 }
 
+.project-store-links {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
 .project-play-link {
     flex-shrink: 0;
     width: 2.2rem;
@@ -197,6 +204,15 @@
 
 .project-play-link:hover {
     transform: scale(1.12);
+}
+
+.project-apple-link {
+    background: linear-gradient(135deg, #1c1c1e, #3a3a3c);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.project-apple-link:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
 }
 
 .project-description {
@@ -218,9 +234,9 @@
 .tech-tag {
     padding: 0.3rem 0.75rem;
     border-radius: var(--r-full);
-    background: rgba(124, 134, 240, 0.12);
-    border: 1px solid rgba(124, 134, 240, 0.3);
-    color: #b9c0f7;
+    background: var(--accent-tint-bg);
+    border: 1px solid var(--accent-tint-border);
+    color: var(--accent-tint-text);
     font-family: var(--font-mono);
     font-size: 0.68rem;
     font-weight: 500;
@@ -276,7 +292,7 @@
     position: fixed;
     inset: 0;
     z-index: 200;
-    background: rgba(8, 6, 15, 0.75);
+    background: var(--modal-backdrop);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     align-items: flex-start;
@@ -309,7 +325,7 @@
     border-bottom: 1px solid var(--glass-border);
     position: sticky;
     top: 0;
-    background: rgba(18, 14, 30, 0.9);
+    background: var(--modal-sticky-bg);
     backdrop-filter: blur(12px);
     z-index: 2;
 }
@@ -506,7 +522,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(111, 207, 151, 0.15);
+    background: var(--success-tint-bg);
     color: var(--success);
     font-size: 0.7rem;
     margin-top: 0.1rem;
@@ -522,9 +538,9 @@
 .tech-tag-modal {
     padding: 0.35rem 0.85rem;
     border-radius: var(--r-full);
-    background: rgba(124, 134, 240, 0.1);
-    border: 1px solid rgba(124, 134, 240, 0.3);
-    color: #b9c0f7;
+    background: var(--accent-tint-bg);
+    border: 1px solid var(--accent-tint-border);
+    color: var(--accent-tint-text);
     font-family: var(--font-mono);
     font-size: 0.72rem;
     font-weight: 500;
@@ -562,6 +578,11 @@
     background: var(--gradient-primary);
     color: #fff;
     box-shadow: 0 8px 24px rgba(124, 134, 240, 0.4);
+}
+
+.apple-demo-btn {
+    background: linear-gradient(135deg, #1c1c1e, #3a3a3c);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 /* Roles */
@@ -655,8 +676,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(124, 134, 240, 0.18);
-    color: #b9c0f7;
+    background: var(--accent-tint-bg);
+    color: var(--accent-tint-text);
     font-size: 0.6rem;
     margin-top: 0.15rem;
 }

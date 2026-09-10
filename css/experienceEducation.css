@@ -146,9 +146,9 @@
     flex-shrink: 0;
     padding: 0.35rem 0.85rem;
     border-radius: var(--r-full);
-    background: rgba(124, 134, 240, 0.14);
-    border: 1px solid rgba(124, 134, 240, 0.32);
-    color: #b9c0f7;
+    background: var(--accent-tint-bg);
+    border: 1px solid var(--accent-tint-border);
+    color: var(--accent-tint-text);
     font-family: var(--font-mono);
     font-size: 0.7rem;
     font-weight: 500;
@@ -207,9 +207,9 @@
 .skill-tag {
     padding: 0.3rem 0.8rem;
     border-radius: var(--r-full);
-    background: rgba(124, 134, 240, 0.1);
-    border: 1px solid rgba(124, 134, 240, 0.3);
-    color: #b9c0f7;
+    background: var(--accent-tint-bg);
+    border: 1px solid var(--accent-tint-border);
+    color: var(--accent-tint-text);
     font-family: var(--font-mono);
     font-size: 0.68rem;
     font-weight: 500;
@@ -316,9 +316,9 @@
     display: inline-block;
     padding: 0.25rem 0.75rem;
     border-radius: var(--r-full);
-    background: rgba(124, 134, 240, 0.14);
-    border: 1px solid rgba(124, 134, 240, 0.32);
-    color: #b9c0f7;
+    background: var(--accent-tint-bg);
+    border: 1px solid var(--accent-tint-border);
+    color: var(--accent-tint-text);
     font-family: var(--font-mono);
     font-size: 0.68rem;
     font-weight: 500;
