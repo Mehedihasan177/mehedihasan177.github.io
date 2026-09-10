@@ -108,27 +108,27 @@
     font-family: var(--font-mono);
     font-size: 0.78rem;
     font-weight: 500;
-    background: rgba(124, 134, 240, 0.12);
-    border: 1px solid rgba(124, 134, 240, 0.35);
-    color: #b9c0f7;
+    background: var(--accent-tint-bg);
+    border: 1px solid var(--accent-tint-border);
+    color: var(--accent-tint-text);
 }
 
 .tag-green {
-    background: rgba(111, 207, 151, 0.12);
-    border-color: rgba(111, 207, 151, 0.35);
-    color: #9fe0bb;
+    background: var(--success-tint-bg);
+    border-color: var(--success-tint-border);
+    color: var(--success-tint-text);
 }
 
 .tag-purple {
-    background: rgba(124, 134, 240, 0.12);
-    border-color: rgba(124, 134, 240, 0.35);
-    color: #b9c0f7;
+    background: var(--accent-tint-bg);
+    border-color: var(--accent-tint-border);
+    color: var(--accent-tint-text);
 }
 
 .tag-orange {
-    background: rgba(124, 134, 240, 0.12);
-    border-color: rgba(124, 134, 240, 0.35);
-    color: #b9c0f7;
+    background: var(--accent-tint-bg);
+    border-color: var(--accent-tint-border);
+    color: var(--accent-tint-text);
 }
 
 .about-image-container {
@@ -150,7 +150,7 @@
 .about-image-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(8, 6, 15, 0) 40%, rgba(8, 6, 15, 0.85) 100%);
+    background: linear-gradient(180deg, var(--photo-scrim-from) 40%, var(--photo-scrim-to) 100%);
 }
 
 .about-stats {

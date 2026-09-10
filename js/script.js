@@ -30,9 +30,15 @@ function initHeader() {
                 <a href="#contact" class="nav-link">Contact</a>
             </nav>
 
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="ri-menu-line"></i>
-            </button>
+            <div class="header-actions">
+                <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle color theme" title="Toggle theme">
+                    <i class="ri-moon-line"></i>
+                </button>
+
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="ri-menu-line"></i>
+                </button>
+            </div>
         </div>
 
         <nav class="mobile-nav" id="mobileNav">
@@ -81,6 +87,32 @@ function initHeader() {
             icon.className = 'ri-menu-line';
         });
     });
+
+    // Theme toggle (button markup lives inside the header, so wire it up
+    // once the header has been rendered)
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    syncThemeToggleIcon();
+    themeToggleBtn.addEventListener('click', function() {
+        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+        setTheme(isLight ? 'dark' : 'light');
+    });
+}
+
+// Theme (light/dark) — the initial theme is already applied by the inline
+// script in index.html's <head> (before first paint, to avoid a flash);
+// this just keeps it persisted and keeps the toggle icon in sync.
+function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    syncThemeToggleIcon();
+}
+
+function syncThemeToggleIcon() {
+    const icon = document.querySelector('#themeToggleBtn i');
+    if (!icon) return;
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    // Icon shows the mode a click will switch TO
+    icon.className = isLight ? 'ri-moon-line' : 'ri-sun-line';
 }
 
 // Smooth Scrolling

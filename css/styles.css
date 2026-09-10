@@ -10,16 +10,42 @@
     --glass-strong: rgba(255, 255, 255, 0.065);
     --glass-border: rgba(255, 255, 255, 0.08);
     --glass-border-strong: rgba(255, 255, 255, 0.15);
+    --border-hover-strong: rgba(255, 255, 255, 0.4);
 
     --text-primary: #edf0f5;
     --text-secondary: #99a1b3;
     --text-muted: #656d80;
+    /* Fixed light text for chrome that always sits on a photo (badges, hero stat pills) — never flips with theme */
+    --text-on-photo: #edf0f5;
 
     /* Single calm accent hue (soft indigo) — used everywhere instead of a rainbow of colors */
     --accent: #7c86f0;
     --accent-soft: #a0a8f7;
     --accent-dim: #5a63c9;
     --success: #6fcf97;
+
+    /* Tinted accent/success chips (tags, badges, checkmarks) */
+    --accent-tint-bg: rgba(124, 134, 240, 0.12);
+    --accent-tint-border: rgba(124, 134, 240, 0.32);
+    --accent-tint-text: #b9c0f7;
+    --success-tint-bg: rgba(111, 207, 151, 0.14);
+    --success-tint-border: rgba(111, 207, 151, 0.35);
+    --success-tint-text: #9fe0bb;
+
+    /* Chrome that always sits on top of a photo (image scrims, category/experience badges) — deliberately not theme-reactive */
+    --photo-scrim-from: rgba(8, 6, 15, 0);
+    --photo-scrim-to: rgba(8, 6, 15, 0.9);
+    --photo-badge-bg: rgba(18, 14, 30, 0.7);
+
+    --header-bg: rgba(11, 13, 19, 0.7);
+    --nav-dropdown-bg: rgba(11, 13, 19, 0.92);
+    --modal-backdrop: rgba(8, 6, 15, 0.75);
+    --modal-sticky-bg: rgba(18, 14, 30, 0.9);
+
+    --dot-color: rgba(255, 255, 255, 0.05);
+    --blob-1: rgba(124, 134, 240, 0.35);
+    --blob-2: rgba(124, 134, 240, 0.28);
+    --footer-glow: rgba(124, 134, 240, 0.15);
 
     --gradient-primary: linear-gradient(135deg, var(--accent-soft) 0%, var(--accent-dim) 100%);
     --gradient-secondary: linear-gradient(135deg, var(--accent) 0%, var(--accent-dim) 100%);
@@ -38,6 +64,52 @@
     --font-body: 'Inter', sans-serif;
     --font-display: 'Space Grotesk', 'Inter', sans-serif;
     --font-mono: 'JetBrains Mono', 'SFMono-Regular', monospace;
+}
+
+/* ==========================================================================
+   Light theme — toggled via [data-theme="light"] on <html> (see theme
+   toggle in the header, wired up in js/script.js). Everything that isn't
+   redefined here (accents, glass, badges, gradients) inherits the dark
+   tokens above through normal custom-property cascading.
+   ========================================================================== */
+:root[data-theme="light"] {
+    --void: #f3f4f9;
+    --surface: #ffffff;
+    --surface-2: #eceef6;
+
+    --glass: rgba(30, 32, 60, 0.035);
+    --glass-strong: rgba(30, 32, 60, 0.065);
+    --glass-border: rgba(30, 32, 60, 0.09);
+    --glass-border-strong: rgba(30, 32, 60, 0.16);
+    --border-hover-strong: rgba(30, 32, 60, 0.3);
+
+    --text-primary: #1a1c28;
+    --text-secondary: #565c72;
+    --text-muted: #82889c;
+
+    --accent: #4f57c6;
+    --accent-soft: #5a63c9;
+    --accent-dim: #3d44a0;
+    --success: #2f9757;
+
+    --accent-tint-bg: rgba(79, 87, 198, 0.1);
+    --accent-tint-border: rgba(79, 87, 198, 0.28);
+    --accent-tint-text: #3d44a0;
+    --success-tint-bg: rgba(47, 151, 87, 0.12);
+    --success-tint-border: rgba(47, 151, 87, 0.32);
+    --success-tint-text: #1f7a45;
+
+    --header-bg: rgba(243, 244, 249, 0.75);
+    --nav-dropdown-bg: rgba(255, 255, 255, 0.95);
+    --modal-sticky-bg: rgba(255, 255, 255, 0.92);
+
+    --dot-color: rgba(30, 32, 60, 0.045);
+    --blob-1: rgba(124, 134, 240, 0.16);
+    --blob-2: rgba(124, 134, 240, 0.12);
+    --footer-glow: rgba(124, 134, 240, 0.08);
+
+    --shadow-glass: 0 12px 32px rgba(30, 32, 60, 0.1);
+    --shadow-glow: 0 0 36px rgba(79, 87, 198, 0.16);
 }
 
 /* ==========================================================================
@@ -60,8 +132,9 @@ body {
     line-height: 1.6;
     color: var(--text-secondary);
     background:
-        radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1.6px) 0 0 / 30px 30px,
+        radial-gradient(circle, var(--dot-color) 1px, transparent 1.6px) 0 0 / 30px 30px,
         var(--void);
+    transition: background-color 0.3s var(--ease);
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
@@ -113,7 +186,7 @@ body::before {
     left: -10%;
     width: 55vw;
     height: 55vw;
-    background: radial-gradient(circle, rgba(124, 134, 240, 0.35) 0%, transparent 70%);
+    background: radial-gradient(circle, var(--blob-1) 0%, transparent 70%);
     animation: driftA 22s ease-in-out infinite;
 }
 
@@ -122,7 +195,7 @@ body::after {
     right: -10%;
     width: 60vw;
     height: 60vw;
-    background: radial-gradient(circle, rgba(124, 134, 240, 0.28) 0%, transparent 70%);
+    background: radial-gradient(circle, var(--blob-2) 0%, transparent 70%);
     animation: driftB 26s ease-in-out infinite;
 }
 
@@ -172,11 +245,11 @@ body::after {
     left: 0;
     right: 0;
     z-index: 100;
-    background: rgba(11, 13, 19, 0.7);
+    background: var(--header-bg);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--glass-border);
-    transition: border-color 0.3s var(--ease);
+    transition: border-color 0.3s var(--ease), background-color 0.3s var(--ease);
 }
 
 .header-content {
@@ -282,10 +355,40 @@ body::after {
     }
 }
 
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.theme-toggle-btn {
+    display: flex;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: var(--glass);
+    border: 1px solid var(--glass-border-strong);
+    color: var(--text-primary);
+    font-size: 1.05rem;
+    border-radius: var(--r-full);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transition: transform 0.25s var(--ease), border-color 0.25s var(--ease), color 0.25s var(--ease);
+}
+
+.theme-toggle-btn:hover {
+    transform: scale(1.08) rotate(-12deg);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
 .mobile-nav {
     display: none;
     padding: 1.25rem 1.5rem;
-    background: rgba(11, 13, 19, 0.92);
+    background: var(--nav-dropdown-bg);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-top: 1px solid var(--glass-border);

@@ -86,7 +86,7 @@
     gap: 1rem;
     padding: 1.1rem 1.25rem;
     border-radius: var(--r-md);
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--glass);
     border: 1px solid var(--glass-border);
     text-decoration: none;
     color: inherit;
@@ -195,7 +195,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: rgba(111, 207, 151, 0.15);
+    background: var(--success-tint-bg);
     color: var(--success);
     font-size: 0.75rem;
 }
