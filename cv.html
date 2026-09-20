@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Md. Mehedi Hasan - CV</title>
+    <script>
+        // Applied before first paint so the page never flashes the wrong theme.
+        (function () {
+            var saved = localStorage.getItem('theme');
+            document.documentElement.setAttribute('data-theme', saved || 'light');
+        })();
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/cv.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="min-h-screen">
+        <header class="header">
+            <div class="header-content">
+                <a href="index.html" class="logo">Mehedi Hasan</a>
+                <div class="header-actions">
+                    <a href="index.html" class="cv-back-link">
+                        <i class="ri-arrow-left-line"></i>
+                        Back to Portfolio
+                    </a>
+                    <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle color theme" title="Toggle theme">
+                        <i class="ri-moon-line"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="cv-page">
+            <div class="cv-container">
+                <div class="cv-toolbar">
+                    <h1 class="cv-title">My CV</h1>
+                    <a href="assets/Md_Mehedi_Hasan.pdf" download class="cv-download-btn">
+                        <i class="ri-download-line"></i>
+                        Download PDF
+                    </a>
+                </div>
+
+                <div class="cv-viewer">
+                    <iframe src="assets/Md_Mehedi_Hasan.pdf" title="Md. Mehedi Hasan CV"></iframe>
+                </div>
+
+                <p class="cv-fallback">
+                    Can't see the preview? <a href="assets/Md_Mehedi_Hasan.pdf" target="_blank" rel="noopener noreferrer">Open the PDF in a new tab</a> instead.
+                </p>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/cv.js"></script>
+</body>
+</html>

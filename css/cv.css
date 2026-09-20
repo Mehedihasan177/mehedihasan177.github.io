@@ -1,0 +1,109 @@
+/* ==========================================================================
+   CV Page
+   ========================================================================== */
+.cv-page {
+    padding: 8rem 1.5rem 4rem;
+    min-height: 100vh;
+}
+
+.cv-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.cv-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.cv-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.cv-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--text-primary);
+    background: var(--glass);
+    border: 1px solid var(--glass-border-strong);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transition: transform 0.25s var(--ease), background 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.cv-back-link:hover {
+    transform: translateY(-2px);
+    background: var(--glass-strong);
+    border-color: var(--border-hover-strong);
+}
+
+.cv-download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.4rem;
+    border-radius: 14px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #fff;
+    background: var(--gradient-primary);
+    box-shadow: 0 8px 30px rgba(124, 134, 240, 0.4);
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+.cv-download-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 40px rgba(124, 134, 240, 0.55);
+}
+
+.cv-viewer {
+    background: var(--surface);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-glass);
+    height: 85vh;
+}
+
+.cv-viewer iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+    background: #fff;
+}
+
+.cv-fallback {
+    margin-top: 1rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.cv-fallback a {
+    color: var(--accent);
+}
+
+@media (max-width: 768px) {
+    .cv-page {
+        padding: 7rem 1.1rem 3rem;
+    }
+
+    .cv-viewer {
+        height: 70vh;
+    }
+}
