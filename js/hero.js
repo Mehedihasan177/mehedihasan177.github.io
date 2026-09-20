@@ -25,6 +25,10 @@ function initHeroSection() {
                             <img src="assets/portfolio_image/leetcode_logo.png" alt="LeetCode" class="leetcode-logo">
                             Leetcode
                         </button>
+                        <button class="btn-outline" id="viewCvBtn">
+                            <i class="ri-file-pdf-line"></i>
+                            My CV
+                        </button>
                     </div>
                 
                 </div>
@@ -55,5 +59,10 @@ function initHeroSection() {
     document.getElementById('downloadCvBtn').addEventListener('click', function () {
         // Open Google Form in new tab
         window.open('https://leetcode.com/u/mehedihasan177/', '_blank');
+    });
+
+    document.getElementById('viewCvBtn').addEventListener('click', function () {
+        // Navigate to the dedicated CV page/route
+        window.location.href = 'cv.html';
     });
 }
