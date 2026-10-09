@@ -39,7 +39,7 @@ const contactData = {
     ],
     
     whyWorkWithMe: [
-        '4+ years of proven Flutter expertise',
+        '5+ years of proven Flutter expertise',
         'Cross-platform development efficiency',
         'Clean, maintainable code practices',
         'Timely delivery and communication'

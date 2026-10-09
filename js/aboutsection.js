@@ -23,7 +23,7 @@ function initAboutSection() {
                     <div class="about-description">
                         <p>
                             My journey in mobile development began with a passion for creating seamless 
-                            user experiences. Over the past 4 years, I've specialized in Flutter development, 
+                            user experiences. Over the past 5 years, I've specialized in Flutter development, 
                             building cross-platform applications that perform beautifully on both iOS and Android.
                         </p>
                         
@@ -63,7 +63,7 @@ function initAboutSection() {
             <!-- Stats -->
             <div class="about-stats">
                 <div class="stat-item">
-                    <div class="stat-number">4+</div>
+                    <div class="stat-number">5+</div>
                     <div class="stat-label">Years Experience</div>
                 </div>
                 <div class="stat-item">
