@@ -14,7 +14,7 @@ function initHeroSection() {
                     </div>
                     
                     <p class="hero-description">
-                        I'm a passionate mobile app developer with 4+ years of specialized experience in Flutter framework. 
+                        I'm a passionate mobile app developer with 5+ years of specialized experience in Flutter framework. 
                         My expertise lies in designing and developing beautiful, high-performance cross-platform applications that provide seamless user experiences. 
                         Throughout my career, I've successfully delivered numerous projects ranging from enterprise solutions to consumer-facing apps, focusing on clean code architecture, responsive design, and optimal performance across both iOS, Android and Desktop platforms.
                     </p>
@@ -43,7 +43,7 @@ function initHeroSection() {
                         />
                     </div>
                     
-                    <div class="experience-badge experience-years">4.5+ Years Experience</div>
+                    <div class="experience-badge experience-years">5+ Years Experience</div>
                     <div class="experience-badge projects-count">20+ Apps Built</div>
                 </div>
             </div>

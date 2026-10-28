@@ -10,13 +10,13 @@
                 // </div>
 
 const projectsData = {
-    categories: ['All', 'BTV ERP', 'Bdjobs', 'Social', 'VTS', 'Restaurant Reservation', 'CCTV Surveillance', 'Attendance System', 'Online Exam'],
+    categories: ['All', 'BTV E-Service', 'Bdjobs', 'Social', 'VTS', 'Restaurant Reservation', 'CCTV Surveillance', 'Attendance System', 'Online Exam'],
 
     projects: [
         {
             id: 9,
-            title: 'BTV - ERP',
-            category: 'BTV ERP',
+            title: 'BTV E-Service',
+            category: 'BTV E-Service',
             description: 'A comprehensive Enterprise Resource Planning (ERP) mobile application for Bangladesh Television (BTV), designed for three types of users — Admin, Artist, and Visitor. The app streamlines artist management, budgeting, bill processing, gate pass management, FTP file transfer, and reporting with full bilingual (Bengali/English) support.',
             image: 'assets/portfolio_image/btv/banner.png',
             video: 'assets/portfolio_image/btv/BTV_Operations_Film.mp4',
@@ -48,7 +48,7 @@ const projectsData = {
                 }
             ],
             github: '#',
-            demo: '#',
+            demo: 'https://play.google.com/store/apps/details?id=com.btv.btverp&pcampaignid=web_share',
             iosdemo: '#'
         },
         {
