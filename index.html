@@ -1,65 +1,1588 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Md. Mehedi Hasan - Portfolio</title>
-    <script>
-        // Applied before first paint so the page never flashes the wrong theme.
-        // Light is the default for first-time visitors; returning visitors get
-        // whatever they last picked via the toggle.
-        (function () {
-            var saved = localStorage.getItem('theme');
-            document.documentElement.setAttribute('data-theme', saved || 'light');
-        })();
-    </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/hero.css">
-    <link rel="stylesheet" href="css/aboutSection.css">
-    <link rel="stylesheet" href="css/skill.css">
-    <link rel="stylesheet" href="css/project.css">
-    <link rel="stylesheet" href="css/experienceEducation.css">
-    <link rel="stylesheet" href="css/contact.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Md. Mehedi Hasan | Flutter Developer</title>
+<meta name="description" content="Md. Mehedi Hasan, Flutter developer in Dhaka with 5+ years building ERP, vehicle tracking, video calling, surveillance and e-learning apps for iOS, Android and desktop.">
+<meta property="og:title" content="Md. Mehedi Hasan | Flutter Developer">
+<meta property="og:description" content="Cross-platform Flutter apps for Bangladesh Television, Bdjobs, Robi, M2M and more.">
+<meta property="og:image" content="assets/web/cover-btv.webp">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='26' fill='%23ffd6a5'/><text x='50' y='70' font-size='62' text-anchor='middle' font-family='Georgia' font-style='italic' fill='%232a1600'>M</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yellowtail&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<style>
+:root {
+    --bg-inner: #3346c8;
+    --bg-mid: #141c5c;
+    --bg-outer: #050818;
+    --accent: #ffd6a5;
+    --accent-ink: #2a1600;
+    --text: #ffffff;
+    --muted: rgba(255, 255, 255, 0.72);
+    --faint: rgba(255, 255, 255, 0.48);
+    --glass: rgba(255, 255, 255, 0.06);
+    --glass-strong: rgba(255, 255, 255, 0.11);
+    --line: rgba(255, 255, 255, 0.14);
+    --script: 'Yellowtail', 'Brush Script MT', cursive;
+    --sans: 'Manrope', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; overflow-x: clip; }
+body { font-family: var(--sans); color: var(--text); background: var(--bg-outer); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+body.lock { overflow: hidden; }
+a { color: inherit; }
+img { max-width: 100%; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+
+/* ---------- Background layers ---------- */
+#bg { position: fixed; inset: 0; z-index: -2; background: radial-gradient(circle at 50% 42%, var(--bg-inner) 0%, var(--bg-mid) 48%, var(--bg-outer) 100%); }
+#grain {
+    position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.06;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+#bubbles { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.bubble {
+    position: absolute; bottom: -40px; border-radius: 50%;
+    background: radial-gradient(circle at 32% 30%, rgba(255,255,255,0.9) 0 8%, rgba(255,255,255,0.08) 22%, rgba(255,255,255,0.02) 60%, rgba(255,255,255,0.35) 100%);
+    border: 1px solid rgba(255,255,255,0.25);
+    animation: rise linear forwards;
+}
+@keyframes rise {
+    0% { transform: translate(0, 0) scale(0.6); opacity: 0; }
+    10% { opacity: var(--o, 0.5); }
+    85% { opacity: var(--o, 0.5); }
+    100% { transform: translate(var(--drift, 30px), -110vh) scale(1); opacity: 0; }
+}
+
+/* ---------- Cursor ---------- */
+.cursor-dot, .cursor-ring { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 1000; border-radius: 50%; transform: translate(-100px, -100px); }
+.cursor-dot { width: 6px; height: 6px; background: var(--accent); margin: -3px 0 0 -3px; }
+.cursor-ring { width: 38px; height: 38px; margin: -19px 0 0 -19px; border: 1px solid rgba(255, 214, 165, 0.6); transition: width 0.25s, height 0.25s, margin 0.25s, background 0.25s; }
+.cursor-ring.big { width: 70px; height: 70px; margin: -35px 0 0 -35px; background: rgba(255, 214, 165, 0.08); }
+@media (pointer: coarse) { .cursor-dot, .cursor-ring { display: none; } }
+
+/* ---------- Header ---------- */
+.header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.3rem 4%;
+    transition: padding 0.3s, background 0.3s;
+}
+.header.scrolled { padding-top: 0.8rem; padding-bottom: 0.8rem; background: rgba(5, 8, 24, 0.35); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; font-weight: 800; letter-spacing: -0.01em; }
+.logo-mark { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; background: var(--accent); color: var(--accent-ink); font-family: var(--script); font-size: 1.4rem; }
+.nav {
+    display: flex; gap: 0.3rem; padding: 0.35rem; border-radius: 100px;
+    background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+}
+.nav a { text-decoration: none; color: var(--muted); font-size: 0.85rem; font-weight: 600; padding: 0.5rem 1.1rem; border-radius: 100px; transition: background 0.3s, color 0.3s; }
+.nav a:hover, .nav a.active { background: var(--accent); color: var(--accent-ink); }
+.header-actions { display: flex; gap: 0.6rem; align-items: center; }
+.menu-btn { display: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: var(--glass); color: white; font-size: 1.2rem; cursor: pointer; }
+.mobile-nav {
+    position: fixed; inset: 0; z-index: 190; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 0.6rem;
+    background: rgba(5, 8, 24, 0.92); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    opacity: 0; pointer-events: none; transition: opacity 0.35s;
+}
+.mobile-nav.open { opacity: 1; pointer-events: auto; }
+.mobile-nav a { font-family: var(--script); font-size: 3rem; text-decoration: none; }
+.mobile-nav a:hover { color: var(--accent); }
+
+/* ---------- Buttons ---------- */
+.btn {
+    display: inline-flex; align-items: center; gap: 0.8rem; border: none; cursor: pointer; text-decoration: none;
+    font-family: var(--sans); font-weight: 700; font-size: 0.9rem; color: white;
+    background: rgba(0, 0, 0, 0.45); border-radius: 100px; padding: 0.4rem 0.4rem 0.4rem 1.4rem;
+    transition: background 0.3s; will-change: transform;
+}
+.btn:hover { background: rgba(0, 0, 0, 0.7); }
+.btn .icon { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: var(--accent-ink); font-size: 1.15rem; font-weight: 800; }
+.btn.plain { padding: 0.8rem 1.5rem; }
+.btn.ghost { background: transparent; border: 1px solid var(--line); padding: 0.8rem 1.5rem; }
+.btn.ghost:hover { background: var(--glass-strong); }
+.btn.accent { background: var(--accent); color: var(--accent-ink); padding: 0.8rem 1.5rem; }
+.btn img { width: 20px; height: 20px; }
+
+/* ---------- Hero ---------- */
+.hero { position: relative; min-height: 100vh; padding: 7rem 4% 3rem; display: grid; grid-template-columns: 1fr 340px 1fr; align-items: center; gap: 2rem; z-index: 1; }
+.hero-left, .hero-right { position: relative; z-index: 5; }
+.hero-left { display: flex; flex-direction: column; gap: 1.5rem; }
+.hello { font-family: var(--script); font-weight: 400; font-size: clamp(3.6rem, 6.2vw, 7.2rem); line-height: 0.85; white-space: nowrap; }
+.line-mask { display: block; overflow: hidden; padding: 0 0.1em 0.12em; margin: 0 -0.1em; }
+.line-mask > span { display: inline-block; }
+.role { font-weight: 700; font-size: 1.05rem; color: var(--accent); }
+.intro { color: var(--muted); font-size: 1.02rem; line-height: 1.65; max-width: 30rem; }
+.cta-row { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+.now { display: flex; align-items: center; gap: 0.9rem; margin-top: 0.4rem; }
+.now-avatar { width: 56px; height: 56px; border-radius: 50%; overflow: hidden; border: 2px solid var(--accent); background: linear-gradient(160deg, #5468ff, #141c5c); flex-shrink: 0; }
+.now-avatar img { width: 100%; height: 160%; object-fit: cover; object-position: 50% 0; }
+.now small { display: block; color: var(--faint); font-size: 0.75rem; }
+.now strong { font-size: 0.92rem; font-weight: 700; }
+.pulse-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #6ee7b7; margin-right: 6px; animation: pulse 2s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(110, 231, 183, 0.6); } 70% { box-shadow: 0 0 0 10px rgba(110, 231, 183, 0); } 100% { box-shadow: 0 0 0 0 rgba(110, 231, 183, 0); } }
+
+.hero-right { display: flex; flex-direction: column; align-items: flex-end; gap: 1.8rem; text-align: right; }
+.picker-label { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.7rem; }
+.project-picker { display: grid; grid-template-columns: repeat(3, 108px); grid-auto-rows: 1fr; gap: 0.6rem; justify-content: end; }
+.pick {
+    text-align: left; background: var(--glass); border: 1px solid var(--line); border-radius: 18px; padding: 0.7rem;
+    color: white; font-family: var(--sans); cursor: pointer;
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s, background 0.3s;
+}
+.pick:hover { transform: translateY(-5px) rotate(-2deg); background: var(--glass-strong); border-color: rgba(255,255,255,0.35); }
+.pick.active { border-color: var(--accent); background: rgba(255, 214, 165, 0.1); }
+.pick-swatch { width: 30px; height: 30px; border-radius: 10px; margin-bottom: 0.55rem; display: grid; place-items: center; font-size: 0.95rem; box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35); }
+.pick b { display: block; font-size: 0.75rem; line-height: 1.25; }
+.pick span { font-size: 0.66rem; color: var(--faint); }
+.side-script { font-family: var(--script); font-weight: 400; font-size: clamp(3rem, 5.2vw, 6rem); line-height: 0.85; white-space: nowrap; }
+
+/* Phone */
+.phone-col { position: relative; z-index: 4; display: grid; place-items: center; }
+.phone-glow { position: absolute; width: 520px; height: 520px; border-radius: 50%; background: radial-gradient(circle, rgba(255, 214, 165, 0.18) 0%, transparent 65%); pointer-events: none; }
+.phone-float { perspective: 1300px; animation: bob 6s ease-in-out infinite; }
+@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-18px); } }
+.phone { position: relative; width: 290px; height: 600px; transform-style: preserve-3d; transform: rotateZ(-6deg); }
+.face { position: absolute; inset: 0; border-radius: 48px; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.face.front { background: #0b0d14; padding: 11px; box-shadow: 0 40px 80px rgba(0, 0, 0, 0.55), inset 0 0 0 2px rgba(255,255,255,0.12), inset 0 0 0 6px #1b1e27; }
+.face.back { transform: rotateY(180deg); background: linear-gradient(145deg, #2b2f3b, #12141b); box-shadow: 0 40px 80px rgba(0, 0, 0, 0.55), inset 0 0 0 2px rgba(255,255,255,0.12); display: grid; place-items: center; }
+.camera-bump { position: absolute; top: 22px; left: 22px; width: 104px; height: 104px; border-radius: 30px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12); display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 12px; }
+.camera-bump i { border-radius: 50%; background: radial-gradient(circle at 35% 35%, #4a5068, #07080c 60%); border: 3px solid #252836; }
+.back-mark { font-family: var(--script); font-size: 4rem; color: var(--accent); opacity: 0.85; }
+.screen { position: relative; height: 100%; border-radius: 38px; overflow: hidden; background: linear-gradient(170deg, #f7f8fc, #e9ecf5); color: #141726; font-size: 12px; }
+.notch { position: absolute; top: 9px; left: 50%; width: 92px; height: 26px; margin-left: -46px; border-radius: 20px; background: #0b0d14; z-index: 5; }
+
+.app { position: absolute; inset: 0; padding: 46px 16px 16px; display: flex; flex-direction: column; gap: 10px; }
+.status { position: absolute; top: 13px; left: 26px; right: 26px; display: flex; justify-content: space-between; font-size: 11px; font-weight: 700; z-index: 4; }
+.app-bar { display: flex; justify-content: space-between; align-items: center; }
+.app-title { font-size: 17px; font-weight: 800; letter-spacing: -0.02em; }
+.app-sub { color: #5b6075; font-size: 11.5px; }
+.chip-s { font-size: 10px; font-weight: 700; padding: 4px 9px; border-radius: 100px; background: #141726; color: white; }
+.tile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+.tile {
+    border: none; text-align: left; font-family: var(--sans); border-radius: 16px; padding: 9px 10px; min-height: 72px; color: white;
+    display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; box-shadow: 0 8px 18px rgba(20, 23, 38, 0.18);
+    transition: transform 0.2s;
+}
+.tile:hover { transform: scale(1.04); }
+.tile b { font-size: 11.5px; line-height: 1.2; }
+.tile small { font-size: 9.5px; opacity: 0.8; }
+.tile .t-ico { font-size: 17px; }
+.row-s { display: flex; justify-content: space-between; align-items: center; background: white; border-radius: 14px; padding: 9px 12px; font-size: 11px; font-weight: 600; box-shadow: 0 4px 12px rgba(20, 23, 38, 0.06); }
+.ok { color: #0b8a78; font-weight: 800; }
+
+.shots { position: absolute; inset: 0; background: #0b0d14; }
+.shots img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; opacity: 0; transform: scale(1.04); transition: opacity 0.7s ease, transform 2.6s ease; }
+.shots img.on { opacity: 1; transform: scale(1); }
+.shot-dots { position: absolute; bottom: 12px; left: 0; right: 0; display: flex; justify-content: center; gap: 5px; z-index: 4; }
+.shot-dots i { width: 6px; height: 6px; border-radius: 6px; background: rgba(20, 23, 38, 0.3); transition: width 0.4s, background 0.4s; }
+.shot-dots i.on { width: 18px; background: #141726; }
+.screen-enter > * { animation: popIn 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.screen-enter > *:nth-child(2) { animation-delay: 0.06s; }
+.screen-enter > *:nth-child(3) { animation-delay: 0.12s; }
+.screen-enter > *:nth-child(4) { animation-delay: 0.18s; }
+.screen-enter > *:nth-child(5) { animation-delay: 0.24s; }
+@keyframes popIn { from { opacity: 0; transform: translateY(14px) scale(0.97); } }
+
+/* Floating chips */
+.chips-layer { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.chips-layer.fg { z-index: 6; }
+.chips-layer.bg { z-index: 2; }
+.float-chip {
+    position: absolute; padding: 0.55rem 1rem; border-radius: 16px; font-family: var(--mono); font-size: 0.85rem; font-weight: 600; white-space: nowrap; color: white;
+    background: linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.06)); border: 1px solid rgba(255, 255, 255, 0.28);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255,255,255,0.35);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); will-change: transform;
+}
+.float-chip.big { font-size: 1.05rem; padding: 0.7rem 1.25rem; border-radius: 20px; }
+.chips-layer.bg .float-chip { opacity: 0.55; font-size: 0.75rem; filter: blur(0.6px); }
+.orb { position: absolute; border-radius: 50%; background: radial-gradient(circle at 30% 28%, #ffffff 0 6%, var(--accent) 22%, rgba(255, 140, 90, 0.9) 55%, rgba(80, 20, 10, 0.9) 100%); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35); will-change: transform; }
+
+.scroll-hint { position: absolute; left: 50%; bottom: 1.2rem; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: var(--faint); z-index: 5; }
+.mouse { width: 22px; height: 34px; border-radius: 12px; border: 1.5px solid var(--faint); position: relative; }
+.mouse::after { content: ''; position: absolute; top: 6px; left: 50%; width: 3px; height: 7px; margin-left: -1.5px; border-radius: 2px; background: var(--accent); animation: wheel 1.6s ease-in-out infinite; }
+@keyframes wheel { 0% { opacity: 0; transform: translateY(0); } 40% { opacity: 1; } 100% { opacity: 0; transform: translateY(10px); } }
+
+/* ---------- Shared section styles ---------- */
+section { position: relative; z-index: 1; }
+.section { padding: 7rem 6%; max-width: 1320px; margin: 0 auto; }
+.section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; margin-bottom: 3.2rem; flex-wrap: wrap; }
+.section-title { font-family: var(--script); font-weight: 400; font-size: clamp(3.4rem, 7vw, 6.5rem); line-height: 0.9; }
+.section-note { color: var(--muted); max-width: 26rem; line-height: 1.6; }
+.reveal { opacity: 0; transform: translateY(40px); }
+.glass-card { background: var(--glass); border: 1px solid var(--line); border-radius: 26px; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+
+/* About */
+.about-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 4rem; align-items: center; }
+.portrait-wrap { position: relative; height: 620px; display: grid; place-items: end center; }
+.portrait-disc { position: absolute; bottom: 0; left: 50%; width: 460px; height: 460px; margin-left: -230px; border-radius: 50%; background: radial-gradient(circle at 40% 35%, var(--accent), #ff8c5a 45%, rgba(255, 140, 90, 0) 72%); opacity: 0.55; }
+.portrait-ring { position: absolute; bottom: -20px; left: 50%; width: 520px; height: 520px; margin-left: -260px; border-radius: 50%; border: 1.5px dashed rgba(255, 214, 165, 0.45); animation: spinSlow 40s linear infinite; }
+@keyframes spinSlow { to { transform: rotate(360deg); } }
+.portrait-wrap img.me { position: relative; z-index: 1; height: 600px; width: auto; max-width: none; filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.45)); -webkit-mask-image: linear-gradient(black 85%, transparent); mask-image: linear-gradient(black 85%, transparent); }
+.badge-float { position: absolute; z-index: 2; padding: 0.7rem 1.1rem; border-radius: 18px; font-weight: 800; font-size: 0.9rem; box-shadow: 0 16px 34px rgba(0, 0, 0, 0.35); }
+.badge-float small { display: block; font-weight: 600; font-size: 0.72rem; opacity: 0.75; }
+.badge-a { left: 0; top: 30%; background: var(--accent); color: var(--accent-ink); transform: rotate(-6deg); }
+.badge-b { right: 0; top: 52%; background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transform: rotate(5deg); }
+.about-kicker { color: var(--accent); font-weight: 700; margin: 1.2rem 0 1rem; font-size: 1.05rem; }
+.about-text p { font-size: 1.08rem; line-height: 1.75; color: var(--muted); margin-bottom: 1rem; }
+.about-lead { font-size: clamp(1.25rem, 2vw, 1.6rem) !important; color: white !important; line-height: 1.5 !important; }
+.word { display: inline-block; opacity: 0.2; }
+.tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.4rem; }
+.tags span { padding: 0.5rem 1rem; border-radius: 100px; font-weight: 700; font-size: 0.85rem; border: 1px solid var(--line); background: var(--glass); }
+.tags span:nth-child(1) { color: #9ec5ff; } .tags span:nth-child(2) { color: #8ff0c8; } .tags span:nth-child(3) { color: #d3b3ff; } .tags span:nth-child(4) { color: #ffc28a; }
+
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 4rem; }
+.stat { padding: 1.7rem; }
+.stat-num { font-size: clamp(2.6rem, 5vw, 4rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1; color: var(--accent); }
+.stat p { margin-top: 0.6rem; color: var(--muted); font-size: 0.92rem; }
+
+/* Workspace band */
+.band { position: relative; height: 70vh; min-height: 420px; overflow: hidden; margin: 2rem 0; display: grid; place-items: center; text-align: center; z-index: 1; }
+.band img { position: absolute; inset: -10% 0; width: 100%; height: 120%; object-fit: cover; filter: saturate(0.85) brightness(0.55); will-change: transform; }
+.band::after { content: ''; position: absolute; inset: 0; background: linear-gradient(var(--bg-outer), transparent 30%, transparent 70%, var(--bg-outer)); }
+.band-text { position: relative; z-index: 2; padding: 0 6%; }
+.band-text small { display: block; color: var(--accent); font-weight: 700; letter-spacing: 0.04em; margin-bottom: 1rem; }
+.band-text h2 { font-family: var(--script); font-weight: 400; font-size: clamp(3.4rem, 9vw, 8.5rem); line-height: 0.9; }
+
+/* Skills */
+.skills-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 1.4rem; }
+.skill-bars { padding: 2rem; display: grid; gap: 1.3rem; }
+.skill-bars h3, .tools h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 0.3rem; }
+.sb-top { display: flex; justify-content: space-between; font-weight: 700; font-size: 0.92rem; margin-bottom: 0.55rem; }
+.sb-top span:last-child { color: var(--accent); font-family: var(--mono); }
+.sb-track { height: 10px; border-radius: 10px; background: rgba(255, 255, 255, 0.08); overflow: hidden; }
+.sb-fill { height: 100%; width: 0; border-radius: 10px; background: linear-gradient(90deg, var(--accent), #ff8c5a); box-shadow: 0 0 18px rgba(255, 170, 120, 0.45); }
+.tools { padding: 2rem; }
+.tool-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; margin-top: 1rem; }
+.tool { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; padding: 1rem 0.4rem; border-radius: 18px; background: rgba(255,255,255,0.05); border: 1px solid transparent; font-size: 0.78rem; font-weight: 600; text-align: center; transition: transform 0.3s, border-color 0.3s, background 0.3s; }
+.tool i { font-size: 1.7rem; color: var(--accent); }
+.tool:hover { transform: translateY(-5px) rotate(-3deg); border-color: rgba(255, 214, 165, 0.4); background: rgba(255,255,255,0.09); }
+.expertise { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1.4rem; }
+.exp-item { padding: 1.6rem; transition: transform 0.4s, border-color 0.3s; }
+.exp-item:hover { transform: translateY(-6px); border-color: rgba(255, 214, 165, 0.4); }
+.exp-item i { font-size: 1.6rem; width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center; background: var(--accent); color: var(--accent-ink); margin-bottom: 1rem; }
+.exp-item h4 { font-size: 1rem; font-weight: 800; margin-bottom: 0.4rem; }
+.exp-item p { color: var(--muted); font-size: 0.88rem; line-height: 1.55; }
+.marquee { overflow: hidden; padding: 0.5rem 0; margin-top: 3rem; -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent); mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent); }
+.marquee + .marquee { margin-top: 0.4rem; }
+.marquee-track { display: flex; gap: 1rem; width: max-content; animation: scrollX 40s linear infinite; }
+.marquee.reverse .marquee-track { animation-direction: reverse; animation-duration: 46s; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@keyframes scrollX { to { transform: translateX(-50%); } }
+.marquee-track span { font-family: var(--script); font-size: clamp(2.2rem, 4.2vw, 3.6rem); line-height: 1.15; padding: 0.15rem 1.5rem; border-radius: 100px; border: 1px solid var(--line); background: var(--glass); white-space: nowrap; }
+.marquee.reverse .marquee-track span { color: var(--accent); background: transparent; }
+
+/* Projects */
+.filters-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.2rem; }
+.filter-btn { font-family: var(--sans); font-weight: 700; font-size: 0.82rem; color: var(--muted); background: var(--glass); border: 1px solid var(--line); padding: 0.55rem 1.05rem; border-radius: 100px; cursor: pointer; transition: background 0.3s, color 0.3s, border-color 0.3s; }
+.filter-btn:hover { color: white; border-color: rgba(255,255,255,0.35); }
+.filter-btn.active { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; }
+.p-card {
+    position: relative; display: flex; flex-direction: column; border-radius: 26px; overflow: hidden; cursor: pointer;
+    background: var(--glass); border: 1px solid var(--line); will-change: transform; transform-style: preserve-3d;
+    transition: border-color 0.3s;
+}
+.p-card:hover { border-color: rgba(255, 214, 165, 0.45); }
+.p-card .glare { position: absolute; inset: 0; pointer-events: none; z-index: 3; background: radial-gradient(circle at var(--gx, 50%) var(--gy, 0%), rgba(255, 255, 255, 0.16), transparent 45%); opacity: 0; transition: opacity 0.3s; }
+.p-card:hover .glare { opacity: 1; }
+.p-cover { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #0b0d14; }
+.p-cover img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.p-card:hover .p-cover img { transform: scale(1.07); }
+.p-cover::after { content: ''; position: absolute; inset: 0; background: linear-gradient(transparent 55%, rgba(5, 8, 24, 0.7)); }
+.p-cat { position: absolute; z-index: 2; left: 14px; top: 14px; font-size: 0.72rem; font-weight: 800; padding: 0.35rem 0.75rem; border-radius: 100px; background: rgba(5, 8, 24, 0.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2); }
+.p-play { position: absolute; z-index: 2; right: 14px; top: 14px; display: flex; gap: 0.4rem; }
+.p-play a { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: rgba(5, 8, 24, 0.6); border: 1px solid rgba(255,255,255,0.2); text-decoration: none; font-size: 1rem; transition: background 0.3s, color 0.3s; }
+.p-play a:hover { background: var(--accent); color: var(--accent-ink); }
+.p-video-tag { position: absolute; z-index: 2; left: 14px; bottom: 12px; font-size: 0.72rem; font-weight: 700; display: flex; align-items: center; gap: 0.3rem; color: var(--accent); }
+.p-body { padding: 1.3rem 1.4rem 1.4rem; display: flex; flex-direction: column; gap: 0.7rem; flex: 1; }
+.p-body h3 { font-size: 1.12rem; font-weight: 800; letter-spacing: -0.01em; line-height: 1.3; }
+.p-body p { color: var(--muted); font-size: 0.88rem; line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.p-tech { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.p-tech span, .m-tech span { font-family: var(--mono); font-size: 0.68rem; padding: 0.3rem 0.6rem; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.12); }
+.p-tech span.more { color: var(--accent); }
+.p-foot { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 0.6rem; font-size: 0.84rem; font-weight: 700; }
+.p-foot .details { color: var(--accent); display: inline-flex; align-items: center; gap: 0.3rem; }
+.p-foot .details i { transition: transform 0.3s; }
+.p-card:hover .p-foot .details i { transform: translateX(5px); }
+.phone-btn { background: none; border: 1px solid var(--line); color: var(--muted); border-radius: 100px; padding: 0.35rem 0.75rem; font-family: var(--sans); font-weight: 700; font-size: 0.74rem; cursor: pointer; display: inline-flex; gap: 0.3rem; align-items: center; transition: color 0.3s, border-color 0.3s; }
+.phone-btn:hover { color: var(--accent); border-color: var(--accent); }
+
+/* Modal */
+.modal {
+    position: fixed; inset: 0; z-index: 500; display: flex; justify-content: center; align-items: flex-start; padding: 4vh 3%;
+    overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
+    background: rgba(3, 5, 15, 0.9); opacity: 0; visibility: hidden; pointer-events: none;
+    transition: opacity 0.35s, visibility 0s linear 0.35s;
+}
+.modal.open { transition: opacity 0.35s, visibility 0s; visibility: visible; }
+.modal.open { opacity: 1; pointer-events: auto; }
+.modal-box { position: relative; width: min(1100px, 100%); border-radius: 32px; background: linear-gradient(170deg, #161b3d, #0a0d20); border: 1px solid rgba(255,255,255,0.14); box-shadow: 0 30px 60px rgba(0,0,0,0.5); padding: 2.2rem; transform: translateY(40px) scale(0.97); transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.modal.open .modal-box { transform: none; }
+.m-close { position: absolute; right: 1.4rem; top: 1.4rem; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: var(--glass); color: white; font-size: 1.3rem; cursor: pointer; transition: transform 0.3s, background 0.3s; }
+.m-close:hover { transform: rotate(90deg); background: var(--glass-strong); }
+.m-cat { color: var(--accent); font-weight: 700; font-size: 0.85rem; }
+.m-title { font-family: var(--script); font-weight: 400; font-size: clamp(2.6rem, 5vw, 4.2rem); line-height: 1; margin: 0.3rem 3.5rem 1.4rem 0; }
+.m-video { display: block; width: 100%; aspect-ratio: 16 / 9; border-radius: 20px; background: #000; margin-bottom: 1.4rem; max-height: 70vh; }
+.m-video-err { color: var(--accent); background: rgba(255,214,165,0.08); border: 1px solid rgba(255,214,165,0.3); border-radius: 14px; padding: 0.8rem 1rem; margin: -0.6rem 0 1.4rem; font-size: 0.9rem; }
+.m-gallery { display: flex; gap: 0.9rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 0.9rem; margin-bottom: 1.6rem; }
+.m-gallery::-webkit-scrollbar { height: 6px; }
+.m-gallery::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 6px; }
+.m-gallery img { flex-shrink: 0; height: 420px; width: auto; border-radius: 18px; scroll-snap-align: start; background: #0b0d14; border: 1px solid rgba(255,255,255,0.08); cursor: zoom-in; }
+.m-gallery img.land { height: 320px; }
+.m-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 2rem; }
+.m-grid h4 { font-size: 1rem; font-weight: 800; margin-bottom: 0.7rem; }
+.m-desc { color: var(--muted); line-height: 1.7; margin-bottom: 1.4rem; }
+.m-list { list-style: none; display: grid; gap: 0.5rem; }
+.m-list li { display: flex; gap: 0.6rem; color: var(--muted); line-height: 1.5; font-size: 0.92rem; }
+.m-list li i { color: var(--accent); margin-top: 0.15rem; }
+.m-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.4rem; }
+.m-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.roles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+.role-card { padding: 1.4rem; border-radius: 22px; background: rgba(255,255,255,0.05); border: 1px solid var(--line); }
+.role-card h5 { font-size: 1rem; font-weight: 800; display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem; }
+.role-card h5 i { color: var(--accent); }
+.role-card p { color: var(--muted); font-size: 0.86rem; line-height: 1.55; margin-bottom: 0.8rem; }
+.role-card .m-list li { font-size: 0.84rem; }
+.cv-box { width: min(900px, 100%); }
+.cv-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; margin: 0 3.5rem 1.6rem 0; }
+.cv-head h3 { font-family: var(--script); font-weight: 400; font-size: clamp(2.6rem, 5vw, 3.6rem); line-height: 1; }
+.cv-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.cv-pages { display: grid; gap: 1.2rem; }
+.cv-pages canvas, .cv-pages img { display: block; width: 100%; height: auto; border-radius: 14px; background: white; box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35); }
+.cv-frame { display: block; width: 100%; height: 85vh; border: 0; border-radius: 14px; background: white; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45); }
+.cv-loading { display: flex; align-items: center; justify-content: center; gap: 0.8rem; min-height: 50vh; color: var(--muted); font-weight: 600; }
+.cv-loading::before { content: ''; width: 26px; height: 26px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.15); border-top-color: var(--accent); animation: spinSlow 0.8s linear infinite; }
+.lightbox { position: fixed; inset: 0; z-index: 600; background: rgba(0,0,0,0.9); display: grid; place-items: center; padding: 3vh; opacity: 0; pointer-events: none; transition: opacity 0.3s; cursor: zoom-out; }
+.lightbox.open { opacity: 1; pointer-events: auto; }
+.lightbox img { max-height: 94vh; max-width: 94vw; border-radius: 16px; }
+
+/* Experience */
+.timeline { position: relative; padding-left: 3rem; }
+.tl-track, .tl-fill { position: absolute; left: 10px; top: 0; bottom: 0; width: 2px; border-radius: 2px; }
+.tl-track { background: var(--line); }
+.tl-fill { background: linear-gradient(var(--accent), #ff8c5a); transform-origin: top; transform: scaleY(0); }
+.job { position: relative; display: grid; grid-template-columns: 220px 1fr; gap: 2rem; padding: 1.4rem 0 2.4rem; }
+.job::before { content: ''; position: absolute; left: calc(-3rem + 4px); top: 1.9rem; width: 14px; height: 14px; border-radius: 50%; background: var(--bg-outer); border: 2px solid var(--accent); }
+.job-when { color: var(--accent); font-weight: 700; font-size: 0.92rem; padding-top: 0.25rem; }
+.job-when small { display: block; color: var(--faint); font-weight: 500; margin-top: 0.35rem; font-size: 0.8rem; line-height: 1.45; }
+.job-card { padding: 1.8rem 2rem; transition: border-color 0.3s, background 0.3s; }
+.job-card:hover { border-color: rgba(255, 214, 165, 0.45); background: var(--glass-strong); }
+.job-card h3 { font-size: 1.2rem; font-weight: 800; }
+.job-card h4 { font-size: 0.95rem; font-weight: 600; color: var(--accent); margin: 0.3rem 0 0.8rem; }
+.job-card .lead { color: var(--muted); line-height: 1.6; margin-bottom: 0.9rem; font-size: 0.95rem; }
+.job-card ul { list-style: none; display: grid; gap: 0.5rem; }
+.job-card li { position: relative; padding-left: 1.3rem; color: var(--muted); line-height: 1.55; font-size: 0.92rem; }
+.job-card li::before { content: ''; position: absolute; left: 0; top: 0.6em; width: 7px; height: 7px; border-radius: 2px; background: var(--accent); transform: rotate(45deg); }
+.job-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+.job-tags span { font-size: 0.74rem; font-weight: 700; padding: 0.32rem 0.7rem; border-radius: 100px; background: rgba(255, 214, 165, 0.1); color: var(--accent); border: 1px solid rgba(255, 214, 165, 0.25); }
+
+/* Education */
+.edu-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 1.4rem; }
+.edu-list, .cert-list { display: grid; gap: 1rem; align-content: start; }
+.edu { display: flex; gap: 1.2rem; align-items: center; padding: 1.3rem 1.5rem; }
+.logo-box { width: 64px; height: 64px; border-radius: 18px; background: white; display: grid; place-items: center; flex-shrink: 0; padding: 8px; }
+.logo-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.edu h3 { font-size: 1.02rem; font-weight: 800; }
+.edu p { color: var(--muted); font-size: 0.88rem; margin-top: 0.2rem; line-height: 1.45; }
+.edu-meta { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.6rem; }
+.edu-meta span { font-size: 0.74rem; font-weight: 700; padding: 0.3rem 0.65rem; border-radius: 100px; background: rgba(255,255,255,0.08); }
+.edu-meta span.gpa { background: var(--accent); color: var(--accent-ink); }
+.certs-head { font-family: var(--script); font-weight: 400; font-size: 3rem; line-height: 1; margin-bottom: 0.4rem; }
+.cert { display: flex; gap: 1rem; align-items: center; padding: 1.2rem 1.4rem; border-color: rgba(255, 214, 165, 0.25); background: linear-gradient(150deg, rgba(255, 214, 165, 0.1), rgba(255, 255, 255, 0.03)); }
+.cert b { display: block; font-size: 0.95rem; }
+.cert small { color: var(--muted); font-size: 0.82rem; }
+
+/* Contact */
+.contact { text-align: center; padding: 8rem 6% 4rem; max-width: 1320px; margin: 0 auto; }
+.contact .section-title { font-size: clamp(4rem, 11vw, 10rem); }
+.contact > p { color: var(--muted); margin: 1.2rem auto 2.6rem; max-width: 34rem; line-height: 1.6; font-size: 1.05rem; }
+.contact-cards { display: grid; grid-template-columns: 1.55fr 1fr 1fr 1.15fr; gap: 1rem; text-align: left; }
+.c-card { display: flex; align-items: center; gap: 0.9rem; padding: 1.2rem; text-decoration: none; transition: transform 0.35s, border-color 0.3s, background 0.3s; min-width: 0; }
+a.c-card:hover { transform: translateY(-5px); border-color: rgba(255, 214, 165, 0.45); background: var(--glass-strong); }
+.c-card i.ic { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; background: var(--accent); color: var(--accent-ink); font-size: 1.25rem; flex-shrink: 0; }
+.c-card small { display: block; color: var(--faint); font-size: 0.75rem; }
+.c-card b { display: block; font-size: 0.86rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.why { margin-top: 1.2rem; padding: 1.8rem; text-align: left; display: grid; grid-template-columns: 220px 1fr; gap: 1.4rem; align-items: center; }
+.why h3 { font-family: var(--script); font-weight: 400; font-size: 2.6rem; line-height: 1; }
+.why-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+.why-list div { display: flex; gap: 0.6rem; align-items: center; font-weight: 600; font-size: 0.92rem; }
+.why-list i { width: 26px; height: 26px; border-radius: 50%; background: rgba(110, 231, 183, 0.15); color: #6ee7b7; display: grid; place-items: center; flex-shrink: 0; }
+.contact-actions { display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap; margin-top: 2.4rem; }
+
+/* Footer */
+footer { position: relative; z-index: 1; max-width: 1320px; margin: 0 auto; padding: 3rem 6% 2rem; border-top: 1px solid var(--line); }
+.f-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 2rem; }
+.f-grid h3 { font-family: var(--script); font-weight: 400; font-size: 2.4rem; line-height: 1; margin-bottom: 0.6rem; }
+.f-grid h4 { font-size: 0.95rem; font-weight: 800; margin-bottom: 0.8rem; }
+.f-grid p, .f-grid li { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+.f-grid ul { list-style: none; display: grid; gap: 0.35rem; }
+.f-grid a { text-decoration: none; transition: color 0.3s; }
+.f-grid a:hover { color: var(--accent); }
+.f-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-top: 2.4rem; padding-top: 1.4rem; border-top: 1px solid var(--line); color: var(--faint); font-size: 0.82rem; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1180px) {
+    .hero { grid-template-columns: minmax(0, 1fr); text-align: center; padding-top: 7.5rem; gap: 3rem; }
+    .hero-left { align-items: center; }
+    .intro { margin: 0 auto; }
+    .hero-right { align-items: center; text-align: center; }
+    .hero-right > div { max-width: 100%; }
+    .project-picker { grid-template-columns: repeat(8, 104px); justify-content: center; }
+    .scroll-hint { display: none; }
+    .nav { display: none; }
+    .menu-btn { display: grid; place-items: center; }
+    .about-grid { grid-template-columns: 1fr; text-align: center; }
+    .tags { justify-content: center; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .skills-grid { grid-template-columns: 1fr; }
+    .expertise { grid-template-columns: repeat(2, 1fr); }
+    .projects-grid { grid-template-columns: repeat(2, 1fr); }
+    .contact-cards { grid-template-columns: repeat(2, 1fr); }
+    .m-grid { grid-template-columns: 1fr; }
+    .roles { grid-template-columns: 1fr; }
+}
+@media (max-width: 1000px) {
+    .project-picker { display: flex; overflow-x: auto; max-width: 100%; padding: 0.4rem 0.2rem 0.9rem; justify-content: flex-start; }
+    .pick { flex: 0 0 108px; }
+}
+@media (max-width: 760px) {
+    .hello { font-size: 4.2rem; }
+    .phone { width: 252px; height: 520px; }
+    .phone-glow { width: 360px; height: 360px; }
+    .header .btn.plain { display: none; }
+    .portrait-wrap { height: 470px; }
+    .portrait-wrap img.me { height: 460px; }
+    .portrait-disc { width: 340px; height: 340px; margin-left: -170px; }
+    .portrait-ring { width: 380px; height: 380px; margin-left: -190px; }
+    .badge-float { font-size: 0.78rem; }
+    .stats { grid-template-columns: 1fr 1fr; }
+    .stat { padding: 1.2rem; }
+    .tool-grid { grid-template-columns: repeat(4, 1fr); }
+    .expertise { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .job { grid-template-columns: 1fr; gap: 0.6rem; }
+    .timeline { padding-left: 2rem; }
+    .job::before { left: calc(-2rem + 4px); }
+    .job-card { padding: 1.4rem; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .contact-cards { grid-template-columns: 1fr; }
+    .why { grid-template-columns: 1fr; }
+    .why-list { grid-template-columns: 1fr; }
+    .f-grid { grid-template-columns: 1fr; }
+    .modal-box { padding: 1.4rem; border-radius: 24px; }
+    .m-gallery img { height: 340px; }
+    .m-gallery img.land { height: 200px; }
+    .chips-layer .hide-sm { display: none; }
+    .filters-row { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 0.4rem; margin-left: -6vw; margin-right: -6vw; padding-left: 6vw; padding-right: 6vw; }
+    .filter-btn { flex-shrink: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; }
+    .word { opacity: 1; }
+}
+</style>
 </head>
 <body>
-    <div class="min-h-screen">
-        <!-- Header Component -->
-        <header id="header" class="header"></header>
 
-        <!-- Hero Section -->
-        <section id="hero" class="section"></section>
+<div id="bg"></div>
+<div id="grain"></div>
+<div id="bubbles"></div>
+<div class="cursor-ring"></div>
+<div class="cursor-dot"></div>
 
-        <!-- About Section -->
-        <section id="about" class="section"></section>
+<header class="header" id="header">
+    <a href="#home" class="logo" aria-label="Md. Mehedi Hasan, home">
+        <span class="logo-mark">M</span>
+        <span>Mehedi Hasan</span>
+    </a>
+    <nav class="nav" aria-label="Main">
+        <a href="#home" class="active" data-link="home">Home</a>
+        <a href="#about" data-link="about">About</a>
+        <a href="#skills" data-link="skills">Skills</a>
+        <a href="#projects" data-link="projects">Projects</a>
+        <a href="#experience" data-link="experience">Experience</a>
+        <a href="#contact" data-link="contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+        <a class="btn plain magnetic" href="assets/web/cv/Md_Mehedi_Hasan.pdf" data-cv><i class="ri-file-pdf-line"></i> My CV</a>
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><i class="ri-menu-line"></i></button>
+    </div>
+</header>
 
-        <!-- Skills Section -->
-        <section id="skills" class="section"></section>
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+    <a href="assets/web/cv/Md_Mehedi_Hasan.pdf" data-cv>My CV</a>
+</nav>
 
-        <!-- Projects Section -->
-        <section id="projects" class="section"></section>
-
-        <!-- Experience Section -->
-        <section id="experience" class="section"></section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="section"></section>
-
-        <!-- Footer -->
-        <footer id="footer"></footer>
+<main>
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+    <div class="chips-layer bg" aria-hidden="true">
+        <div class="float-chip" style="top:12%;left:36%">Provider</div>
+        <div class="float-chip hide-sm" style="top:78%;left:58%">MVVM</div>
+        <div class="float-chip hide-sm" style="top:64%;left:31%">GetIt</div>
+        <div class="orb" style="top:20%;left:62%;width:46px;height:46px"></div>
+        <div class="orb hide-sm" style="top:84%;left:40%;width:28px;height:28px;opacity:0.7"></div>
     </div>
 
-    <script src="js/script.js"></script>
-    <script src="js/hero.js"></script>
-    <script src="js/aboutsection.js"></script>
-    <script src="js/skill.js"></script>
-    <script src="js/project.js"></script>
-    <script src="js/experienceEducation.js"></script>
-    <script src="js/contact.js"></script>
-    <script src="js/footer.js"></script>
+    <div class="hero-left">
+        <h1 class="hello">
+            <span class="line-mask"><span>Hello, I'm</span></span>
+            <span class="line-mask"><span>Mehedi</span></span>
+        </h1>
+        <p class="role hero-in">Md. Mehedi Hasan · Flutter Developer</p>
+        <p class="intro hero-in">A mobile app developer with 5+ years specializing in Flutter. I design and build beautiful, high-performance cross-platform apps, from enterprise ERPs to consumer apps, with clean architecture and smooth performance on iOS and Android.</p>
+        <div class="cta-row hero-in">
+            <a class="btn magnetic" href="#projects">See my work <span class="icon">+</span></a>
+            <a class="btn ghost magnetic" href="https://leetcode.com/u/mehedihasan177/" target="_blank" rel="noopener"><img src="assets/web/logo-leetcode.webp" alt="">LeetCode</a>
+        </div>
+        <div class="now hero-in">
+            <div class="now-avatar"><img src="assets/web/profile.webp" alt="Md. Mehedi Hasan"></div>
+            <div>
+                <small><span class="pulse-dot"></span>Currently at</small>
+                <strong>Nexdecade Technology, Dhaka</strong>
+            </div>
+        </div>
+    </div>
+
+    <div class="phone-col">
+        <div class="phone-glow"></div>
+        <div class="phone-float" id="phoneFloat">
+            <div class="phone" id="phone">
+                <div class="face front">
+                    <div class="screen" id="screen">
+                        <div class="notch"></div>
+                    </div>
+                </div>
+                <div class="face back" aria-hidden="true">
+                    <div class="camera-bump"><i></i><i></i><i></i><i></i></div>
+                    <span class="back-mark">MH</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-right">
+        <div>
+            <p class="picker-label hero-in">Load a real app into the phone</p>
+            <div class="project-picker hero-in" id="picker"></div>
+        </div>
+        <h2 class="side-script">
+            <span class="line-mask"><span>Flutter</span></span>
+            <span class="line-mask"><span>Developer</span></span>
+        </h2>
+    </div>
+
+    <div class="chips-layer fg" aria-hidden="true">
+        <div class="float-chip big" style="top:17%;left:37%">GetX</div>
+        <div class="float-chip" style="top:73%;left:36%">Bloc</div>
+        <div class="float-chip big" style="top:27%;left:59%">Dart</div>
+        <div class="float-chip hide-sm" style="top:63%;left:60%">Firebase</div>
+        <div class="float-chip" style="top:88%;left:49%">Riverpod</div>
+        <div class="float-chip hide-sm" style="top:9%;left:50%">{ }</div>
+        <div class="float-chip hide-sm" style="top:47%;left:35%">WebRTC</div>
+        <div class="orb" style="top:52%;left:63%;width:56px;height:56px"></div>
+        <div class="orb hide-sm" style="top:36%;left:39%;width:32px;height:32px"></div>
+    </div>
+
+    <div class="scroll-hint"><div class="mouse"></div>Scroll</div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="section">
+    <div class="about-grid">
+        <div class="portrait-wrap reveal">
+            <div class="portrait-disc"></div>
+            <div class="portrait-ring"></div>
+            <img class="me" src="assets/web/profile.webp" alt="Md. Mehedi Hasan" width="577" height="1000">
+            <div class="badge-float badge-a" data-drift="-30">5+ years<small>Experience</small></div>
+            <div class="badge-float badge-b" data-drift="40">20+ apps<small>Built</small></div>
+        </div>
+        <div class="about-text">
+            <h2 class="section-title reveal">About me</h2>
+            <p class="about-kicker reveal">Professional experiences since 2021</p>
+            <p class="about-lead split-words">I'm a dedicated Flutter developer who transforms ideas into beautiful, functional mobile applications that users love.</p>
+            <p class="reveal">My journey in mobile development began with a passion for creating seamless user experiences. Over the past 5 years, I've specialized in Flutter, building cross-platform applications that perform beautifully on both iOS and Android.</p>
+            <p class="reveal">I believe in writing clean, maintainable code and following best practices. My expertise extends beyond coding: I understand the importance of user experience design, performance optimization and scalable architecture.</p>
+            <p class="reveal">When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community.</p>
+            <div class="tags reveal"><span>Problem Solver</span><span>Team Player</span><span>Continuous Learner</span><span>Detail Oriented</span></div>
+        </div>
+    </div>
+
+    <div class="stats">
+        <div class="stat glass-card reveal"><div class="stat-num"><span data-count="5">0</span>+</div><p>Years experience</p></div>
+        <div class="stat glass-card reveal"><div class="stat-num"><span data-count="10">0</span>+</div><p>Apps delivered</p></div>
+        <div class="stat glass-card reveal"><div class="stat-num"><span data-count="7">0</span>+</div><p>Happy clients</p></div>
+        <div class="stat glass-card reveal"><div class="stat-num"><span data-count="100">0</span>%</div><p>Client satisfaction</p></div>
+    </div>
+</section>
+
+<!-- ================= WORKSPACE BAND ================= -->
+<div class="band" aria-hidden="true">
+    <img src="assets/web/workspace-wide.webp" alt="">
+    <div class="band-text">
+        <small>iOS · Android · Desktop</small>
+        <h2>Clean code,<br>real products.</h2>
+    </div>
+</div>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills" class="section">
+    <div class="section-head">
+        <h2 class="section-title reveal">Skills & expertise</h2>
+        <p class="section-note reveal">A complete toolkit for building exceptional mobile applications.</p>
+    </div>
+    <div class="skills-grid">
+        <div class="skill-bars glass-card reveal" id="skillBars">
+            <h3>Technical skills</h3>
+        </div>
+        <div class="tools glass-card reveal">
+            <h3>Tools & technologies</h3>
+            <div class="tool-grid">
+                <div class="tool"><i class="ri-flutter-fill"></i>Flutter</div>
+                <div class="tool"><i class="ri-code-line"></i>VS Code</div>
+                <div class="tool"><i class="ri-android-fill"></i>Android Studio</div>
+                <div class="tool"><i class="ri-apple-fill"></i>Xcode</div>
+                <div class="tool"><i class="ri-fire-fill"></i>Firebase</div>
+                <div class="tool"><i class="ri-git-branch-fill"></i>Git</div>
+                <div class="tool"><i class="ri-palette-fill"></i>Figma</div>
+                <div class="tool"><i class="ri-mail-send-fill"></i>Postman</div>
+            </div>
+        </div>
+    </div>
+    <div class="expertise">
+        <div class="exp-item glass-card reveal"><i class="ri-smartphone-line"></i><h4>Cross-platform development</h4><p>Apps that work seamlessly on both iOS and Android.</p></div>
+        <div class="exp-item glass-card reveal"><i class="ri-palette-line"></i><h4>UI/UX implementation</h4><p>Designs turned into pixel-perfect, responsive mobile interfaces.</p></div>
+        <div class="exp-item glass-card reveal"><i class="ri-speed-up-line"></i><h4>Performance optimization</h4><p>Smooth, fast performance and efficient memory use.</p></div>
+        <div class="exp-item glass-card reveal"><i class="ri-links-line"></i><h4>API integration</h4><p>REST APIs, WebSocket and real-time data services.</p></div>
+    </div>
+    <div class="marquee"><div class="marquee-track">
+        <span>Flutter</span><span>Dart</span><span>GetX</span><span>Bloc</span><span>Riverpod</span><span>Provider</span><span>Firebase</span><span>WebRTC</span><span>WebSocket</span>
+        <span>Flutter</span><span>Dart</span><span>GetX</span><span>Bloc</span><span>Riverpod</span><span>Provider</span><span>Firebase</span><span>WebRTC</span><span>WebSocket</span>
+    </div></div>
+    <div class="marquee reverse"><div class="marquee-track">
+        <span>Clean Architecture</span><span>MVVM</span><span>Dio</span><span>GetIt</span><span>Google Maps</span><span>bKash</span><span>SSLCommerz</span><span>ML Kit</span>
+        <span>Clean Architecture</span><span>MVVM</span><span>Dio</span><span>GetIt</span><span>Google Maps</span><span>bKash</span><span>SSLCommerz</span><span>ML Kit</span>
+    </div></div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section id="projects" class="section">
+    <div class="section-head">
+        <h2 class="section-title reveal">Featured projects</h2>
+        <p class="section-note reveal">Mobile and desktop apps built with Flutter. Open any project for screenshots, videos and details.</p>
+    </div>
+    <div class="filters-row reveal" id="filters"></div>
+    <div class="projects-grid" id="projectsGrid"></div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience" class="section">
+    <div class="section-head">
+        <h2 class="section-title reveal">Experience</h2>
+        <p class="section-note reveal">My professional growth in Flutter development, from intern to leading mobile development.</p>
+    </div>
+    <div class="timeline" id="timeline">
+        <div class="tl-track"></div>
+        <div class="tl-fill" id="tlFill"></div>
+    </div>
+</section>
+
+<!-- ================= EDUCATION ================= -->
+<section id="education" class="section">
+    <div class="section-head">
+        <h2 class="section-title reveal">Education</h2>
+    </div>
+    <div class="edu-grid">
+        <div class="edu-list" id="eduList"></div>
+        <div class="cert-list" id="certList">
+            <h3 class="certs-head reveal">Certifications</h3>
+        </div>
+    </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="contact">
+    <h2 class="section-title reveal">Let's work together</h2>
+    <p class="reveal">Ready to bring your mobile app idea to life? I'd love to hear about your project.</p>
+    <div class="contact-cards">
+        <a class="c-card glass-card reveal" href="mailto:mdmehedihasan4051@gmail.com"><i class="ic ri-mail-line"></i><div><small>Email</small><b>mdmehedihasan4051@gmail.com</b></div></a>
+        <a class="c-card glass-card reveal" href="https://wa.me/8801877286284" target="_blank" rel="noopener"><i class="ic ri-whatsapp-line"></i><div><small>Phone / WhatsApp</small><b>+880 1877-286284</b></div></a>
+        <div class="c-card glass-card reveal"><i class="ic ri-map-pin-line"></i><div><small>Location</small><b>Dhaka, Bangladesh</b></div></div>
+        <a class="c-card glass-card reveal" href="https://www.linkedin.com/in/mehedihasanmehedi/" target="_blank" rel="noopener"><i class="ic ri-linkedin-line"></i><div><small>LinkedIn</small><b>in/mehedihasanmehedi</b></div></a>
+    </div>
+    <div class="why glass-card reveal">
+        <h3>Why work with me?</h3>
+        <div class="why-list">
+            <div><i class="ri-check-line"></i>5+ years of proven Flutter expertise</div>
+            <div><i class="ri-check-line"></i>Cross-platform development efficiency</div>
+            <div><i class="ri-check-line"></i>Clean, maintainable code practices</div>
+            <div><i class="ri-check-line"></i>Timely delivery and communication</div>
+        </div>
+    </div>
+    <div class="contact-actions reveal">
+        <a class="btn magnetic" href="https://docs.google.com/forms/d/e/1FAIpQLScu-m3kncsVSjpJJdhH5bWUoOx8f2V38Df6sEqMhu-MpiCuCQ/viewform?usp=publish-editor" target="_blank" rel="noopener">Send me a message <span class="icon">↗</span></a>
+        <a class="btn ghost magnetic" href="assets/web/cv/Md_Mehedi_Hasan.pdf" data-cv><i class="ri-file-pdf-line"></i> View my CV</a>
+        <a class="btn ghost magnetic" href="https://leetcode.com/u/mehedihasan177/" target="_blank" rel="noopener"><img src="assets/web/logo-leetcode.webp" alt="">LeetCode</a>
+    </div>
+</section>
+</main>
+
+<footer>
+    <div class="f-grid">
+        <div>
+            <h3>Md. Mehedi Hasan</h3>
+            <p>Flutter developer passionate about creating beautiful, high-performance mobile applications.</p>
+        </div>
+        <div>
+            <h4>Quick links</h4>
+            <ul><li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li><li><a href="#experience">Experience</a></li><li><a href="#contact">Contact</a></li></ul>
+        </div>
+        <div>
+            <h4>Services</h4>
+            <ul><li>Mobile App Development</li><li>Cross-Platform Solutions</li><li>UI/UX Implementation</li><li>Performance Optimization</li><li>App Maintenance</li></ul>
+        </div>
+    </div>
+    <div class="f-bottom"><span>© <span id="year"></span> Md. Mehedi Hasan</span><span>Built with Flutter mindset ❤️</span></div>
+</footer>
+
+<!-- Project modal -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <div class="modal-box" id="modalBox"></div>
+</div>
+<div class="modal" id="cvModal" role="dialog" aria-modal="true" aria-labelledby="cvTitle">
+    <div class="modal-box cv-box">
+        <button class="m-close" id="cvClose" aria-label="Close"><i class="ri-close-line"></i></button>
+        <div class="cv-head">
+            <h3 id="cvTitle">My CV</h3>
+            <div class="cv-actions">
+                <a class="btn accent" href="assets/web/cv/Md_Mehedi_Hasan.pdf" download="Md_Mehedi_Hasan_CV.pdf"><i class="ri-download-line"></i> Download PDF</a>
+                <a class="btn ghost" href="assets/web/cv/Md_Mehedi_Hasan.pdf" target="_blank" rel="noopener"><i class="ri-external-link-line"></i> Open PDF</a>
+            </div>
+        </div>
+        <div class="cv-pages" id="cvPages"></div>
+    </div>
+</div>
+<div class="lightbox" id="lightbox"><img alt=""></div>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const hasGSAP = typeof gsap !== 'undefined';
+const hasST = hasGSAP && typeof ScrollTrigger !== 'undefined';
+if (hasST) gsap.registerPlugin(ScrollTrigger);
+const W = 'assets/web/';
+const dot = document.querySelector('.cursor-dot');
+const ring = document.querySelector('.cursor-ring');
+const finePointer = window.matchMedia('(pointer: fine)').matches;
+
+/* ================= Data (from the existing portfolio) ================= */
+const PROJECTS = [
+    {
+        key: 'btv', title: 'BTV E-Service', category: 'BTV E-Service', emoji: '📺',
+        colors: { inner: '#0e7a4a', mid: '#06402a', outer: '#021409' }, swatch: 'linear-gradient(135deg,#2fbf7a,#06402a)',
+        chips: ['GetX', 'Dio', 'FCM', 'QR Scanner', 'TUS Upload', 'Syncfusion', 'EN / BN', 'Fl Chart', 'Get Storage', 'Crashlytics'],
+        label: 'BTV ERP', short: 'Enterprise ERP',
+        description: 'A comprehensive Enterprise Resource Planning (ERP) mobile application for Bangladesh Television (BTV), designed for three types of users: Admin, Artist and Visitor. The app streamlines artist management, budgeting, bill processing, gate pass management, FTP file transfer and reporting, with full bilingual (Bengali/English) support.',
+        cover: 'cover-btv', gallery: ['btv-1', 'btv-2', 'btv-3', 'btv-4', 'btv-5', 'btv-6'],
+        video: 'btv',
+        tech: ['Flutter', 'GetX State Management', 'Dio & REST API', 'Firebase (FCM, Auth, Crashlytics)', 'FTP File Transfer (TUS Client)', 'QR Code Scanner (Mobile Scanner)', 'PDF/DOCX Viewer (Syncfusion)', 'Bilingual Support (EN/BN)', 'Local Storage (Get Storage)', 'Fl Charts'],
+        features: ['Role-based access for Admin, Artist and Visitor', 'Artist roster & grade management', 'Pre/Post budget approval', 'Bill creation and payment processing', 'Gate pass management with QR scanning', 'FTP file upload/download', 'Comprehensive reporting'],
+        roles: [
+            { name: 'Internal User (Admin)', icon: 'ri-shield-user-line', description: 'Full administrative control of the ERP system: managing artists, budgets, bills and gate passes. Admins get a dashboard overview of artists, programs, payments and real-time visitor check-ins.', features: ['Artist roster & grade management', 'Pre-budget & post-budget approval', 'Bill creation, AGB bill & payment approval', 'Gate pass approval, QR scanning & check-in verification', 'FTP file/folder management with version history & comments', 'Reports: Program Bill Details, Bill Report, Artist Wise, AGB, Artist Payment'] },
+            { name: 'Artist', icon: 'ri-mic-line', description: 'Artists can manage their roster enrollment, view program schedules, track payments, apply for gate passes, request grade enhancements, and access their rate card and tax information.', features: ['Artist registration & roster enlistment', 'Roster status & grade enhancement requests', 'Program schedules & payment history', 'Gate pass application with vehicle, hardware & guardian info', 'My rate card & complete tax list', 'Notifications & bilingual (Bengali/English) support'] },
+            { name: 'Visitor', icon: 'ri-user-star-line', description: 'Visitors can register, apply for gate passes and track their visit status with QR code verification. The dashboard shows on-site visitors, pending approvals, approved and rejected passes.', features: ['Visitor registration & login', 'Gate pass application & tracking', 'My gate pass list with search & pagination', 'Gate pass editing in Waiting/Return status', 'Dashboard: On-site, Pending, Approved, Rejected stats', 'QR code pass & attachment viewing'] }
+        ],
+        play: 'https://play.google.com/store/apps/details?id=com.btv.btverp&pcampaignid=web_share', ios: ''
+    },
+    {
+        key: 'bdjobs', title: 'BDJobs Employer App', category: 'Bdjobs', emoji: '💼',
+        colors: { inner: '#0b4f8a', mid: '#04294e', outer: '#010c14' }, swatch: 'linear-gradient(135deg,#5aa9f0,#04294e)',
+        chips: ['GetX', 'Bloc', 'Firebase', 'Dio', 'Freezed', 'FCM', 'Video CV', 'Filters', 'Shortlist', 'DI'],
+        label: 'BDJobs', short: 'Recruitment',
+        description: 'BDJobs Employer is built around the job recruitment process. Employers use it to sort and shortlist qualified job seekers, including watching candidates\u2019 video resumes.',
+        cover: 'cover-bdjobs', gallery: ['bdjobs-1', 'bdjobs-2', 'bdjobs-3', 'bdjobs-4', 'bdjobs-5', 'bdjobs-6'],
+        video: '', tech: ['Firebase', 'GetX State Management'],
+        features: ['Sort and shortlist qualified job seekers', 'Video resume showcasing', 'Push notifications', 'Smooth recruiter journeys'],
+        play: 'https://play.google.com/store/apps/details?id=com.bdjobs.recruiter&pcampaignid=web_share', ios: ''
+    },
+    {
+        key: 'social', title: 'BuzzNex: Desktop Social App', category: 'Social', emoji: '💬',
+        description: 'A modern desktop social networking platform designed for seamless communication. It supports real-time messaging, instant file sharing and high-quality voice/video calling, built to deliver a fast, secure and engaging experience for teams and communities.',
+        cover: 'cover-social', gallery: ['social-1', 'social-2', 'social-3'], video: '',
+        tech: ['WebSocket', 'REST API', 'Flutter Bloc', 'AES Encryption and Decryption'],
+        features: ['Real-time chat', 'File sharing', 'Voice and video calling', 'User profiles'], play: '', ios: ''
+    },
+    {
+        key: 'robi', title: 'Robi Vehicle Tracking System', category: 'VTS', emoji: '🛰️',
+        colors: { inner: '#b3202c', mid: '#4e0a10', outer: '#140204' }, swatch: 'linear-gradient(135deg,#ff5a66,#4e0a10)',
+        chips: ['Google Maps', 'Riverpod', 'Provider', 'SQFLite', 'AES', 'Firebase', 'bKash', 'SSLCommerz', 'Live', 'History'],
+        label: 'Robi VTS', short: 'Fleet tracking',
+        description: 'Robi\u2019s VTS solution built with Google Maps, enabling real-time tracking, route visualization and location history for vehicles.',
+        cover: 'cover-robi', gallery: ['robi-1', 'robi-2', 'robi-3', 'robi-4', 'robi-5', 'robi-6'], video: '',
+        tech: ['SQFLite', 'Provider', 'Local Storage', 'Google Map', 'Firebase', 'Riverpod State Management', 'AES Encryption and Decryption'],
+        features: ['Vehicle list', 'Vehicle live tracking', 'Tracking history', 'bKash and SSLCommerz payment system', 'Push notifications'],
+        play: 'https://play.google.com/store/apps/details?id=bd.com.robi.vts&pcampaignid=web_share', ios: 'https://apps.apple.com/gb/app/robi-vehicle-tracking-service/id1231820564'
+    },
+    {
+        key: 'surveillance', title: 'Surveillance Pro: Mobile & Desktop', category: 'CCTV Surveillance', emoji: '📹',
+        label: 'Surveillance', short: 'Live CCTV',
+        colors: { inner: '#2b3a55', mid: '#121a2b', outer: '#04060c' }, swatch: 'linear-gradient(135deg,#4fd1e8,#121a2b)',
+        chips: ['WebRTC', 'Bloc', 'WebSocket', 'NVR', 'Live feed', 'Multi-cam', 'Desktop', 'Window Mgr', 'WebView', 'ICE'],
+        phoneGallery: ['surveillance-6', 'surveillance-5'],
+        description: 'Surveillance Pro is a cross-platform security monitoring app built with Flutter, offering real-time camera streaming and intelligent surveillance management on mobile and desktop. Live camera feeds with full streaming are implemented, while multi-device management, event configuration and video playback are in active development. It delivers a scalable, high-performance NVR (Network Video Recorder) experience for individuals and enterprises.',
+        cover: 'cover-surveillance', gallery: ['surveillance-1', 'surveillance-2', 'surveillance-3', 'surveillance-4', 'surveillance-5', 'surveillance-6'], video: '',
+        tech: ['Window Manager', 'WebView', 'WebSocket Channel', 'WebRTC', 'Flutter Bloc State Management'],
+        features: ['Multi-camera grid view (1x1, 2x2, 3x3 layouts)', 'Desktop (Windows, Linux, macOS) and mobile (iOS, Android)', 'Multi-camera system support', 'Single camera system support', 'Drag and drop a camera into a specific grid tile'], play: '', ios: ''
+    },
+    {
+        key: 'exam', title: 'DayExam: Online Exam App', category: 'Online Exam', emoji: '📝',
+        colors: { inner: '#0f6f99', mid: '#06344a', outer: '#020d14' }, swatch: 'linear-gradient(135deg,#3cc4ff,#06344a)',
+        chips: ['GetX', 'bKash', 'SSLCommerz', 'YouTube', 'Math', 'Quizzes', 'Ranking', 'Packages', 'Analytics', 'BCS / HSC'],
+        label: 'DayExam', short: 'Exam prep',
+        description: 'A mobile examination and learning platform for students preparing for BCS, HSC, SSC and university admission exams, on Android and iOS. Students take subject-wise exams, track progress and improve through detailed performance analytics.',
+        cover: 'cover-exam', gallery: ['exam-1', 'exam-2', 'exam-3', 'exam-4'],
+        video: 'dayexam',
+        tech: ['SSLCommerz', 'bKash', 'YouTube Player', 'Flutter Math Fork', 'GetX State Management'],
+        features: ['Exams for BCS, HSC, SSC and admission tests', 'Topic-wise and chapter-wise quizzes', 'Free and paid exam options', 'Weekly and daily progress tracking', 'Tests taken, average score, attempted questions and earned points', 'Ranking based on total score and performance', 'Gold, Diamond and Elite packages', 'Secure payments with bKash and SSLCommerz'],
+        play: 'https://play.google.com/store/apps/details?id=com.datahost.day_exam&pcampaignid=web_share', ios: ''
+    },
+    {
+        key: 'm2m', title: 'M2M Vehicle Tracking System', category: 'VTS', emoji: '🚚',
+        colors: { inner: '#b86b12', mid: '#4a2a06', outer: '#120a02' }, swatch: 'linear-gradient(135deg,#ffb347,#4a2a06)',
+        chips: ['Google Maps', 'Riverpod', 'Provider', 'SQFLite', 'Playback', 'Firebase', 'bKash', 'AES', 'Live', 'Fleet'],
+        label: 'M2M VTS', short: 'Route playback',
+        description: 'A real-time vehicle tracking system integrated with Google Maps, with live location updates, route playback and accurate movement visualization for efficient fleet monitoring.',
+        cover: 'cover-m2m', gallery: ['m2m-1', 'm2m-2', 'm2m-3', 'm2m-4', 'm2m-5', 'm2m-6'],
+        video: 'm2m',
+        tech: ['SQFLite', 'Provider', 'Local Storage', 'Google Map', 'Firebase', 'Riverpod State Management', 'AES Encryption and Decryption'],
+        features: ['Vehicle list', 'Vehicle live tracking', 'Tracking history playback', 'bKash and SSLCommerz payment system', 'Push notifications'],
+        play: 'https://play.google.com/store/apps/details?id=com.m2mbd.vts&pcampaignid=web_share', ios: 'https://apps.apple.com/gb/app/m2m-vehicle-tracking-system/id1472843586'
+    },
+    {
+        key: 'reserveit', title: 'Reserve-IT', category: 'Restaurant Reservation', emoji: '🍽️',
+        description: 'ReserveIt is a restaurant discovery and reservation platform built with Flutter. A unique visual system, a pepper mill icon that scales with the value ratio between price and food quality, helps users find restaurants. With seamless sign-in, easy table booking and built-in reviews, users can discover, book and enjoy their ideal dining experience in a few taps.',
+        cover: 'cover-reserveit', gallery: [], wideCover: true, video: '',
+        tech: ['Provider', 'Firebase', 'HTTPS', 'Google Map'],
+        features: ['Smart restaurant discovery', 'Easy reservation system', 'Google Maps', 'bKash and SSLCommerz payment system', 'Push notifications'], play: '', ios: ''
+    },
+    {
+        key: 'face', title: 'Face Attendance System', category: 'Attendance System', emoji: '🙂',
+        colors: { inner: '#6a2bb8', mid: '#2a1150', outer: '#0a0418' }, swatch: 'linear-gradient(135deg,#a77bf0,#2a1150)',
+        chips: ['ML Kit', 'Face API', 'Camera', 'GetX', 'ERP sync', 'Office WiFi', 'Calendar', 'Secure', 'Verified', 'No storage'],
+        label: 'Face Check-in', short: 'Attendance',
+        description: 'A secure facial recognition attendance system for quick check-ins. Employees mark attendance with one tap, which only works on authorized company WiFi. The app captures a face image and verifies it in real time against company ERP records. No biometric or personal data is stored in the app, with instant success or failure feedback and a retake option.',
+        cover: 'cover-face', gallery: ['face-1', 'face-2', 'face-3', 'face-4', 'face-5'], video: '',
+        tech: ['Flutter Face API', 'Google ML Kit Face Detection', 'Table Calendar', 'Camera', 'GetX State Management'],
+        features: ['Facial recognition attendance', 'Works only on authorized company WiFi', 'Real-time verification with the ERP system', 'Simple one-tap process', 'Instant success/failure feedback', 'Retake option for failed attempts'],
+        play: 'https://play.google.com/store/apps/details?id=com.neways.attendance&pcampaignid=web_share', ios: ''
+    }
+];
+const CATEGORIES = ['All', 'BTV E-Service', 'Bdjobs', 'Social', 'VTS', 'Restaurant Reservation', 'CCTV Surveillance', 'Attendance System', 'Online Exam'];
+const PHONE_KEYS = ['btv', 'bdjobs', 'robi', 'm2m', 'surveillance', 'exam', 'face'];
+const HOME = {
+    key: 'home', title: 'Home', label: 'Home', short: 'Start here', emoji: '👋', swatch: 'linear-gradient(135deg,#5468ff,#141c5c)',
+    colors: { inner: '#3346c8', mid: '#141c5c', outer: '#050818' },
+    chips: ['GetX', 'Bloc', 'Dart', 'Firebase', 'Riverpod', '{ }', 'WebRTC', 'Provider', 'MVVM', 'GetIt']
+};
+const byKey = k => k === 'home' ? HOME : PROJECTS.find(p => p.key === k);
+
+const SKILLS = [['Flutter / Dart', 95], ['Mobile App Development', 90], ['State Management', 88], ['Firebase Integration', 85], ['REST APIs', 90], ['Git / Version Control', 92]];
+
+const JOBS = [
+    { title: 'Software Engineer (Flutter, Mobile Application Development)', company: 'Nexdecade Technology Pvt. Ltd.', period: 'Jun 2025 – Present', location: 'Chandrashila Suvastu Tower, 69/1 Panthapath, Dhaka 1215',
+      lead: 'Lead mobile app developer: maintaining existing applications and building new features with Flutter.',
+      points: ['Develop and maintain Flutter mobile apps with a focus on performance and scalability.', 'Implement real-time features, including vehicle tracking with Google Maps and live video streaming with WebRTC.', 'Build live chat, audio and video calling with WebSocket and WebRTC.', 'Manage app state efficiently with the BLoC pattern.', 'Secure apps with data encryption and safe communication practices.', 'Integrate Firebase push notifications for real-time updates.', 'Extend app functionality with third-party libraries and packages.', 'Connect mobile and desktop apps to backend services through RESTful APIs.'],
+      tags: ['Team Leadership', 'Play Store & App Store releases', 'Flutter Bloc', 'GetX', 'Riverpod', 'Performance Optimization'] },
+    { title: 'Flutter Developer', company: 'Neways International Company', period: 'Mar 2024 – Jun 2025', location: 'Shahbag, Dhaka, Bangladesh',
+      lead: 'Developed cross-platform mobile apps with Flutter, integrated APIs and collaborated with the backend team.',
+      points: ['Develop and maintain secure, scalable RESTful APIs with Laravel for seamless backend integration.', 'Design and build ERP mobile apps for employees, attendance, task management, leave and advance salary requests.', 'Build, deploy and maintain cross-platform apps for iOS and Android.', 'Integrate push notifications with Firebase and Pusher for real-time updates.', 'Manage state with GetX, along with BLoC, Provider and Riverpod as needed.', 'Bridge mobile apps and backend services through efficient REST API integration.'],
+      tags: ['API Integration', 'UI Implementation', 'Testing', 'Google ML Kit Face Detection', 'Flutter Face API', 'Play Store & App Store releases'] },
+    { title: 'Jr. Mobile Application Developer', company: 'BDJOBS.COM', period: 'Oct 2022 – Jan 2024', location: 'BDBL Bhaban, 12 Kawran Bazar, Dhaka 1215',
+      lead: 'Started as a junior developer, then led the mobile app team, delivering projects quickly and contributing to successful app launches.',
+      points: ['Led development of the employer recruitment app, focusing on job-seeker selection with video resumes to improve hiring efficiency.', 'Designed smooth user journeys to streamline recruitment workflows and support decision-making.', 'Managed state with GetX and BLoC, with hands-on Riverpod experience.', 'Used and maintained third-party packages to improve features and stability.'],
+      tags: ['Team Leadership', 'GetX State Management', 'Play Store releases', 'Video Resume Integration'] },
+    { title: 'Flutter Application Developer', company: 'Root Devs', period: 'Mar 2022 – Sep 2022', location: 'Amigo 14 Square, Dhaka 1207',
+      lead: 'Built sports applications with live match streaming and integrated essential third-party services.',
+      points: ['Develop and maintain sports apps with live match streaming.', 'Integrate push notifications, in-app purchases, Google Sign-In, Shared Preferences and media players.', 'Implement GetX state management for efficient data flow and stability.', 'Convert Figma designs into fully responsive, user-friendly interfaces.', 'Ensure smooth performance, scalability and successful deployment.'],
+      tags: ['Live streaming & media playback', 'GetX State Management', 'Figma to app', 'RESTful API integration'] },
+    { title: 'Intern to Jr. Mobile Application Developer', company: 'Skoder Technologies', period: 'Jun 2021 – Feb 2022', location: 'Dhaka, Bangladesh',
+      lead: 'Developed two medical apps, Mediaid Pro for patients and Mediaid for doctors, with real-time video calling between them.',
+      points: ['Developed patient and doctor apps for healthcare consultation.', 'Implemented real-time video calling between doctors and patients.', 'Integrated RESTful APIs to connect the apps with backend services.', 'Designed responsive interfaces from Figma, and created Figma designs during the internship.'],
+      tags: ['Figma', 'Responsive UI development', 'RESTful API integration'] }
+];
+
+const EDUCATION = [
+    { degree: 'B.Sc. in Engineering', school: 'Bangladesh Army University of Engineering & Technology', period: 'Mar 2016 – Mar 2020', place: 'Natore, Bangladesh', gpa: 'CGPA 3.20 / 4.00', logo: 'logo-bauet' },
+    { degree: 'Higher Secondary Certificate', school: 'Bogura Cantonment Public School & College', period: '2012 – 2014', place: 'Bogura, Bangladesh', gpa: 'GPA 5.00 / 5.00', logo: 'logo-bogura' },
+    { degree: 'Secondary School Certificate', school: 'Bogura Cantonment Public School & College', period: '2010 – 2012', place: 'Bogura, Bangladesh', gpa: 'GPA 5.00 / 5.00', logo: 'logo-bogura' }
+];
+const CERTS = [
+    { name: 'Udemy Flutter Certification', issuer: 'Udemy · 1 July 2021', logo: 'logo-udemy' },
+    { name: 'Amar Bangladesh Foundation Certification', issuer: 'Amar Bangladesh Foundation · 30 January 2021', logo: 'logo-abf' },
+    { name: 'Skill Development for Mobile Game & Application Project', issuer: 'ICT Division, Bangladesh · November 2018', logo: 'logo-ict' }
+];
+
+/* ================= Render static sections ================= */
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+document.getElementById('skillBars').insertAdjacentHTML('beforeend', SKILLS.map(([n, v]) => `
+    <div><div class="sb-top"><span>${n}</span><span>${v}%</span></div><div class="sb-track"><div class="sb-fill" data-w="${v}"></div></div></div>`).join(''));
+
+document.getElementById('timeline').insertAdjacentHTML('beforeend', JOBS.map(j => `
+    <article class="job reveal">
+        <div class="job-when">${j.period}<small>${esc(j.location)}</small></div>
+        <div class="job-card glass-card">
+            <h3>${esc(j.title)}</h3>
+            <h4>${esc(j.company)}</h4>
+            <p class="lead">${esc(j.lead)}</p>
+            <ul>${j.points.map(p => `<li>${esc(p)}</li>`).join('')}</ul>
+            <div class="job-tags">${j.tags.map(t => `<span>${esc(t)}</span>`).join('')}</div>
+        </div>
+    </article>`).join(''));
+
+document.getElementById('eduList').innerHTML = EDUCATION.map(e => `
+    <div class="edu glass-card reveal">
+        <div class="logo-box"><img src="${W}${e.logo}.webp" alt="" loading="lazy"></div>
+        <div>
+            <h3>${e.degree}</h3>
+            <p>${e.school}, ${e.place}</p>
+            <div class="edu-meta"><span>${e.period}</span><span class="gpa">${e.gpa}</span></div>
+        </div>
+    </div>`).join('');
+
+document.getElementById('certList').insertAdjacentHTML('beforeend', CERTS.map(c => `
+    <div class="cert glass-card reveal">
+        <div class="logo-box"><img src="${W}${c.logo}.webp" alt="" loading="lazy"></div>
+        <div><b>${c.name}</b><small>${c.issuer}</small></div>
+    </div>`).join(''));
+
+/* ================= Hero picker ================= */
+const picker = document.getElementById('picker');
+picker.innerHTML = ['home', ...PHONE_KEYS].map(k => {
+    const p = byKey(k);
+    return `<button class="pick${k === 'home' ? ' active' : ''}" data-project="${k}">
+        <div class="pick-swatch" style="background:${p.swatch}">${p.emoji}</div>
+        <b>${p.label}</b><span>${p.short}</span>
+    </button>`;
+}).join('');
+const picks = picker.querySelectorAll('.pick');
+
+/* ================= Phone screens ================= */
+const phone = document.getElementById('phone');
+const phoneFloat = document.getElementById('phoneFloat');
+const screen = document.getElementById('screen');
+let current = 'home';
+let switching = false;
+let spin = 0;
+let shotTimer = null;
+
+function homeScreen() {
+    return `<div class="status"><span>9:41</span><span>●●● 5G</span></div>
+    <div class="app screen-enter">
+        <div class="app-bar"><span class="app-title">Hi, I'm Mehedi 👋</span><span class="chip-s">Flutter</span></div>
+        <p class="app-sub">Tap an app to open real screenshots.</p>
+        <div class="tile-grid">${PHONE_KEYS.map(k => { const p = byKey(k); return `<button class="tile" data-project="${k}" style="background:${p.swatch}"><span class="t-ico">${p.emoji}</span><div><b>${p.label}</b><br><small>${p.short}</small></div></button>`; }).join('')}</div>
+        <div class="row-s"><span>Experience</span><span class="ok">5+ years</span></div>
+    </div>`;
+}
+
+function shotsScreen(p) {
+    p = Object.assign({}, p, { gallery: p.phoneGallery || p.gallery });
+    return `<div class="shots">${p.gallery.map((g, i) => `<img src="${W}${g}.webp" alt="${esc(p.title)} screenshot ${i + 1}" ${i ? 'loading="lazy"' : ''} class="${i === 0 ? 'on' : ''}">`).join('')}</div>
+    <div class="shot-dots">${p.gallery.map((_, i) => `<i class="${i === 0 ? 'on' : ''}"></i>`).join('')}</div>`;
+}
+
+function renderScreen(key) {
+    clearInterval(shotTimer);
+    const notch = '<div class="notch"></div>';
+    screen.innerHTML = notch + (key === 'home' ? homeScreen() : shotsScreen(byKey(key)));
+    if (key !== 'home' && !reduceMotion) {
+        let i = 0;
+        shotTimer = setInterval(() => {
+            const imgs = screen.querySelectorAll('.shots img');
+            const dots = screen.querySelectorAll('.shot-dots i');
+            if (!imgs.length) return;
+            imgs[i].classList.remove('on'); dots[i].classList.remove('on');
+            i = (i + 1) % imgs.length;
+            imgs[i].classList.add('on'); dots[i].classList.add('on');
+        }, 2400);
+    }
+}
+renderScreen('home');
+
+/* ================= Floating chips ================= */
+const chips = Array.from(document.querySelectorAll('.float-chip, .orb')).map((el, i) => ({
+    el, isText: el.classList.contains('float-chip'),
+    baseX: 0, baseY: 0, rx: 0, ry: 0, tilt: (Math.random() - 0.5) * 16, scale: 1, opacity: 1,
+    dur: [5, 7, 6, 8, 5.5, 6.5, 9, 11, 10, 7.5][i % 10], spinAngle: Math.random() * 360
+}));
+const textChips = chips.filter(c => c.isText);
+const fgLayer = document.querySelector('.chips-layer.fg');
+const bgLayer = document.querySelector('.chips-layer.bg');
+const phoneCol = document.querySelector('.phone-col');
+
+function fitChipLayers() {
+    [fgLayer, bgLayer].forEach(layer => {
+        if (window.innerWidth <= 1180) {
+            layer.style.top = (phoneCol.offsetTop - 40) + 'px';
+            layer.style.height = (phoneCol.offsetHeight + 80) + 'px';
+            layer.style.bottom = 'auto';
+        } else {
+            layer.style.top = layer.style.height = layer.style.bottom = '';
+        }
+    });
+}
+fitChipLayers();
+window.addEventListener('resize', fitChipLayers);
+
+/* ================= Switch the phone's project ================= */
+function switchProject(key) {
+    if (switching || key === current) return;
+    const data = byKey(key);
+    if (!data) return;
+    current = key;
+    picks.forEach(p => p.classList.toggle('active', p.dataset.project === key));
+
+    if (!hasGSAP || reduceMotion) {
+        const root = document.documentElement.style;
+        root.setProperty('--bg-inner', data.colors.inner);
+        root.setProperty('--bg-mid', data.colors.mid);
+        root.setProperty('--bg-outer', data.colors.outer);
+        renderScreen(key);
+        textChips.forEach((c, i) => { c.el.textContent = data.chips[i % data.chips.length]; });
+        return;
+    }
+
+    switching = true;
+    gsap.to(document.documentElement, { '--bg-inner': data.colors.inner, '--bg-mid': data.colors.mid, '--bg-outer': data.colors.outer, duration: 1.5, ease: 'power2.inOut' });
+
+    const s = { val: 0, blur: 0 };
+    gsap.to(s, {
+        val: 360, blur: 12, duration: 0.6, ease: 'power2.in',
+        onUpdate: () => { spin = s.val; phoneFloat.style.filter = `blur(${s.blur}px)`; },
+        onComplete: () => {
+            renderScreen(key);
+            gsap.to(s, {
+                val: 720, blur: 0, duration: 1.5, ease: 'back.out(0.7)',
+                onUpdate: () => { spin = s.val; phoneFloat.style.filter = `blur(${s.blur}px)`; },
+                onComplete: () => { spin = 0; phoneFloat.style.filter = 'none'; }
+            });
+        }
+    });
+
+    const pr = phone.getBoundingClientRect();
+    const pcx = pr.left + pr.width / 2, pcy = pr.top + pr.height / 2;
+    let done = 0;
+    chips.forEach((c, i) => {
+        const r = c.el.getBoundingClientRect();
+        const ox = r.left + r.width / 2 - (c.baseX + c.rx);
+        const oy = r.top + r.height / 2 - (c.baseY + c.ry);
+        c.rx = 0; c.ry = 0;
+        gsap.timeline({ onComplete: () => { if (++done === chips.length) switching = false; } })
+            .to(c, {
+                baseX: pcx - ox, baseY: pcy - oy, scale: 0.1, opacity: 0, tilt: c.tilt + 60,
+                duration: 0.5, ease: 'power2.in', delay: i * 0.015,
+                onComplete: () => { if (c.isText) c.el.textContent = data.chips[textChips.indexOf(c) % data.chips.length]; }
+            })
+            .to(c, { duration: 0.3 })
+            .to(c, { baseX: (Math.random() - 0.5) * 220, baseY: (Math.random() - 0.5) * 220, scale: 1, opacity: 1, tilt: (Math.random() - 0.5) * 16, duration: 0.9, ease: 'back.out(1.5)' });
+    });
+}
+
+picks.forEach(p => p.addEventListener('click', () => switchProject(p.dataset.project)));
+screen.addEventListener('click', e => { const t = e.target.closest('[data-project]'); if (t) switchProject(t.dataset.project); });
+
+function showInPhone(key) {
+    closeModal();
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    setTimeout(() => switchProject(key), reduceMotion ? 0 : 700);
+}
+
+/* ================= Projects grid + filters ================= */
+const grid = document.getElementById('projectsGrid');
+const filters = document.getElementById('filters');
+let activeCat = 'All';
+
+filters.innerHTML = CATEGORIES.map(c => `<button class="filter-btn${c === 'All' ? ' active' : ''}" data-cat="${c}">${c}</button>`).join('');
+
+function cardHTML(p) {
+    const store = `${p.play ? `<a href="${p.play}" target="_blank" rel="noopener" title="Google Play" aria-label="${esc(p.title)} on Google Play"><i class="ri-google-play-fill"></i></a>` : ''}${p.ios ? `<a href="${p.ios}" target="_blank" rel="noopener" title="App Store" aria-label="${esc(p.title)} on the App Store"><i class="ri-apple-fill"></i></a>` : ''}`;
+    return `<article class="p-card" data-key="${p.key}" tabindex="0" aria-label="${esc(p.title)}, view details">
+        <div class="glare"></div>
+        <div class="p-cover">
+            <img src="${W}${p.cover}.webp" alt="${esc(p.title)}" loading="lazy" ${p.wideCover ? 'style="object-position:left center"' : ''}>
+            <span class="p-cat">${p.category}</span>
+            ${store ? `<div class="p-play">${store}</div>` : ''}
+            ${p.video ? '<span class="p-video-tag"><i class="ri-play-circle-fill"></i> Video demo</span>' : ''}
+        </div>
+        <div class="p-body">
+            <h3>${esc(p.title)}</h3>
+            <p>${esc(p.description)}</p>
+            <div class="p-tech">${p.tech.slice(0, 3).map(t => `<span>${esc(t)}</span>`).join('')}${p.tech.length > 3 ? `<span class="more">+${p.tech.length - 3} more</span>` : ''}</div>
+            <div class="p-foot">
+                <span class="details">View details <i class="ri-arrow-right-line"></i></span>
+                ${PHONE_KEYS.includes(p.key) ? `<button class="phone-btn" data-phone="${p.key}"><i class="ri-smartphone-line"></i> Show in phone</button>` : ''}
+            </div>
+        </div>
+    </article>`;
+}
+
+function renderGrid(animate) {
+    const list = activeCat === 'All' ? PROJECTS : PROJECTS.filter(p => p.category === activeCat);
+    grid.innerHTML = list.map(cardHTML).join('');
+    bindCards();
+    if (animate && hasGSAP && !reduceMotion) {
+        gsap.from(grid.children, { y: 40, opacity: 0, scale: 0.96, duration: 0.6, stagger: 0.06, ease: 'power3.out' });
+    }
+}
+
+filters.addEventListener('click', e => {
+    const b = e.target.closest('.filter-btn');
+    if (!b || b.dataset.cat === activeCat) return;
+    activeCat = b.dataset.cat;
+    filters.querySelectorAll('.filter-btn').forEach(x => x.classList.toggle('active', x === b));
+    if (hasGSAP && !reduceMotion) {
+        gsap.to(grid.children, { y: -20, opacity: 0, scale: 0.97, duration: 0.25, stagger: 0.03, onComplete: () => renderGrid(true) });
+    } else renderGrid(false);
+});
+
+function bindCards() {
+    grid.querySelectorAll('.p-card').forEach(card => {
+        card.addEventListener('click', e => {
+            if (e.target.closest('.p-play a')) return;
+            const ph = e.target.closest('[data-phone]');
+            if (ph) { e.stopPropagation(); showInPhone(ph.dataset.phone); return; }
+            openModal(card.dataset.key);
+        });
+        card.addEventListener('keydown', e => { if (e.key === 'Enter') openModal(card.dataset.key); });
+        if (!reduceMotion && window.matchMedia('(pointer: fine)').matches) {
+            card.addEventListener('pointermove', e => {
+                const r = card.getBoundingClientRect();
+                const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+                card.style.transform = `perspective(1000px) rotateY(${(x - 0.5) * 9}deg) rotateX(${(0.5 - y) * 9}deg) translateY(-4px)`;
+                card.style.setProperty('--gx', x * 100 + '%');
+                card.style.setProperty('--gy', y * 100 + '%');
+            });
+            card.addEventListener('pointerleave', () => {
+                card.style.transition = 'transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s';
+                card.style.transform = '';
+                setTimeout(() => { card.style.transition = ''; }, 600);
+            });
+        }
+        attachCursorGrow(card);
+    });
+}
+renderGrid(false);
+
+/* ================= Modal ================= */
+const modal = document.getElementById('modal');
+const modalBox = document.getElementById('modalBox');
+const lightbox = document.getElementById('lightbox');
+let lastFocus = null;
+
+function openModal(key) {
+    const p = byKey(key);
+    if (!p) return;
+    lastFocus = document.activeElement;
+    const gallery = p.gallery.length ? p.gallery : [p.cover];
+    modalBox.innerHTML = `
+        <button class="m-close" id="mClose" aria-label="Close"><i class="ri-close-line"></i></button>
+        <div class="m-cat">${p.category} · Flutter development</div>
+        <h3 class="m-title" id="mTitle">${esc(p.title)}</h3>
+        ${p.video ? `<video class="m-video" controls preload="metadata" playsinline poster="${W}video/${p.video}-poster.webp"><source src="${W}video/${p.video}.mp4" type="video/mp4"></video><p class="m-video-err" hidden>This video couldn't load. Make sure the <code>assets/web/video</code> folder was copied next to <code>index.html</code>.</p>` : ''}
+        <div class="m-gallery">${gallery.map((g, i) => `<img src="${W}${g}.webp" alt="${esc(p.title)} screenshot ${i + 1}" loading="lazy" data-full="${W}${g}.webp">`).join('')}</div>
+        <div class="m-grid">
+            <div>
+                <h4>About the project</h4>
+                <p class="m-desc">${esc(p.description)}</p>
+                <h4>Key features</h4>
+                <ul class="m-list">${p.features.map(f => `<li><i class="ri-check-line"></i>${esc(f)}</li>`).join('')}</ul>
+            </div>
+            <div>
+                <h4>Technologies used</h4>
+                <div class="m-tech">${p.tech.map(t => `<span>${esc(t)}</span>`).join('')}</div>
+                <div class="m-actions">
+                    ${p.play ? `<a class="btn accent" href="${p.play}" target="_blank" rel="noopener"><i class="ri-google-play-fill"></i> Google Play</a>` : ''}
+                    ${p.ios ? `<a class="btn ghost" href="${p.ios}" target="_blank" rel="noopener"><i class="ri-apple-fill"></i> App Store</a>` : ''}
+                    ${PHONE_KEYS.includes(p.key) ? `<button class="btn ghost" data-phone="${p.key}"><i class="ri-smartphone-line"></i> Show in 3D phone</button>` : ''}
+                </div>
+            </div>
+        </div>
+        ${p.roles ? `<div class="roles">${p.roles.map(r => `
+            <div class="role-card"><h5><i class="${r.icon}"></i>${r.name}</h5><p>${esc(r.description)}</p>
+            <ul class="m-list">${r.features.map(f => `<li><i class="ri-check-line"></i>${esc(f)}</li>`).join('')}</ul></div>`).join('')}</div>` : ''}`;
+
+    modalBox.querySelectorAll('.m-gallery img').forEach(img => {
+        const mark = () => { if (img.naturalWidth > img.naturalHeight) img.classList.add('land'); };
+        img.complete ? mark() : img.addEventListener('load', mark);
+        img.addEventListener('click', () => { lightbox.querySelector('img').src = img.dataset.full; lightbox.classList.add('open'); });
+    });
+    const vid = modalBox.querySelector('video');
+    if (vid) {
+        const showErr = () => { modalBox.querySelector('.m-video-err').hidden = false; };
+        vid.addEventListener('error', showErr);
+        const srcEl = vid.querySelector('source');
+        if (srcEl) srcEl.addEventListener('error', showErr);
+    }
+    modalBox.querySelector('#mClose').addEventListener('click', closeModal);
+    const ph = modalBox.querySelector('[data-phone]');
+    if (ph) ph.addEventListener('click', () => showInPhone(ph.dataset.phone));
+
+    if (modal.resetSmooth) modal.resetSmooth(); else modal.scrollTop = 0;
+    modal.classList.add('open');
+    document.body.classList.add('lock');
+    modalBox.querySelector('#mClose').focus();
+    if (hasGSAP && !reduceMotion) {
+        gsap.from(modalBox.querySelectorAll('.m-gallery img'), { x: 60, opacity: 0, duration: 0.7, stagger: 0.07, ease: 'power3.out', delay: 0.15 });
+        gsap.from(modalBox.querySelectorAll('.m-list li, .m-tech span'), { y: 14, opacity: 0, duration: 0.5, stagger: 0.02, delay: 0.3 });
+    }
+}
+
+function closeModal() {
+    if (!modal.classList.contains('open')) return;
+    modal.classList.remove('open');
+    document.body.classList.remove('lock');
+    const v = modalBox.querySelector('video');
+    if (v) v.pause();
+    if (lastFocus) lastFocus.focus();
+}
+
+modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
+/* ================= Smooth (inertial) wheel scrolling for pop-ups ================= */
+function smoothWheel(el) {
+    if (reduceMotion || !finePointer) return;   // touch screens already scroll smoothly
+    let target = 0, current = 0, raf = null;
+    const maxScroll = () => el.scrollHeight - el.clientHeight;
+    function tick() {
+        current += (target - current) * 0.12;
+        if (Math.abs(target - current) < 0.4) {
+            current = target;
+            el.scrollTop = current;
+            raf = null;
+            return;
+        }
+        el.scrollTop = current;
+        raf = requestAnimationFrame(tick);
+    }
+    el.addEventListener('wheel', e => {
+        if (e.ctrlKey) return;                               // pinch-to-zoom
+        if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;  // sideways (screenshot gallery)
+        e.preventDefault();
+        if (!raf) target = current = el.scrollTop;
+        const unit = e.deltaMode === 1 ? 32 : e.deltaMode === 2 ? el.clientHeight : 1;
+        target = Math.max(0, Math.min(maxScroll(), target + e.deltaY * unit));
+        if (!raf) raf = requestAnimationFrame(tick);
+    }, { passive: false });
+    // Keep in step when the scrollbar or keyboard is used
+    el.addEventListener('scroll', () => { if (!raf) target = current = el.scrollTop; }, { passive: true });
+    el.resetSmooth = () => { if (raf) cancelAnimationFrame(raf); raf = null; target = current = el.scrollTop = 0; };
+}
+
+/* ================= CV viewer ================= */
+const cvModal = document.getElementById('cvModal');
+let cvLastFocus = null;
+// The CV is read straight from the PDF, so replacing the PDF file updates the viewer.
+const CV_PDF = 'assets/web/cv/Md_Mehedi_Hasan.pdf';
+const PDFJS = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/';
+const cvPages = document.getElementById('cvPages');
+let cvLoaded = false;
+let cvLoading = null;
+
+function loadScript(src) {
+    return new Promise((resolve, reject) => {
+        const tag = document.createElement('script');
+        tag.src = src; tag.onload = resolve; tag.onerror = reject;
+        document.head.appendChild(tag);
+    });
+}
+
+async function renderCV() {
+    // The ?v= part makes the browser fetch the latest PDF instead of an old cached copy
+    const url = CV_PDF + '?v=' + Date.now();
+    cvPages.innerHTML = '<p class="cv-loading">Loading CV…</p>';
+    try {
+        if (!window.pdfjsLib) await loadScript(PDFJS + 'pdf.min.js');
+        pdfjsLib.GlobalWorkerOptions.workerSrc = PDFJS + 'pdf.worker.min.js';
+        const doc = await pdfjsLib.getDocument(url).promise;
+        const canvases = [];
+        const cssWidth = cvPages.clientWidth || 800;
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        for (let n = 1; n <= doc.numPages; n++) {
+            const page = await doc.getPage(n);
+            const base = page.getViewport({ scale: 1 });
+            const viewport = page.getViewport({ scale: (cssWidth / base.width) * dpr });
+            const canvas = document.createElement('canvas');
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+            canvas.setAttribute('aria-label', 'CV page ' + n);
+            await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+            canvases.push(canvas);
+        }
+        const pages = await Promise.all(canvases.map((c, i) => new Promise(res => {
+            c.toBlob(blob => {
+                if (!blob) return res(c);
+                const img = new Image();
+                img.alt = 'CV page ' + (i + 1);
+                img.decoding = 'async';
+                img.src = URL.createObjectURL(blob);
+                img.decode().then(() => res(img), () => res(img));
+            }, 'image/png');
+        })));
+        cvPages.innerHTML = '';
+        pages.forEach(el => cvPages.appendChild(el));
+        cvLoaded = true;
+        if (hasGSAP && !reduceMotion && cvModal.classList.contains('open')) {
+            gsap.fromTo(pages, { y: 60, opacity: 0, rotateX: -10 }, { y: 0, opacity: 1, rotateX: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out' });
+        }
+    } catch (err) {
+        // Fallback (for example when the page is opened as a local file): let the browser show the PDF itself
+        console.warn('PDF.js could not load the CV, using the browser viewer instead.', err);
+        // #toolbar=0&navpanes=0 hides the browser's PDF toolbar and thumbnail sidebar so it matches the clean page view
+        cvPages.innerHTML = `<iframe class="cv-frame" src="${url}#toolbar=0&navpanes=0&scrollbar=0&view=FitH" title="Md. Mehedi Hasan CV"></iframe>`;
+        cvLoaded = true;
+    }
+}
+
+// Prepare the CV quietly in the background so it opens instantly
+if (location.protocol !== 'file:') {
+    const prep = () => { if (!cvLoaded && !cvLoading) cvLoading = renderCV(); };
+    window.addEventListener('load', () => setTimeout(() => ('requestIdleCallback' in window) ? requestIdleCallback(prep, { timeout: 4000 }) : prep(), 2500));
+}
+
+function openCV() {
+    cvLastFocus = document.activeElement;
+    if (cvModal.resetSmooth) cvModal.resetSmooth(); else cvModal.scrollTop = 0;
+    cvModal.classList.add('open');
+    document.body.classList.add('lock');
+    document.getElementById('cvClose').focus();
+    if (!cvLoaded && !cvLoading) cvLoading = renderCV();
+    else if (cvLoaded && hasGSAP && !reduceMotion) {
+        gsap.fromTo(cvPages.children, { y: 60, opacity: 0, rotateX: -10 }, { y: 0, opacity: 1, rotateX: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out', delay: 0.1 });
+    }
+}
+function closeCV() {
+    if (!cvModal.classList.contains('open')) return false;
+    cvModal.classList.remove('open');
+    document.body.classList.remove('lock');
+    if (cvLastFocus) cvLastFocus.focus();
+    return true;
+}
+document.querySelectorAll('[data-cv]').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    if (mobileNav.classList.contains('open')) {
+        mobileNav.classList.remove('open');
+        menuBtn.innerHTML = '<i class="ri-menu-line"></i>';
+    }
+    openCV();
+}));
+document.getElementById('cvClose').addEventListener('click', closeCV);
+smoothWheel(cvModal);
+smoothWheel(modal);
+cvModal.addEventListener('click', e => { if (e.target === cvModal) closeCV(); });
+
+document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    if (lightbox.classList.contains('open')) lightbox.classList.remove('open');
+    else if (!closeCV()) closeModal();
+});
+
+/* ================= Header, mobile menu ================= */
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 40), { passive: true });
+const menuBtn = document.getElementById('menuBtn');
+const mobileNav = document.getElementById('mobileNav');
+menuBtn.addEventListener('click', () => {
+    const open = mobileNav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open);
+    menuBtn.innerHTML = open ? '<i class="ri-close-line"></i>' : '<i class="ri-menu-line"></i>';
+    document.body.classList.toggle('lock', open);
+});
+mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileNav.classList.remove('open');
+    menuBtn.innerHTML = '<i class="ri-menu-line"></i>';
+    document.body.classList.remove('lock');
+}));
+
+/* ================= Pointer + main loop ================= */
+const mouse = { x: 0, y: 0, px: -9999, py: -9999 };
+const eased = { x: 0, y: 0 };
+window.addEventListener('pointermove', e => {
+    mouse.x = e.clientX / window.innerWidth - 0.5;
+    mouse.y = e.clientY / window.innerHeight - 0.5;
+    mouse.px = e.clientX; mouse.py = e.clientY;
+});
+document.addEventListener('pointerleave', () => { mouse.px = -9999; mouse.py = -9999; });
+
+const hero = document.getElementById('home');
+let heroVisible = true;
+new IntersectionObserver(en => { heroVisible = en[0].isIntersecting; }).observe(hero);
+
+function loop() {
+    const t = performance.now() / 1000;
+    eased.x += (mouse.x - eased.x) * 0.06;
+    eased.y += (mouse.y - eased.y) * 0.06;
+    if (heroVisible && !document.body.classList.contains('lock')) {
+        phone.style.transform = `rotateZ(-6deg) rotateY(${eased.x * 36 + spin}deg) rotateX(${-eased.y * 22}deg)`;
+        fgLayer.style.transform = `translate(${eased.x * 60}px, ${eased.y * 60}px)`;
+        bgLayer.style.transform = `translate(${eased.x * -30}px, ${eased.y * -30}px)`;
+        chips.forEach((c, i) => {
+            if (!switching) {
+                const r = c.el.getBoundingClientRect();
+                const dx = mouse.px - (r.left + r.width / 2), dy = mouse.py - (r.top + r.height / 2);
+                const dist = Math.hypot(dx, dy) || 1;
+                let tx = 0, ty = 0, speed = 1;
+                if (dist < 320) {
+                    const f = (320 - dist) / 320;
+                    tx = (dx / dist) * f * -90; ty = (dy / dist) * f * -90; speed = 1 + f * 5;
+                }
+                c.rx += (tx - c.rx) * 0.1; c.ry += (ty - c.ry) * 0.1;
+                c.spinAngle += 0.25 * speed;
+            }
+            const ph = (t + i * 0.7) * (Math.PI * 2 / c.dur);
+            const rot = c.isText ? c.tilt + Math.cos(ph) * 5 : c.spinAngle;
+            c.el.style.transform = `translate(${c.baseX + c.rx}px, ${c.baseY + c.ry + Math.sin(ph) * 14}px) rotate(${rot}deg) scale(${c.scale})`;
+            c.el.style.opacity = c.opacity;
+        });
+    }
+    requestAnimationFrame(loop);
+}
+if (!reduceMotion) requestAnimationFrame(loop);
+
+/* ================= Bubbles ================= */
+const bubbles = document.getElementById('bubbles');
+if (!reduceMotion) setInterval(() => {
+    if (document.hidden || document.body.classList.contains('lock')) return;
+    const b = document.createElement('span');
+    b.className = 'bubble';
+    const size = Math.random() * 18 + 6, dur = Math.random() * 6 + 5;
+    b.style.cssText = `width:${size}px;height:${size}px;left:${Math.random() * 100}%;animation-duration:${dur}s;--o:${(Math.random() * 0.4 + 0.25).toFixed(2)};--drift:${Math.round(Math.random() * 80 - 40)}px`;
+    bubbles.appendChild(b);
+    setTimeout(() => b.remove(), dur * 1000);
+}, 380);
+
+/* ================= Cursor + magnetic buttons ================= */
+function attachCursorGrow(el) {
+    if (!finePointer) return;
+    el.addEventListener('mouseenter', () => ring.classList.add('big'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('big'));
+}
+if (finePointer) {
+    const rp = { x: -100, y: -100 };
+    (function cl() {
+        rp.x += (mouse.px - rp.x) * 0.18; rp.y += (mouse.py - rp.y) * 0.18;
+        dot.style.transform = `translate(${mouse.px}px, ${mouse.py}px)`;
+        ring.style.transform = `translate(${rp.x}px, ${rp.y}px)`;
+        requestAnimationFrame(cl);
+    })();
+    document.querySelectorAll('a, button').forEach(attachCursorGrow);
+}
+if (!reduceMotion && finePointer) {
+    document.querySelectorAll('.magnetic').forEach(btn => {
+        btn.addEventListener('pointermove', e => {
+            const r = btn.getBoundingClientRect();
+            btn.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * 0.25}px, ${(e.clientY - r.top - r.height / 2) * 0.35}px)`;
+        });
+        btn.addEventListener('pointerleave', () => {
+            btn.style.transition = 'transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.3s';
+            btn.style.transform = '';
+            setTimeout(() => { btn.style.transition = ''; }, 500);
+        });
+    });
+}
+
+/* ================= Split the about lead into words ================= */
+const lead = document.querySelector('.split-words');
+if (!reduceMotion) {
+    lead.innerHTML = lead.textContent.split(/(\s+)/).map(w => /^\s+$/.test(w) ? w : `<span class="word">${w}</span>`).join('');
+}
+
+/* ================= Entrance + scroll animations ================= */
+const navLinks = document.querySelectorAll('.nav a');
+function showAllStatic() {
+    document.querySelectorAll('.reveal').forEach(el => { el.style.opacity = 1; el.style.transform = 'none'; });
+    document.querySelectorAll('[data-count]').forEach(el => { el.textContent = el.dataset.count; });
+    document.querySelectorAll('.sb-fill').forEach(el => { el.style.width = el.dataset.w + '%'; });
+    document.querySelectorAll('.word').forEach(el => { el.style.opacity = 1; });
+    document.getElementById('tlFill').style.transform = 'scaleY(1)';
+}
+
+if (hasST && !reduceMotion) {
+    const introSpin = { v: -200 };
+    gsap.timeline({ defaults: { ease: 'power4.out' } })
+        .from('.header', { y: -40, opacity: 0, duration: 1 })
+        .from('.hello .line-mask > span', { yPercent: 110, duration: 1.2, stagger: 0.12 }, 0.1)
+        .from('.hero-in', { y: 30, opacity: 0, duration: 0.9, stagger: 0.08 }, 0.4)
+        .from('.phone-col', { scale: 0.7, opacity: 0, duration: 1.4, ease: 'expo.out' }, 0.2)
+        .fromTo(introSpin, { v: -200 }, { v: 0, duration: 1.8, ease: 'expo.out', onUpdate: () => { spin = introSpin.v; } }, 0.2)
+        .from('.pick', { y: 20, opacity: 0, scale: 0.9, duration: 0.6, stagger: 0.05, ease: 'back.out(1.7)' }, 0.7)
+        .from('.side-script .line-mask > span', { yPercent: 110, duration: 1.1, stagger: 0.12 }, 0.6)
+        .from(chips, { opacity: 0, scale: 0.2, duration: 0.9, stagger: 0.05, ease: 'back.out(1.6)' }, 0.8)
+        .from('.scroll-hint', { opacity: 0, duration: 0.8 }, 1.2);
+
+    ScrollTrigger.batch('.reveal', {
+        start: 'top 88%',
+        onEnter: els => gsap.to(els, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', stagger: 0.1, overwrite: true })
+    });
+
+    ScrollTrigger.batch('.p-card', {
+        start: 'top 90%', once: true,
+        onEnter: els => gsap.from(els, { y: 50, opacity: 0, rotateX: -12, duration: 0.9, stagger: 0.1, ease: 'power3.out' })
+    });
+
+    document.querySelectorAll('[data-count]').forEach(el => {
+        ScrollTrigger.create({
+            trigger: el, start: 'top 90%', once: true,
+            onEnter: () => { const o = { v: 0 }; gsap.to(o, { v: +el.dataset.count, duration: 1.8, ease: 'power2.out', onUpdate: () => { el.textContent = Math.round(o.v); } }); }
+        });
+    });
+
+    ScrollTrigger.create({
+        trigger: '#skillBars', start: 'top 80%', once: true,
+        onEnter: () => gsap.to('.sb-fill', { width: (i, el) => el.dataset.w + '%', duration: 1.6, stagger: 0.12, ease: 'power3.out' })
+    });
+
+    gsap.to('.split-words .word', { opacity: 1, stagger: 0.05, ease: 'none', scrollTrigger: { trigger: '.split-words', start: 'top 85%', end: 'bottom 55%', scrub: true } });
+    gsap.to('#tlFill', { scaleY: 1, ease: 'none', scrollTrigger: { trigger: '#timeline', start: 'top 70%', end: 'bottom 70%', scrub: true } });
+    gsap.to('.hero-left, .hero-right', { y: -80, opacity: 0.2, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+
+    // Profile parallax + floating badges
+    gsap.fromTo('.portrait-wrap img.me', { y: 60 }, { y: -30, ease: 'none', scrollTrigger: { trigger: '#about', start: 'top bottom', end: 'bottom top', scrub: true } });
+    document.querySelectorAll('[data-drift]').forEach(b => {
+        gsap.to(b, { y: +b.dataset.drift, ease: 'none', scrollTrigger: { trigger: '#about', start: 'top bottom', end: 'bottom top', scrub: true } });
+    });
+
+    // Workspace band: image parallax and text scale
+    gsap.fromTo('.band img', { yPercent: -8 }, { yPercent: 8, ease: 'none', scrollTrigger: { trigger: '.band', start: 'top bottom', end: 'bottom top', scrub: true } });
+    gsap.from('.band-text h2', { scale: 0.8, opacity: 0, ease: 'none', scrollTrigger: { trigger: '.band', start: 'top 85%', end: 'center 55%', scrub: true } });
+
+    ['home', 'about', 'skills', 'projects', 'experience', 'contact'].forEach(id => {
+        ScrollTrigger.create({
+            trigger: '#' + id, start: 'top 45%', end: 'bottom 45%',
+            onToggle: self => { if (self.isActive) navLinks.forEach(a => a.classList.toggle('active', a.dataset.link === id)); }
+        });
+    });
+} else {
+    showAllStatic();
+}
+</script>
 </body>
 </html>
