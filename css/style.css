@@ -138,7 +138,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .loader__ring circle { fill: none; stroke-width: 3; }
 .loader__track { stroke: rgba(255, 255, 255, 0.07); }
 .loader__arc { stroke-linecap: round; stroke-dasharray: 327; stroke-dashoffset: 327; filter: drop-shadow(0 0 8px rgba(19, 185, 253, 0.7)); }
-.loader__mark { font-family: var(--f-head); font-weight: 800; font-size: 30px; letter-spacing: -0.04em; }
+.loader__mark { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; }
 .loader__pct { transform: translateY(100px); font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
 
 /* ── Buttons ────────────────────────────────────────────── */
