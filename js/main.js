@@ -122,15 +122,56 @@
   else addEventListener("scroll", () => onScroll(scrollY), { passive: true });
   onScroll(scrollY);
 
-  // sliding pill under the active / hovered link
+  // liquid pill: leading edge rushes ahead, trailing edge lags (honey stretch), wobbles on landing
   const links = $$(".nav__links a");
   const pill = $(".nav__pill");
+  const fill = $(".nav__pill i");
+  const drop = $(".nav__drop");
   let active = null;
+  const st = { l: 0, r: 0, tw: 1, on: false, to: null };
+  const paintPill = () => {
+    const w = Math.max(st.r - st.l, 0);
+    pill.style.width = w + "px";
+    if (motion) gsap.set(pill, { x: st.l }); // keep GSAP owning the transform (scale wobble shares it)
+    else pill.style.transform = `translateX(${st.l}px)`;
+    // the more it stretches, the thinner the strand gets
+    fill.style.transform = `scaleY(${Math.min(1, Math.max(0.55, Math.pow(st.tw / Math.max(w, 1), 0.5)))})`;
+  };
+  const mark = (a) => links.forEach((l) => l.classList.toggle("is-pill", l === a));
   const movePill = (a) => {
-    if (!a) return (pill.style.opacity = 0);
-    pill.style.opacity = 1;
-    pill.style.width = a.offsetWidth + "px";
-    pill.style.transform = `translateX(${a.offsetLeft}px)`;
+    if (a === st.to && st.on) return;
+    st.to = a;
+    mark(a);
+    if (!a) {
+      st.on = false;
+      if (!motion) return (pill.style.opacity = 0);
+      return gsap.to(pill, { opacity: 0, scale: 0.7, duration: 0.3, ease: "power2.in", overwrite: "auto" });
+    }
+    const L = a.offsetLeft, R = L + a.offsetWidth;
+    st.tw = R - L;
+    if (!motion) { Object.assign(st, { l: L, r: R, on: true }); pill.style.opacity = 1; return paintPill(); }
+    gsap.killTweensOf(st);
+    if (!st.on) {
+      st.on = true;
+      Object.assign(st, { l: L, r: R });
+      paintPill();
+      return gsap.fromTo(pill, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.7, ease: "elastic.out(1, 0.45)", overwrite: "auto" });
+    }
+    gsap.to(pill, { opacity: 1, scale: 1, duration: 0.2, overwrite: "auto" });
+    const dir = L > st.l ? 1 : -1;
+    const dur = 0.38 + Math.min(Math.abs(L - st.l) / 700, 0.32);
+    const lead = dir > 0 ? "r" : "l", trail = dir > 0 ? "l" : "r";
+    const leadTo = dir > 0 ? R : L, trailTo = dir > 0 ? L : R;
+    // a droplet peels off the trailing edge and catches up
+    gsap.fromTo(drop,
+      { x: dir > 0 ? st.l + 4 : st.r - 20, opacity: 1, scale: 1 },
+      { x: (L + R) / 2 - 8, duration: dur * 1.35, ease: "power2.inOut", overwrite: "auto",
+        onComplete: () => gsap.to(drop, { opacity: 0, scale: 0, duration: 0.2 }) });
+    gsap.to(st, { [lead]: leadTo, duration: dur * 0.75, ease: "power3.out", onUpdate: paintPill });
+    gsap.to(st, {
+      [trail]: trailTo, duration: dur, delay: dur * 0.18, ease: "power3.inOut", onUpdate: paintPill,
+      onComplete: () => gsap.fromTo(pill, { scaleX: 1.07, scaleY: 0.84 }, { scaleX: 1, scaleY: 1, duration: 0.9, ease: "elastic.out(1.1, 0.32)" }),
+    });
   };
   links.forEach((a) => {
     a.addEventListener("mouseenter", () => movePill(a));
