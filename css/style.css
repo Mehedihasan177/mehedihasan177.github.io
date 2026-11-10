@@ -232,16 +232,22 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .nav__brand:hover .nav__logo { transform: scale(1.08) rotate(-4deg); box-shadow: 0 0 28px rgba(94, 234, 212, 0.6); }
 .nav__name { font-family: var(--f-head); font-weight: 700; font-size: 16px; letter-spacing: -0.02em; }
 .nav__name b { color: var(--a2); font-weight: 500; }
-.nav__links { position: relative; display: flex; gap: 2px; padding: 4px; border-radius: 13px; background: var(--surface); border: 1px solid var(--border); }
-.nav__links a { position: relative; z-index: 1; padding: 7px 16px; font-size: 14px; font-weight: 600; color: var(--muted); border-radius: 10px; transition: color 0.3s; }
+.nav__links { position: relative; display: flex; gap: 2px; padding: 4px 6px 17px; border-radius: 14px; background: var(--surface); border: 1px solid var(--border); }
+.nav__links a { --lift: 0; position: relative; z-index: 1; display: flex; align-items: center; gap: 7px; padding: 6px 14px; font-size: 14px; font-weight: 600; color: var(--muted); border-radius: 10px; transition: color 0.3s; }
+.nav__links a svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: color 0.3s, filter 0.3s; }
+/* icons + labels rise as the marble rolls under them (--lift is set from JS, 0..1) */
+.nav__links a svg, .nav__links a span { transform: translateY(calc(var(--lift) * -3px)); }
 .nav__links a:hover, .nav__links a.is-active { color: var(--text); }
-.nav__links a.is-pill { color: var(--bg); }
-/* liquid pill: pours between links (goo filter merges pill + trailing drop) */
-.nav__goo { position: absolute; inset: 0; z-index: 0; pointer-events: none; filter: url(#nav-goo) drop-shadow(0 6px 16px rgba(19, 185, 253, 0.45)); }
-.nav__pill { position: absolute; top: 4px; bottom: 4px; left: 0; width: 0; opacity: 0; }
-.nav__pill i { position: absolute; inset: 0; border-radius: 10px; background: var(--grad); }
-.nav__drop { position: absolute; top: 50%; left: 0; width: 16px; height: 16px; margin-top: -8px; border-radius: 50%; background: var(--a1); opacity: 0; }
-.nav__filter { position: absolute; width: 0; height: 0; }
+.nav__links a.is-active svg { color: var(--a1); filter: drop-shadow(0 0 6px rgba(19, 185, 253, 0.8)); }
+/* marble: a chrome ball rolling in a carved groove */
+.nav__groove { position: absolute; left: 12px; right: 12px; bottom: 6px; height: 6px; border-radius: 6px; background: rgba(0, 0, 0, 0.55); box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.06); pointer-events: none; }
+.nav__glow { position: absolute; top: 50%; left: 0; width: 64px; height: 18px; margin: -9px 0 0 -32px; border-radius: 50%; background: radial-gradient(closest-side, rgba(19, 185, 253, 0.55), rgba(94, 234, 212, 0.18) 60%, transparent); filter: blur(2px); opacity: 0.9; }
+.nav__ring { position: absolute; top: 50%; left: 0; width: 22px; height: 8px; margin: -4px 0 0 -11px; border-radius: 50%; border: 1.5px solid rgba(94, 234, 212, 0.9); opacity: 0; }
+.nav__ball { position: absolute; top: 50%; left: 0; width: 16px; height: 16px; margin: -9px 0 0 -8px; border-radius: 50%; overflow: hidden;
+  background: radial-gradient(circle at 34% 28%, #fff 0 9%, #e6f3ff 16%, #9fb4cc 38%, #3a4659 64%, #0d1119 88%);
+  box-shadow: 0 0 12px rgba(19, 185, 253, 0.55), 0 2px 4px rgba(0, 0, 0, 0.7), inset 0 -2px 3px rgba(94, 234, 212, 0.45); }
+/* reflection band — rotated in JS so the ball visibly rolls */
+.nav__ball i { position: absolute; inset: 0; border-radius: 50%; background: linear-gradient(90deg, transparent 30%, rgba(255, 255, 255, 0.55) 46%, rgba(19, 185, 253, 0.35) 54%, transparent 70%); mix-blend-mode: screen; }
 .nav__burger { display: none; width: 40px; height: 40px; border-radius: 11px; background: var(--surface-2); border: 1px solid var(--border); position: relative; }
 .nav__burger i { position: absolute; left: 11px; right: 11px; height: 1.6px; border-radius: 2px; background: var(--text); transition: transform 0.4s var(--ease), opacity 0.3s; }
 .nav__burger i:nth-child(1) { top: 13px; }

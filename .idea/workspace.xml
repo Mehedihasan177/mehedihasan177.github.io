@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff5a4867-a349-4e57-a03e-76adbb36bf60" name="Changes" comment="little change in progress count" />
+    <list default="true" id="ff5a4867-a349-4e57-a03e-76adbb36bf60" name="Changes" comment="menu section little change" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,6 +55,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="new portfolio 10th november" />
     <MESSAGE value="little change in progress count" />
-    <option name="LAST_COMMIT_MESSAGE" value="little change in progress count" />
+    <MESSAGE value="menu section little change" />
+    <option name="LAST_COMMIT_MESSAGE" value="menu section little change" />
   </component>
 </project>
