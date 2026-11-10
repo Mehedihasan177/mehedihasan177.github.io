@@ -1,25 +1,38 @@
 # Md. Mehedi Hasan — Portfolio
 
-Plain **HTML + CSS + JavaScript**. No framework, no build step, no backend —
-GitHub Pages serves these files as they are.
+Plain **HTML + CSS + JavaScript** — no framework, no build step, no backend.
+GitHub Pages serves the files exactly as they are.
 
 ## Files
-| File | What it is |
+| Path | What it is |
 |---|---|
-| `index.html` | All page text (hero, about, journey, contact…) — edit directly |
-| `css/style.css` | All styling. Theme colours are at the top (`--accent…`) |
-| `js/data.js` | Projects (cards + popups), hero rotating words, 3D phone apps |
-| `js/main.js` | Build effect, hero word, parallax, cards/popup, accordion, cursors |
-| `js/playground.js` | The interactive 3D phone section |
-| `js/icons.js` | Brand icon shapes (Flutter, Dart, Google Play…) |
-| `web/` | Images, app films, CV |
+| `index.html` | Page structure + static text (hero, about, contact…) |
+| `css/style.css` | All styling. Theme colours are the tokens at the top (`--a1`, `--a2`, `--grad`) |
+| `js/data.js` | **Edit this** to change projects, jobs, education, process steps and skills |
+| `js/main.js` | Rendering + all animation (preloader, smooth scroll, pinned gallery, modal…) |
+| `js/vendor/` | GSAP 3.12.5, ScrollTrigger, Lenis 1.1.13 — bundled locally, no CDN needed |
+| `assets/` | Images, app films (`assets/video`), CV (`assets/cv`), tech icons (`assets/tech`), favicons |
 
 ## Preview locally
-Open `index.html` in a browser, or run any static server, e.g. `npx serve .`
+```bash
+cd mehedi-portfolio
+python3 -m http.server 8000   # then open http://localhost:8000
+```
+(Opening `index.html` directly also works.)
 
 ## Publish on GitHub Pages
-1. Put these files in the root of the `mehedihasan177.github.io` repo and push to `main`.
-2. Repo → **Settings → Pages → Build and deployment → Source: Deploy from a branch**, branch `main`, folder `/ (root)`.
-3. Live at https://mehedihasan177.github.io/ after ~1 minute.
+1. Create a repo named **`<your-username>.github.io`** (e.g. `mehedihasan177.github.io`).
+2. Put the *contents* of this folder in the repo root and push to `main`:
+   ```bash
+   git init && git add . && git commit -m "Portfolio"
+   git branch -M main
+   git remote add origin https://github.com/<your-username>/<your-username>.github.io.git
+   git push -u origin main
+   ```
+3. Repo → **Settings → Pages → Source: Deploy from a branch** → `main` / `(root)`.
+4. Live at `https://<your-username>.github.io/` in about a minute.
 
 `.nojekyll` is included so GitHub serves every file untouched.
+
+## Change the accent colour
+In `css/style.css`, edit `--a1`, `--a2` and the `--grad` gradient (e.g. violet: `#8b5cf6` → `#ec4899`).
